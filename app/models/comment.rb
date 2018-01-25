@@ -4,7 +4,8 @@ class Comment < ActiveRecord::Base
   include Graphqlable
   include Notifiable
 
-  COMMENTABLE_TYPES = %w(Debate Proposal Budget::Investment Poll Topic Legislation::Question Legislation::Annotation Legislation::Proposal).freeze
+  COMMENTABLE_TYPES = %w(Debate Proposal Budget::Investment Poll Topic Legislation::Question
+                         Legislation::Annotation Legislation::Proposal).freeze
 
   acts_as_paranoid column: :hidden_at
   include ActsAsParanoidAliases
@@ -25,9 +26,12 @@ class Comment < ActiveRecord::Base
 
   before_save :calculate_confidence_score
 
+  default_scope { where(valuation: false) }
   scope :for_render, -> { with_hidden.includes(user: :organization) }
   scope :with_visible_author, -> { joins(:user).where("users.hidden_at IS NULL") }
-  scope :not_as_admin_or_moderator, -> { where("administrator_id IS NULL").where("moderator_id IS NULL")}
+  scope :not_as_admin_or_moderator, -> do
+    where("administrator_id IS NULL").where("moderator_id IS NULL")
+  end
   scope :sort_by_flags, -> { order(flags_count: :desc, updated_at: :desc) }
   scope :public_for_api, -> do
     where(%{(comments.commentable_type = 'Debate' and comments.commentable_id in (?)) or
@@ -46,6 +50,8 @@ class Comment < ActiveRecord::Base
 
   scope :sort_by_oldest, -> { order(created_at: :asc) }
   scope :sort_descendants_by_oldest, -> { order(created_at: :asc) }
+
+  scope :valuations, -> { where(valuation: true) }
 
   after_create :call_after_commented
 
