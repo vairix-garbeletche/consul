@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-
+  devise :omniauthable, :omniauth_providers => [:saml, :facebook, :twitter, :google_oauth2]
   include Verification
 
   devise :database_authenticatable, :registerable, :confirmable, :recoverable, :rememberable,
@@ -68,19 +68,48 @@ class User < ActiveRecord::Base
   before_validation :clean_document_number
 
   # Get the existing user by email if the provider gives us a verified email.
-  def self.first_or_initialize_for_oauth(auth)
-    oauth_email           = auth.info.email
-    oauth_email_confirmed = oauth_email.present? && (auth.info.verified || auth.info.verified_email)
-    oauth_user            = User.find_by(email: oauth_email) if oauth_email_confirmed
+  def self.first_or_initialize_for_oauth_saml(auth, user=nil)
+    unless user
+      oauth_email           = [auth.uid, '@consul.imm.gub.uy'].join
+      oauth_email_confirmed = oauth_email.present?
+      oauth_user            = User.find_by(email: oauth_email) if oauth_email_confirmed
+    else
+      oauth_user = user
+    end
+    user_attributes = auth.extra.raw_info.attributes
 
-    oauth_user || User.new(
-      username:  auth.info.name || auth.uid,
-      email: oauth_email,
-      oauth_email: oauth_email,
-      password: Devise.friendly_token[0, 20],
-      terms_of_service: '1',
-      confirmed_at: oauth_email_confirmed ? DateTime.current : nil
-    )
+    if oauth_user.blank?
+      username = [user_attributes['http://wso2.org/claims/givenname'].first, user_attributes['http://wso2.org/claims/lastname'].first].join(' ')
+      user_count = User.where("username like '#{username}%'").count
+      username = [username, user_count.to_s].join('_') if user_count > 0
+      oauth_user = User.new(
+        username:  username,
+        email: oauth_email,
+        oauth_email: oauth_email,
+        terms_of_service: '1',
+        password: Devise.friendly_token[0, 20],
+        document_number: user_attributes['http://wso2.org/claims/document'].try(:first),
+        confirmed_at: oauth_email_confirmed ? DateTime.current : nil,
+        verified_at: user_attributes['http://wso2.org/claims/userVerified'].first == 'true' ? DateTime.current : nil,
+        uid: auth.uid
+      )
+    else
+      if auth.extra.raw_info.attributes
+        oauth_user.user_verified = user_attributes['http://wso2.org/claims/userVerified'].first == 'true' ? DateTime.current : nil
+        oauth_user.document_number = user_attributes['http://wso2.org/claims/document'].try(:first)
+        oauth_user.uid = auth.uid
+      end
+    end
+
+    if (oauth_user.uid.include?('uy-ci') || oauth_user.uid.include?('uy-dni')) && oauth_user.residence_verified_at.blank?
+      oauth_user.residence_verified_at = Date.today
+      oauth_user.level_two_verified_at = Date.today
+    end
+    if (oauth_user.uid.include?('uy-ci') || oauth_user.uid.include?('uy-dni')) && oauth_user.verified_at.blank?
+      oauth_user.verified_at = Date.today
+    end
+
+    oauth_user
   end
 
   def name
