@@ -25,6 +25,7 @@ App.Comments =
     form_container.hide()
 
   reset_form: (id) ->
+    $("#js-comment-form-#{id} form .remove-cached-attachment").click()
     input_area = $("#js-comment-form-#{id} form textarea")
     input_text = $("#js-comment-form-#{id} form #comment_organism")
     input_area.val('')

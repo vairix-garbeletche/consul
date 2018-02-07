@@ -44,11 +44,15 @@ class CommentsController < ApplicationController
   private
 
     def comment_params
-      params.require(:comment).permit(:commentable_type, :commentable_id, :parent_id, :body, :as_moderator, :as_administrator, :as_organism, :organism)
+      params.require(:comment).permit(:commentable_type, :commentable_id, :parent_id, :body, :as_moderator, :as_administrator, :organism, :as_organism,
+                                      documents_attributes: [:id, :title, :attachment, :cached_attachment, :user_id, :_destroy])
     end
 
     def build_comment
       @comment = Comment.build(@commentable, current_user, comment_params[:body], comment_params[:parent_id].presence)
+      if comment_params[:documents_attributes]
+        @comment.documents_attributes = comment_params[:documents_attributes]
+      end
       check_for_special_comments
     end
 
