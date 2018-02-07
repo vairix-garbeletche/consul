@@ -15,7 +15,7 @@ class Comment < ActiveRecord::Base
   acts_as_votable
   has_ancestry touch: true
 
-  attr_accessor :as_moderator, :as_administrator
+  attr_accessor :as_moderator, :as_administrator, :as_organism
 
   validates :body, presence: true
   validates :user, presence: true
@@ -94,6 +94,10 @@ class Comment < ActiveRecord::Base
 
   def as_moderator?
     moderator_id.present?
+  end
+
+  def as_organism?
+    organism.present?
   end
 
   def after_hide

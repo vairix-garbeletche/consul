@@ -5,6 +5,9 @@
     <%= form_for @comment, remote: true do |f| %>
       <%= label_tag "comment-body-#{css_id}", leave_comment_text(commentable) %>
       <%= f.text_area :body, id: "comment-body-#{css_id}", maxlength: Comment.body_max_length, label: false %>
+      <div id="<%= "comment-as-organism-#{css_id}-name"%>" style="display: none;">
+        <%= f.text_field :organism %>
+      </div>
       <%= f.hidden_field :commentable_type, value: commentable.class.name %>
       <%= f.hidden_field :commentable_id, value: commentable.id %>
       <%= f.hidden_field :parent_id, value: parent_id %>
@@ -27,6 +30,11 @@
           <%= label_tag "comment-as-administrator-#{css_id}", t("comments.form.comment_as_admin"), class: "checkbox" %>
         </div>
       <% end %>
+
+      <div class="float-right">
+        <%= f.check_box :as_organism, title: t('comments.form.comment_as_organism'), id: "comment-as-organism-#{css_id}",label: false %>
+        <%= label_tag "comment-as-organism-#{css_id}", t("comments.form.comment_as_organism"), class: "checkbox" %>
+      </div>
 
     <% end %>
   </div>
