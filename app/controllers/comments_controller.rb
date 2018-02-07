@@ -50,7 +50,9 @@ class CommentsController < ApplicationController
 
     def build_comment
       @comment = Comment.build(@commentable, current_user, comment_params[:body], comment_params[:parent_id].presence)
-      @comment.documents_attributes = comment_params[:documents_attributes]
+      if comment_params[:documents_attributes]
+        @comment.documents_attributes = comment_params[:documents_attributes]
+      end
       check_for_special_comments
     end
 
