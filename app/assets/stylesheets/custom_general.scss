@@ -1,0 +1,17 @@
+.orbit-slide {
+  img {
+    image-rendering: unset !important;
+  }
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: font-url('lato-light.eot');
+  src: font-url('lato-light.eot?#iefix') format('embedded-opentype'),
+       font-url('lato-light.woff2') format('woff2'),
+       font-url('lato-light.woff') format('woff'),
+       font-url('lato-light.ttf') format('truetype'),
+       font-url('lato-light.svg#latolight') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
