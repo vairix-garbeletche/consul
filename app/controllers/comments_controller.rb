@@ -44,7 +44,7 @@ class CommentsController < ApplicationController
   private
 
     def comment_params
-      params.require(:comment).permit(:commentable_type, :commentable_id, :parent_id, :body, :as_moderator, :as_administrator, :organism,
+      params.require(:comment).permit(:commentable_type, :commentable_id, :parent_id, :body, :as_moderator, :as_administrator, :organism, :as_organism,
                                       documents_attributes: [:id, :title, :attachment, :cached_attachment, :user_id, :_destroy])
     end
 
