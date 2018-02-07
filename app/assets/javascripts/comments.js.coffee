@@ -26,6 +26,7 @@ App.Comments =
 
   reset_form: (id) ->
     input = $("#js-comment-form-#{id} form textarea")
+    $("#js-comment-form-#{id} form .remove-cached-attachment").click()
     input.val('')
 
   toggle_form: (id) ->
