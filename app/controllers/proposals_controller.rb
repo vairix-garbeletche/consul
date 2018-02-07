@@ -119,8 +119,8 @@ class ProposalsController < ApplicationController
     end
 
     def load_settings
-      @proposal_date_from = Setting.find_by(key: "proposals_start_date").value
-      @proposal_date_to = Setting.find_by(key: "proposals_end_date").value
+      @proposal_date_from = Setting.exists?(key: "proposals_start_date") ? Setting.find_by(key: "proposals_start_date").value : nil
+      @proposal_date_to = Setting.exists?(key: "proposals_end_date") ? Setting.find_by(key: "proposals_end_date").value : nil
     end
 
     def load_featured

@@ -23,7 +23,7 @@
           </div>
         <% end %>
       <% @comment_tree.root_comments.each do |comment| %>
-        <%= render 'comments/comment', {comment: comment, inactive: true} %>
+        <%= render 'comments/comment', {comment: comment, inactive: !Proposal.in_active_period?} %>
       <% end %>
       <%= paginate @comment_tree.root_comments %>
     </div>
