@@ -1,0 +1,6 @@
+es:
+  comments:
+    comment:
+      organism: 'Organismo:'
+    form:
+      comment_as_organism: Comentar como organismo

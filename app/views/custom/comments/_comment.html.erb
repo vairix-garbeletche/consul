@@ -68,6 +68,13 @@
                   <%= comment_author_class comment, comment.commentable.author_id %>">
           <%= simple_format text_with_links(comment.body), {}, sanitize: false %>
         </div>
+        <% if comment.documents.count > 0 %>
+          <div class="comment-user">
+            <%= render 'documents/documents',
+                       documents: comment.documents,
+                       max_documents_allowed: Comment.max_documents_allowed %>
+          </div>
+        <% end %>
 
         <div id="<%= dom_id(comment) %>_reply" class="reply">
           <div id="<%= dom_id(comment) %>_votes" class="comment-votes float-right">
