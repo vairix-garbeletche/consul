@@ -7,6 +7,7 @@ class ProposalsController < ApplicationController
   before_action :load_categories, only: [:index, :new, :create, :edit, :map, :summary]
   before_action :load_geozones, only: [:edit, :map, :summary]
   before_action :authenticate_user!, except: [:index, :show, :map, :summary]
+  before_action :load_settings
 
   feature_flag :proposals
 
@@ -115,6 +116,11 @@ class ProposalsController < ApplicationController
       else
         @resources = @resources.not_retired
       end
+    end
+
+    def load_settings
+      @proposal_date_from = Setting.find_by(key: "proposals_start_date").value
+      @proposal_date_to = Setting.find_by(key: "proposals_end_date").value
     end
 
     def load_featured

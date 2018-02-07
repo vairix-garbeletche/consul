@@ -75,6 +75,7 @@
 //= require sortable
 //= require table_sortable
 //= require investment_report_alert
+//= require proposals
 
 var initialize_modules = function() {
   App.Comments.initialize();
@@ -117,6 +118,7 @@ var initialize_modules = function() {
   App.Sortable.initialize();
   App.TableSortable.initialize();
   App.InvestmentReportAlert.initialize();
+  App.Proposals.initialize();
 };
 
 $(function(){
