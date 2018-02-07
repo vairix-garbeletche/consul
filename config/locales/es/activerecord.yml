@@ -127,7 +127,6 @@ es:
       comment:
         body: "Comentario"
         user: "Usuario"
-        organism: "Organismo"
       debate:
         author: "Autor"
         description: "Opinión"

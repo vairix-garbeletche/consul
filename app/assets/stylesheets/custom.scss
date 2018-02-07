@@ -8,3 +8,7 @@
 .proposals-create, .proposal-edit{
   position: relative;
 }
+
+.comments {
+  @include direct-uploads;
+}

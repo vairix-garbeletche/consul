@@ -3,6 +3,10 @@ class Comment < ActiveRecord::Base
   include HasPublicAuthor
   include Graphqlable
   include Notifiable
+  include Documentable
+  documentable max_documents_allowed: 1,
+               max_file_size: 3.megabytes,
+               accepted_content_types: [ "application/pdf" ]
 
   COMMENTABLE_TYPES = %w(Debate Proposal Budget::Investment Poll Topic Legislation::Question Legislation::Annotation Legislation::Proposal).freeze
 
