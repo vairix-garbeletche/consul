@@ -41,7 +41,7 @@
           <span class="icon-comments"></span>&nbsp;
           <%= link_to t("proposals.show.comments", count: @proposal.comments_count), "#comments" %>
 
-          <% if current_user %>
+          <% if current_user && Proposal.in_active_period? %>
             <span class="bullet">&nbsp;&bull;&nbsp;</span>
             <span class="js-flag-actions">
               <%= render 'proposals/flag_actions', proposal: @proposal %>
