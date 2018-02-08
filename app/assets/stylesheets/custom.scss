@@ -4,6 +4,11 @@
 // * Spanish: https://github.com/consul/consul/blob/master/CUSTOMIZE_ES.md#css
 //
 
+
+.proposals-create, .proposal-edit{
+  position: relative;
+}
+
 .comments {
   @include direct-uploads;
 }

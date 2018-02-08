@@ -72,13 +72,15 @@
           <div class="comment-user">
             <%= render 'documents/documents',
                        documents: comment.documents,
-                       max_documents_allowed: Comment.max_documents_allowed %>
+                       max_documents_allowed: Comment.max_documents_allowed,
+                       inactive: local_assigns[:inactive]
+            %>
           </div>
         <% end %>
 
         <div id="<%= dom_id(comment) %>_reply" class="reply">
           <div id="<%= dom_id(comment) %>_votes" class="comment-votes float-right">
-            <%= render 'comments/votes', comment: comment %>
+            <%= render 'comments/votes', {comment: comment, inactive: local_assigns[:inactive]} %>
           </div>
 
           <% if comment.children.size > 0 %>
@@ -92,13 +94,15 @@
           <% end %>
 
           <% if user_signed_in? && !comments_closed_for_commentable?(comment.commentable) && !require_verified_resident_for_commentable?(comment.commentable, current_user) %>
-            <span class="divider">&nbsp;|&nbsp;</span>
-            <%= link_to(comment_link_text(comment), "",
-                        class: "js-add-comment-link", data: {'id': dom_id(comment)}) %>
+            <% if !local_assigns[:inactive] %>
+              <span class="divider">&nbsp;|&nbsp;</span>
+                <%= link_to(comment_link_text(comment), "",
+                            class: "js-add-comment-link", data: {'id': dom_id(comment)}) %>
 
-            <%= render 'comments/actions', comment: comment %>
+                <%= render 'comments/actions', comment: comment %>
 
-            <%= render 'comments/form', {commentable: comment.commentable, parent_id: comment.id, toggeable: true} %>
+                <%= render 'comments/form', {commentable: comment.commentable, parent_id: comment.id, toggeable: true} %>
+            <% end %>
           <% end %>
         </div>
       <% end %>
@@ -108,7 +112,7 @@
       <ul id="<%= dom_id(comment) %>_children" class="no-bullet comment-children">
         <% child_comments_of(comment).each do |child| %>
           <li>
-            <%= render 'comments/comment', comment: child %>
+            <%= render 'comments/comment', comment: child, inactive: local_assigns[:inactive] %>
           </li>
         <% end %>
       </ul>

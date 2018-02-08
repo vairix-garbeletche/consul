@@ -151,6 +151,14 @@ class Proposal < ActiveRecord::Base
     user && user.level_two_or_three_verified?
   end
 
+  def self.in_active_period?
+    proposal_date_from = Setting.exists?(key: "proposals_start_date") ? Setting.find_by(key: "proposals_start_date").value : nil
+    proposal_date_to = Setting.exists?(key: "proposals_end_date") ? Setting.find_by(key: "proposals_end_date").value : nil
+    (proposal_date_from.nil? || Date.today >= proposal_date_from.to_date) && (proposal_date_to.nil? || Date.today <= proposal_date_to.to_date)
+  rescue
+    true
+  end
+
   def retired?
     retired_at.present?
   end

@@ -1,4 +1,6 @@
 es:
+  proposals:
+    inactive: "El periodo de propuestas es entre %{date_from} y %{date_to}"
   comments:
     comment:
       organism: 'Organismo:'
