@@ -155,6 +155,8 @@ class Proposal < ActiveRecord::Base
     proposal_date_from = Setting.exists?(key: "proposals_start_date") ? Setting.find_by(key: "proposals_start_date").value : nil
     proposal_date_to = Setting.exists?(key: "proposals_end_date") ? Setting.find_by(key: "proposals_end_date").value : nil
     (proposal_date_from.nil? || Date.today >= proposal_date_from.to_date) && (proposal_date_to.nil? || Date.today <= proposal_date_to.to_date)
+  rescue
+    true
   end
 
   def retired?
