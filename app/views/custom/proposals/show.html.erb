@@ -113,7 +113,7 @@
         <%= render 'relationable/related_content', relationable: @proposal %>
 
         <div class="js-moderator-proposal-actions margin">
-          <%= render 'proposals/actions', proposal: @proposal %>
+          <%= render 'proposals/actions', proposal: @proposal, inactive: !Proposal.in_active_period? %>
         </div>
       </div>
 
