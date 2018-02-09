@@ -103,9 +103,11 @@
                     date_to: @proposal_date_to).html_safe %>
             </div>
           <% end %>
-          <%= link_to t("proposals.index.start_proposal"),
-                      new_proposal_guide,
-                      class: 'button expanded' %>
+          <% if Proposal.can_manage? current_user %>
+            <%= link_to t("proposals.index.start_proposal"),
+                        new_proposal_guide,
+                        class: 'button expanded' %>
+          <% end %>
         </div>
         <% if params[:retired].blank? %>
           <%= render 'categories' %>
