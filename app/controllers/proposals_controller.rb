@@ -9,6 +9,7 @@ class ProposalsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :map, :summary]
   before_action :load_settings
   before_action :validate_settings, only: [:new, :create]
+  before_action :validate_date, only: [:new, :create, :edit]
 
   feature_flag :proposals
 
@@ -140,6 +141,12 @@ class ProposalsController < ApplicationController
     def validate_settings
       unless Proposal.can_manage? current_user
         redirect_to proposals_path, notice: t('proposals.require_permission')
+     end
+    end
+  
+    def validate_date
+      unless Proposal.in_active_period?
+        redirect_to proposals_path, notice: t('proposals.inactive', date_from: @proposal_date_from, date_to: @proposal_date_to)
       end
     end
 
