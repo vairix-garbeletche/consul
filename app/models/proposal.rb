@@ -232,6 +232,13 @@ class Proposal < ActiveRecord::Base
     orders
   end
 
+  def self.can_manage? user
+    if Setting.exists?(key: "proposals_require_admin")
+      return !["1","true"].include?(Setting[:proposals_require_admin]) || user.administrator?
+    end
+    true
+  end
+
   protected
 
     def set_responsible_name
