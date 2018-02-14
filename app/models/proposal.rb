@@ -106,13 +106,23 @@ class Proposal < ActiveRecord::Base
 
   def self.search(terms)
     by_code = search_by_code(terms.strip)
-    by_code.present? ? by_code : pg_search(terms)
+    by_comments = search_by_comments(terms.strip).pluck(:id)
+    if by_code.present?
+      where(id: by_comments + by_code.pluck(:id)).uniq
+    else
+      pg_ids = pg_search(terms).pluck(:id)
+      where(id: by_comments + pg_ids).uniq
+    end
   end
 
   def self.search_by_code(terms)
     matched_code = match_code(terms)
     results = where(id: matched_code[1]) if matched_code
     return results if results.present? && results.first.code == terms
+  end
+
+  def self.search_by_comments(terms)
+    joins(:comments).where("comments.body ILIKE ?", "%#{terms}%").uniq
   end
 
   def self.match_code(terms)
