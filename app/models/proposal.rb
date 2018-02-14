@@ -122,7 +122,7 @@ class Proposal < ActiveRecord::Base
   end
 
   def self.search_by_comments(terms)
-    joins(:comments).where("comments.body LIKE ?", "%#{terms}%").uniq
+    joins(:comments).where("comments.body ILIKE ?", "%#{terms}%").uniq
   end
 
   def self.match_code(terms)
