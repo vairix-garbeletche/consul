@@ -8,6 +8,7 @@ class ProposalsController < ApplicationController
   before_action :load_geozones, only: [:edit, :map, :summary]
   before_action :authenticate_user!, except: [:index, :show, :map, :summary]
   before_action :load_settings
+  before_action :validate_date, only: [:new, :create, :edit]
 
   feature_flag :proposals
 
@@ -134,6 +135,12 @@ class ProposalsController < ApplicationController
 
     def load_successful_proposals
       @proposal_successful_exists = Proposal.successful.exists?
+    end
+
+    def validate_date
+      unless Proposal.in_active_period?
+        redirect_to proposals_path, notice: t('proposals.inactive', date_from: @proposal_date_from, date_to: @proposal_date_to)
+      end
     end
 
 end
