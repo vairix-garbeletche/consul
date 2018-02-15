@@ -13,6 +13,10 @@
   @include direct-uploads;
 }
 
+.float-right .comment-by-organism {
+  margin-right: 5px;
+}
+
 .top-bar .top-bar-title a {
   line-height: 2.5rem;
   width: 550px;
@@ -41,4 +45,6 @@
     line-height: 1.2rem;
 	}
 }
+
+
 
