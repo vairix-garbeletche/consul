@@ -12,3 +12,12 @@
 .comments {
   @include direct-uploads;
 }
+
+.top-bar .top-bar-title a {
+  line-height: 2.5rem;
+  width: 600px;
+}
+
+.footer, .push {
+  min-height: 8rem;
+}
