@@ -9,17 +9,6 @@
     <div id="js-suggest"></div>
 
     <%= f.invisible_captcha :subtitle %>
-    
-    <div class="small-12 column">
-      <%= f.label :question, t("proposals.form.proposal_question") %>
-      <p class="help-text" id="question-help-text">
-        <%= t("proposals.form.proposal_question_example_html") %>
-      </p>
-      <%= f.text_field :question, maxlength: Proposal.question_max_length,
-                                  placeholder: t("proposals.form.proposal_question"),
-                                  label: false,
-                                  aria: {describedby: "question-help-text"} %>
-    </div>
 
     <div class="small-12 column">
       <%= f.label :summary, t("proposals.form.proposal_summary") %>
@@ -89,20 +78,19 @@
       <br>
       <%= f.text_field :tag_list, value: @proposal.tag_list.to_s,
                         label: false,
+                        disabled: true,
                         placeholder: t("proposals.form.tags_placeholder"),
                         class: 'js-tag-list tag-autocomplete',
                         aria: {describedby: "tag-list-help-text"},
                         data: {js_url: suggest_tags_path} %>
     </div>
 
-    <% if current_user.unverified? %>
-      <div class="small-12 column">
-        <%= f.label :responsible_name, t("proposals.form.proposal_responsible_name") %>
-        <p class="help-text" id="responsible-name-help-text"><%= t("proposals.form.proposal_responsible_name_note") %></p>
-        <%= f.text_field :responsible_name, placeholder: t("proposals.form.proposal_responsible_name"), label: false,
-                                            aria: {describedby: "responsible-name-help-text"} %>
-      </div>
-    <% end %>
+    <div class="small-12 column">
+      <%= f.label :responsible_name, t("proposals.form.proposal_responsible_name") %>
+      <p class="help-text" id="responsible-name-help-text"><%= t("proposals.form.proposal_responsible_name_note") %></p>
+      <%= f.text_field :responsible_name, placeholder: t("proposals.form.proposal_responsible_name"), label: false,
+                                          aria: {describedby: "responsible-name-help-text"} %>
+    </div>
 
     <div class="small-12 column">
       <% if @proposal.new_record? %>

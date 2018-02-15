@@ -5,3 +5,5 @@ es:
   comments:
     form:
       comment_as_organism: Organismo | Sociedad Civil | Academia
+  geozones:
+    none: Seleccione un Plan de acción
