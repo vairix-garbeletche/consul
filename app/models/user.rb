@@ -35,6 +35,7 @@ class User < ActiveRecord::Base
   belongs_to :geozone
 
   validates :username, presence: true, if: :username_required?
+  validates :email, presence: true
   validates :username, uniqueness: { scope: :registering_with_oauth }, if: :username_required?
   validates :document_number, uniqueness: { scope: :document_type }, allow_nil: true
 
@@ -70,18 +71,16 @@ class User < ActiveRecord::Base
   # Get the existing user by email if the provider gives us a verified email.
   def self.first_or_initialize_for_oauth_saml(auth, user=nil)
     unless user
-      oauth_email           = [auth.uid, '@consul.imm.gub.uy'].join
-      oauth_email_confirmed = oauth_email.present?
-      oauth_user            = User.find_by(email: oauth_email) if oauth_email_confirmed
+      oauth_email           = nil
+      oauth_email_confirmed = false
+      oauth_user            = nil
     else
       oauth_user = user
     end
     user_attributes = auth.extra.raw_info.attributes
 
     if oauth_user.blank?
-      username = [user_attributes['http://wso2.org/claims/givenname'].first, user_attributes['http://wso2.org/claims/lastname'].first].join(' ')
-      user_count = User.where("username like '#{username}%'").count
-      username = [username, user_count.to_s].join('_') if user_count > 0
+      username = nil
       oauth_user = User.new(
         username:  username,
         email: oauth_email,
@@ -95,7 +94,7 @@ class User < ActiveRecord::Base
       )
     else
       if auth.extra.raw_info.attributes
-        oauth_user.user_verified = user_attributes['http://wso2.org/claims/userVerified'].first == 'true' ? DateTime.current : nil
+        oauth_user.verified_at = user_attributes['http://wso2.org/claims/userVerified'].first == 'true' ? DateTime.current : nil
         oauth_user.document_number = user_attributes['http://wso2.org/claims/document'].try(:first)
         oauth_user.uid = auth.uid
       end
@@ -104,9 +103,6 @@ class User < ActiveRecord::Base
     if (oauth_user.uid.include?('uy-ci') || oauth_user.uid.include?('uy-dni')) && oauth_user.residence_verified_at.blank?
       oauth_user.residence_verified_at = Date.today
       oauth_user.level_two_verified_at = Date.today
-    end
-    if (oauth_user.uid.include?('uy-ci') || oauth_user.uid.include?('uy-dni')) && oauth_user.verified_at.blank?
-      oauth_user.verified_at = Date.today
     end
 
     oauth_user
