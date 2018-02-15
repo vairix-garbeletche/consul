@@ -9,6 +9,7 @@ class Comment < ActiveRecord::Base
                accepted_content_types: [ "application/pdf" ]
 
   COMMENTABLE_TYPES = %w(Debate Proposal Budget::Investment Poll Topic Legislation::Question Legislation::Annotation Legislation::Proposal).freeze
+  STATUS = {pending: 1, aproved: 2, disaproved: 3}
 
   acts_as_paranoid column: :hidden_at
   include ActsAsParanoidAliases
@@ -30,6 +31,7 @@ class Comment < ActiveRecord::Base
   before_save :calculate_confidence_score
 
   scope :for_render, -> { with_hidden.includes(user: :organization) }
+  scope :aproved, -> { with_hidden.includes(user: :organization).where(status: STATUS[:aproved]) }
   scope :with_visible_author, -> { joins(:user).where("users.hidden_at IS NULL") }
   scope :not_as_admin_or_moderator, -> { where("administrator_id IS NULL").where("moderator_id IS NULL")}
   scope :sort_by_flags, -> { order(flags_count: :desc, updated_at: :desc) }
