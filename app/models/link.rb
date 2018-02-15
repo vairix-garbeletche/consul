@@ -1,3 +1,3 @@
 class Link
-  URL_BASE= 'agesic.com'
+  URL_BASE= 'https://www.agesic.gub.uy/'
 end
