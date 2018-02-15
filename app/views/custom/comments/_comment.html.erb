@@ -58,7 +58,7 @@
           <% end %>
 
           <% if comment.as_organism? %>
-          &nbsp;&bull;&nbsp;<span class="user-name"><%= t("comments.comment.organism") %> <%= comment.organism %></span>
+          &nbsp;&bull;&nbsp;<span class="user-name"><%= comment.organism %></span>
           <% end %>
           &nbsp;&bull;&nbsp;<span><%= l comment.created_at.to_datetime, format: :datetime %></span>
         </div>

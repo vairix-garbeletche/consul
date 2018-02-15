@@ -108,7 +108,7 @@
 
         <%= render 'shared/tags', taggable: @proposal %>
 
-        <%= render 'shared/geozone', geozonable: @proposal %>
+        <%= render '/proposals/show_geozones', geozonable: @proposal %>
 
         <%= render 'relationable/related_content', relationable: @proposal %>
 

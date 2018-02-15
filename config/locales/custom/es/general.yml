@@ -1,8 +1,9 @@
 es:
   proposals:
     inactive: "El periodo de propuestas es entre %{date_from} y %{date_to}"
+    require_permission: No tiene los permisos para realizar esta acción
   comments:
-    comment:
-      organism: 'Organismo:'
     form:
-      comment_as_organism: Comentar como organismo
+      comment_as_organism: Organismo | Sociedad Civil | Academia
+  geozones:
+    none: Seleccione un Plan de acción

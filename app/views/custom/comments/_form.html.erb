@@ -13,7 +13,7 @@
       <%= f.hidden_field :parent_id, value: parent_id %>
 
       <div class="documents small-12 column">
-        <%= render 'documents/nested_documents', documentable: @comment, f: f %>
+        <%= render 'documents/nested_documents', documentable: @comment, f: f, parent_id: css_id %>
       </div>
 
       <%= f.submit comment_button_text(parent_id, commentable), class: "button", id: "publish_comment" %>
@@ -33,7 +33,7 @@
 
       <div class="float-right">
         <%= f.check_box :as_organism, title: t('comments.form.comment_as_organism'), id: "comment-as-organism-#{css_id}",label: false %>
-        <%= label_tag "comment-as-organism-#{css_id}", t("comments.form.comment_as_organism"), class: "checkbox" %>
+        <%= label_tag "comment-as-organism-#{css_id}", t("comments.form.comment_as_organism"), class: "checkbox comment-by-organism" %>
       </div>
 
     <% end %>
