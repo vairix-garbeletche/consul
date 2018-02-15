@@ -12,3 +12,7 @@
 .comments {
   @include direct-uploads;
 }
+
+.float-right .comment-by-organism {
+  margin-right: 5px;
+}
