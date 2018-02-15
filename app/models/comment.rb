@@ -30,8 +30,12 @@ class Comment < ActiveRecord::Base
 
   before_save :calculate_confidence_score
 
+  scope :from_proposals, -> { where(commentable_type: 'Proposal') }
   scope :for_render, -> { with_hidden.includes(user: :organization) }
   scope :aproved, -> { with_hidden.includes(user: :organization).where(status: STATUS[:aproved]) }
+  scope :pending_publish_flag, -> { where(status: Comment::STATUS[:pending]) }
+  scope :aproved_flag, -> { where(status: Comment::STATUS[:aproved]) }
+  scope :disaproved_flag, -> { where(status: Comment::STATUS[:disaproved]) }
   scope :with_visible_author, -> { joins(:user).where("users.hidden_at IS NULL") }
   scope :not_as_admin_or_moderator, -> { where("administrator_id IS NULL").where("moderator_id IS NULL")}
   scope :sort_by_flags, -> { order(flags_count: :desc, updated_at: :desc) }

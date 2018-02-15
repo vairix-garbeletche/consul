@@ -1,0 +1,67 @@
+<h2><%= t("moderation.comments.index.title") %></h2>
+
+<%= render 'shared/filter_subnav', i18n_namespace: "moderation.comments.index" %>
+
+<%= form_tag aprove_moderation_comments_path(request.query_parameters), method: :put do %>
+  <p class="js-check">
+    <%= t('shared.check') %>:
+    <%= link_to t('shared.check_all'), '#', data: {check_all: "comment_ids[]"} %>
+    |
+    <%= link_to t('shared.check_none'), '#', data: {check_none: "comment_ids[]"} %>
+  </p>
+
+  <table>
+    <tr>
+      <th>
+        <%= t("moderation.comments.index.headers.comment") %>
+      </th>
+      <th>
+       <%= t("moderation.comments.index.headers.moderate") %>
+      </th>
+    </tr>
+
+    <% @comments.each do |comment| %>
+      <tr id="comment_<%= comment.id %>">
+        <td>
+          <%= comment.commentable_type.constantize.model_name.human %> -
+          <%= link_to comment.commentable.title, comment.commentable %>
+          <br>
+          <span class="date"><%= l comment.updated_at.to_date %></span>
+          <span class="bullet">&nbsp;&bull;&nbsp;</span>
+          <%= comment.flags_count %><span class="icon-flag flag-disable"></span>
+          <span class="bullet">&nbsp;&bull;&nbsp;</span>
+          <%= comment.author.username %>
+          <br>
+          <p>
+            <%= comment.body %>
+          </p>
+        </td>
+        <td class="text-center">
+          <%= check_box_tag "comment_ids[]", comment.id, nil, id: "#{dom_id(comment)}_check" %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+
+  <%= submit_tag t('moderation.comments.index.block_authors'),
+    name: "block_authors",
+    class: "button hollow alert",
+    data: {confirm: t('moderation.comments.index.confirm')}
+  %>
+
+  <div class="float-right">
+    <%= submit_tag t('moderation.comments.index.disaprove_comments'),
+      name: "disaprove",
+      class: "button hollow alert",
+      data: {confirm: t('moderation.comments.index.confirm')}
+    %>
+    <%= submit_tag t('moderation.comments.index.aprove_comments'),
+      name: "aprove",
+      class: "button hollow",
+      data: {confirm: t('moderation.comments.index.confirm')}
+    %>
+  </div>
+
+  <%= paginate @comments %>
+
+<% end %>
