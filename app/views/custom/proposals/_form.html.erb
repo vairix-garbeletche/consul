@@ -1,5 +1,5 @@
 <%= form_for(@proposal, url: form_url) do |f| %>
-  <%= render 'shared/errors', resource: @proposal %>
+  <%= render 'shared/errors.html.erb', resource: @proposal %>
 
   <div class="row">
     <div class="small-12 column">
@@ -37,12 +37,12 @@
 
     <% if feature?(:allow_images) %>
       <div class="images small-12 column">
-        <%= render 'images/nested_image', imageable: @proposal, f: f %>
+        <%= render 'images/nested_image.html.erb', imageable: @proposal, f: f %>
       </div>
     <% end %>
 
     <div class="documents small-12 column">
-      <%= render 'documents/nested_documents', documentable: @proposal, f: f %>
+      <%= render 'documents/nested_documents.html.erb', documentable: @proposal, f: f %>
     </div>
 
     <div class="small-12 medium-6 column">
@@ -53,7 +53,7 @@
     <% if feature?(:map) %>
       <div class="small-12 column">
 
-        <%= render 'map_locations/form_fields',
+        <%= render 'map_locations/form_fields.html.erb',
                    form:     f,
                    map_location: @proposal.map_location || MapLocation.new,
                    label:    t("proposals.form.map_location"),

@@ -5,13 +5,21 @@
         <%= document.title %>
       </td>
       <td class="text-center">
-        <%= link_to t('documents.buttons.download_document'),
-                    document.attachment.url,
-                    target: "_blank",
-                    rel: "nofollow",
-                    class: 'button hollow' %>
+        <% if !local_assigns[:pdf] %>
+          <%= link_to t('documents.buttons.download_document'),
+                      document.attachment.url,
+                      target: "_blank",
+                      rel: "nofollow",
+                      class: 'button hollow' %>
+        <% else %>
+          <%= link_to t('documents.buttons.download_document'),
+                      "#{request.base_url}#{document.attachment.url}",
+                      target: "_blank",
+                      rel: "nofollow",
+                      class: 'button hollow' %>
+        <% end %>
       </td>
-      <% if !local_assigns[:inactive] %>
+      <% if !local_assigns[:inactive] && !local_assigns[:pdf] %>
         <td class="text-center">
           <% if can?(:destroy, document) %>
             <%= link_to t('documents.buttons.destroy_document'),
