@@ -39,7 +39,7 @@ class ProposalsController < ApplicationController
 
     respond_to do |format|
       format.pdf do
-        render pdf: "show"
+        render pdf: "show", encoding: "UTF-8"
       end
     end
   end
