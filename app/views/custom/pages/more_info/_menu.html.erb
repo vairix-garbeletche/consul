@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="small-12 column">
+    <ul class="menu-pages" data-magellan>
+      <% if feature?(:proposals) %>
+        <li>
+          <%= link_to t("pages.more_info.menu.proposals"), "#proposals", class: "button hollow expanded" %>
+        </li>
+      <% end %>
+      <li>
+        <%= link_to t("pages.more_info.menu.other"), "#other", class: "button hollow expanded" %>
+      </li>
+    </ul>
+  </div>
+</div>

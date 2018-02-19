@@ -117,6 +117,8 @@ var initialize_modules = function() {
   App.Sortable.initialize();
   App.TableSortable.initialize();
   App.InvestmentReportAlert.initialize();
+  App.Proposals.initialize();
+  App.CustomDocumentable.initialize();
 };
 
 $(function(){

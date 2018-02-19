@@ -3,6 +3,10 @@ class Comment < ActiveRecord::Base
   include HasPublicAuthor
   include Graphqlable
   include Notifiable
+  include Documentable
+  documentable max_documents_allowed: 1,
+               max_file_size: 3.megabytes,
+               accepted_content_types: [ "application/pdf" ]
 
   COMMENTABLE_TYPES = %w(Debate Proposal Budget::Investment Poll Topic Legislation::Question Legislation::Annotation Legislation::Proposal).freeze
 
@@ -11,7 +15,7 @@ class Comment < ActiveRecord::Base
   acts_as_votable
   has_ancestry touch: true
 
-  attr_accessor :as_moderator, :as_administrator
+  attr_accessor :as_moderator, :as_administrator, :as_organism
 
   validates :body, presence: true
   validates :user, presence: true
@@ -90,6 +94,10 @@ class Comment < ActiveRecord::Base
 
   def as_moderator?
     moderator_id.present?
+  end
+
+  def as_organism?
+    organism.present?
   end
 
   def after_hide

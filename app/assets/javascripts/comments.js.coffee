@@ -25,8 +25,11 @@ App.Comments =
     form_container.hide()
 
   reset_form: (id) ->
-    input = $("#js-comment-form-#{id} form textarea")
-    input.val('')
+    $("#js-comment-form-#{id} form .remove-cached-attachment").click()
+    input_area = $("#js-comment-form-#{id} form textarea")
+    input_text = $("#js-comment-form-#{id} form #comment_organism")
+    input_area.val('')
+    input_text.val('')
 
   toggle_form: (id) ->
     $("#js-comment-form-#{id}").toggle()
@@ -57,3 +60,8 @@ App.Comments =
         $(this).children('.js-child-toggle').toggle()
         false
       )
+
+    $('body .float-right [id^=comment-as-organism]').unbind('click').on 'click', (e) ->
+        text_field_id = "#{$(this).context.id}-name"
+        console.debug(text_field_id)
+        $("##{text_field_id}").toggle('slow')

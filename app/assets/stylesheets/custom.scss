@@ -3,3 +3,52 @@
 // * English: https://github.com/consul/consul/blob/master/CUSTOMIZE_EN.md#css
 // * Spanish: https://github.com/consul/consul/blob/master/CUSTOMIZE_ES.md#css
 //
+
+
+.proposals-create, .proposal-edit{
+  position: relative;
+}
+
+.comments {
+  @include direct-uploads;
+}
+
+.float-right .comment-by-organism {
+  margin-right: 5px;
+}
+
+.top-bar .top-bar-title a {
+  line-height: 2.5rem;
+  width: 550px;
+}
+
+.footer, .push {
+  min-height: 6rem;
+}
+
+.footer {
+    margin-top: 15rem;
+}
+
+@media (min-width: 100px) and (max-width: 700px) {
+	.logo {
+	  font-size: 18px;
+	  display: inline;
+	}
+	.top-bar {
+    line-height: 1.2rem;
+	}
+}
+
+@media (min-width: 100px) and (max-width: 325px) {
+	.logo {
+	  font-size: 15px;
+	  display: inline;
+	}
+	.top-bar {
+    line-height: 1.2rem;
+	}
+}
+
+
+

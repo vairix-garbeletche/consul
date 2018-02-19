@@ -1,0 +1,5 @@
+es:
+  settings:
+    proposals_end_date: "Fecha de fin de propuesta"
+    proposals_start_date: "Fecha de inicio de propuesta"
+    proposals_require_admin: "Creación de Propuestas solo para administradores"

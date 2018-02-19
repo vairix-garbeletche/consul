@@ -33,14 +33,13 @@ class Proposal < ActiveRecord::Base
   has_many :proposal_notifications, dependent: :destroy
 
   validates :title, presence: true
-  validates :question, presence: true
   validates :summary, presence: true
+  validates :geozone_id, presence: true
   validates :author, presence: true
   validates :responsible_name, presence: true
 
   validates :title, length: { in: 4..Proposal.title_max_length }
   validates :description, length: { maximum: Proposal.description_max_length }
-  validates :question, length: { in: 10..Proposal.question_max_length }
   validates :responsible_name, length: { in: 6..Proposal.responsible_name_max_length }
   validates :retired_reason, inclusion: { in: RETIRE_OPTIONS, allow_nil: true }
 
@@ -106,13 +105,23 @@ class Proposal < ActiveRecord::Base
 
   def self.search(terms)
     by_code = search_by_code(terms.strip)
-    by_code.present? ? by_code : pg_search(terms)
+    by_comments = search_by_comments(terms.strip).pluck(:id)
+    if by_code.present?
+      where(id: by_comments + by_code.pluck(:id)).uniq
+    else
+      pg_ids = pg_search(terms).pluck(:id)
+      where(id: by_comments + pg_ids).uniq
+    end
   end
 
   def self.search_by_code(terms)
     matched_code = match_code(terms)
     results = where(id: matched_code[1]) if matched_code
     return results if results.present? && results.first.code == terms
+  end
+
+  def self.search_by_comments(terms)
+    joins(:comments).where("comments.body ILIKE ?", "%#{terms}%").uniq
   end
 
   def self.match_code(terms)
@@ -149,6 +158,14 @@ class Proposal < ActiveRecord::Base
 
   def votable_by?(user)
     user && user.level_two_or_three_verified?
+  end
+
+  def self.in_active_period?
+    proposal_date_from = Setting.exists?(key: "proposals_start_date") ? Setting.find_by(key: "proposals_start_date").value : nil
+    proposal_date_to = Setting.exists?(key: "proposals_end_date") ? Setting.find_by(key: "proposals_end_date").value : nil
+    (proposal_date_from.nil? || Date.today >= proposal_date_from.to_date) && (proposal_date_to.nil? || Date.today <= proposal_date_to.to_date)
+  rescue
+    true
   end
 
   def retired?
@@ -209,9 +226,15 @@ class Proposal < ActiveRecord::Base
   end
 
   def self.proposals_orders(user)
-    orders = %w{hot_score confidence_score created_at relevance archival_date}
-    orders << "recommendations" if user.present?
+    orders = %w{hot_score confidence_score created_at relevance}
     orders
+  end
+
+  def self.can_manage? user
+    if Setting.exists?(key: "proposals_require_admin")
+      return !["1","true"].include?(Setting[:proposals_require_admin]) || user.try(:administrator?)
+    end
+    true
   end
 
   protected
