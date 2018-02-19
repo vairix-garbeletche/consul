@@ -92,7 +92,7 @@ WSzm8vqvqWh020fQfKHg8sba/wuKJS3LT9lL8xUboin0SnTl/UR7BYs1/IuzGKSJ
 Hiw+Y0UUMIr1pAlYdnrlv2fL7XW2XBKOIca1LVxQRhrJifDj5+dQqV8=
 -----END CERTIFICATE-----",
            security:                            {
-                                                  :authn_requests_signed      => false,
+                                                  :authn_requests_signed      => true,
                                                   :logout_requests_signed     => false,
                                                   :logout_responses_signed    => false,
                                                   :want_assertions_signed     => false,
