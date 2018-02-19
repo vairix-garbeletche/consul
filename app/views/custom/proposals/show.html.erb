@@ -14,12 +14,15 @@
 
 <% cache [locale_and_user_status(@proposal), @proposal, @proposal.author, Flag.flagged?(current_user, @proposal), @proposal_votes] do %>
   <div class="proposal-show">
-    <%= link_to 'Create PDF document', show_pdf_proposal_path(@proposal, :format => :pdf) %>
     <div id="<%= dom_id(@proposal) %>" class="row">
       <div class="small-12 medium-9 column">
         <%= back_link_to %>
 
-        <h1><%= @proposal.title %></h1>
+        <h1>
+          <%= @proposal.title %>
+          <%= link_to t("proposals.show.download_pdf"), show_pdf_proposal_path(@proposal, :format => :pdf), class: 'button pull-right' %>
+        </h1>
+
         <% if @proposal.retired? %>
           <div data-alert class="callout alert margin-top proposal-retired">
             <strong>
