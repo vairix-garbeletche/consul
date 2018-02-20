@@ -4,6 +4,15 @@
 // * Spanish: https://github.com/consul/consul/blob/master/CUSTOMIZE_ES.md#css
 //
 
+footer{
+  background-color: #fff;
+  border-top: 6px solid #fff;
+}
+
+.footer {
+  background: #fff;
+  border-top: 6px solid #fff;
+}
 
 .proposals-create, .proposal-edit{
   position: relative;
@@ -18,7 +27,7 @@
 }
 
 .top-bar .top-bar-title a {
-  line-height: 2.5rem;
+  line-height: 0.5rem;
   width: 550px;
 }
 
@@ -38,11 +47,60 @@
 	.top-bar {
     line-height: 1.2rem;
 	}
+
+	.big-text{
+		font-size: 32px !important;
+	}
+
+	.medium-text{
+		font-size: 18px !important;
+	}
+
+	.line-h-3_5{
+		line-height: 2.0rem !important;
+	}
+
+	.yellow-border{
+		margin-bottom: 5px;
+	}
+
+	.highlight{
+		min-height: 200px;
+	}
+	.logo-yellow {
+    margin-bottom: -15px !important;
+	}
+
+	.small-margin-top-30{
+		margin-top: 50px !important;
+	}
+	.margin-bot-50{
+		margin-bottom: 0px !important;
+	}
 }
+
+@media (min-width: 100px) and (max-width: 768px) {
+	.logo {
+	  font-size: 18px !important;
+	  display: inline;
+	}
+
+	.top-bar .top-bar-right {
+    width: min-content;
+	}
+}
+
+@media (min-width: 100px) and (max-width: 375px) {
+	.logo {
+	  font-size: 14px;
+	  display: inline;
+	}
+}
+
 
 @media (min-width: 100px) and (max-width: 325px) {
 	.logo {
-	  font-size: 15px;
+	  font-size: 12px;
 	  display: inline;
 	}
 	.top-bar {

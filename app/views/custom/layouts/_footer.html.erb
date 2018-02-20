@@ -1,0 +1,54 @@
+<footer>
+  <div class="row">
+    <div class="small-5 large-6 column">
+      <h1 class="logo row">
+        <%= link_to "Gobierno abierto", "http://gobiernoabierto.gub.uy/", class: "big-text blue-text" , target: "_blank" %>
+      </h1>
+    </div>
+    <div class="negativ-margin small-7 small-margin-top-30 large-6 float-right">
+      <div class="small-6 large-6 column">
+        <%= image_tag 'LogoAgesic.png', class: 'float-right', alt: 'agesic' %>
+      </div>
+      <div class="small-6 large-6 column">
+        <%= image_tag 'LogoPresidencia.png', class: 'float-left negativ-margin margin-bot-10', alt: 'precidencia' %>
+      </div>
+    </div>
+
+
+
+  <div class="row">
+    <div class="small-12 medium-5 show-for-large-only column">
+      <p> Este portal usa la <%= link_to "aplicacion CONSU", "" , target: "_blank" %> que es <%= link_to "software de codigo abierto", "" , target: "_blank" %>. Para asistencia tecnica entra en <%= link_to "Asistencia tecnica", "" , target: "_blank" %></p>
+    </div>
+
+    <div class="small-12 medium-4 column social">
+      <div class="text-right margin-top-30">
+        <ul>
+          <% if setting['twitter_handle'] %>
+            <li class="inline-block">
+              <%= link_to "https://twitter.com/agesic", target: "_blank",
+                           title: 'agesic twitter' do %>
+                              <span class="show-for-sr">agesic twitter</span>
+                              <span class="fa fa-twitter" aria-hidden="true"></span>
+              <% end %>
+            </li>
+          <% end %>
+          <% if setting['facebook_handle'] %>
+            <li class="inline-block">
+              <%= link_to "https://www.facebook.com/agesic.uy", target: "_blank",
+                          title: 'agesic facebook' do %>
+                          <span class="show-for-sr">agesic facebook</span>
+                          <span class="fa fa-facebook" aria-hidden="true"></span>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="row">
+    <%= raw content_block("footer", I18n.locale) %>
+  </div>
+</footer>
