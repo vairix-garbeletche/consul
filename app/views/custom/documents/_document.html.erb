@@ -2,14 +2,10 @@
   <tbody>
     <tr id="<%= dom_id(document)%>">
       <td class="document-link">
-        <%= document.title %>
-      </td>
-      <td class="text-center">
-        <%= link_to t('documents.buttons.download_document'),
+        <%= link_to  document.title ,
                     document.attachment.url,
                     target: "_blank",
-                    rel: "nofollow",
-                    class: 'button hollow' %>
+                    rel: "nofollow" %>
       </td>
       <% if !local_assigns[:inactive] %>
         <td class="text-center">

@@ -2,4 +2,4 @@ es:
   activerecord:
     attributes:
       comment:
-        organism: "Organismo | Sociedad Civil | Academia"
+        organism: "Organismo | Sociedad Civil | Academia | Sector Privado"
