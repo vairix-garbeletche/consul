@@ -87,15 +87,28 @@ class User < ActiveRecord::Base
         oauth_email: oauth_email,
         terms_of_service: '1',
         password: Devise.friendly_token[0, 20],
-        document_number: user_attributes['http://wso2.org/claims/document'].try(:first),
-        confirmed_at: oauth_email_confirmed ? DateTime.current : nil,
-        verified_at: user_attributes['http://wso2.org/claims/userVerified'].first == 'true' ? DateTime.current : nil,
+        first_name: user_attributes['PrimerNombre'],
+        last_name: user_attributes['SegundoNombre'],
+        second_surname: user_attributes['SegundoApellido'],
+        certificated: user_attributes['Certificado'] == 'true' ? true : false,
+        in_place: user_attributes['Presencial'] == 'true' ? true : false,
+        document_country: user_attributes['PaisDocumento'],
+        document_type: user_attributes['TipoDocumento'],
+        document_number: user_attributes['Documento'],
+        confirmed_at: nil,
+        verified_at: nil,
         uid: auth.uid
       )
     else
       if auth.extra.raw_info.attributes
-        oauth_user.verified_at = user_attributes['http://wso2.org/claims/userVerified'].first == 'true' ? DateTime.current : nil
-        oauth_user.document_number = user_attributes['http://wso2.org/claims/document'].try(:first)
+        oauth_user.first_name = user_attributes['PrimerNombre']
+        oauth_user.last_name = user_attributes['SegundoNombre']
+        oauth_user.second_surname = user_attributes['SegundoApellido']
+        oauth_user.certificated = user_attributes['Certificado'] == 'true' ? true : false
+        oauth_user.in_place = user_attributes['Presencial'] == 'true' ? true : false
+        oauth_user.document_country = user_attributes['PaisDocumento']
+        oauth_user.document_type = user_attributes['TipoDocumento']
+        oauth_user.document_number = user_attributes['Documento']
         oauth_user.uid = auth.uid
       end
     end
