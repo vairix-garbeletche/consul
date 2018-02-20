@@ -232,7 +232,7 @@ class Proposal < ActiveRecord::Base
 
   def self.can_manage? user
     if Setting.exists?(key: "proposals_require_admin")
-      return !["1","true"].include?(Setting[:proposals_require_admin]) || user.try(:administrator?)
+      return !["1","true"].include?(Setting[:proposals_require_admin]) || user.try(:administrator?) || user.try(:moderator?)
     end
     true
   end
