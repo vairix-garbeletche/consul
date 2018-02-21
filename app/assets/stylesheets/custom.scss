@@ -18,6 +18,17 @@ footer{
   position: relative;
 }
 
+.line-h-2{
+	line-height: 2.0rem !important;
+}
+
+.log-text{
+	font-size: 22px;
+	display: inline-block;
+	margin-top: 20px;
+	text-align: left;
+}
+
 .comments {
   @include direct-uploads;
 }
@@ -93,6 +104,13 @@ footer{
 	.blue-text{
 		font-size: 28px;
 	}
+
+	.log-text{
+		font-size: 15px;
+		display: inline-block;
+		text-align: left;
+		margin-top: 20px;
+	}
 }
 
 @media (min-width: 100px) and (max-width: 575px) {
@@ -103,6 +121,12 @@ footer{
 	.menu-margin{
 	  margin-top: 20px;
 	  float: left !important;
+	}
+
+	.log-text{
+		font-size: 22px;
+		display: block;
+		margin-top: 0px;
 	}
 }
 
@@ -121,6 +145,10 @@ footer{
 	}
 	.top-bar {
     line-height: 1.2rem;
+	}
+
+	.log-text{
+		font-size: 18px;
 	}
 }
 
