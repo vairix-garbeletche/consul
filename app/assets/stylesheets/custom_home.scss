@@ -1,13 +1,13 @@
 .top-bar {
-	background-color: #08296c !important; 
+	background-color: #08296c !important;
 }
 
 .header-bg{
-	background-color: #08296c !important; 
+	background-color: #08296c !important;
 }
 
 .highlight{
-	background-image: url('home-bg.png');
+	background-image: asset_url('home-bg.png');
 	background-size: cover;
   background-repeat: no-repeat;
   background-position: right;
@@ -20,11 +20,11 @@
 }
 
 .margin-top-30{
-	margin-top: 30px;		
+	margin-top: 30px;
 }
 
 .margin-top-10{
-	margin-top: 10px;		
+	margin-top: 10px;
 }
 
 .margin-bot-50{
