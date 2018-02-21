@@ -38,7 +38,7 @@ inkfEzm/SZU8NqNWiOAUjyeqA/c+uILo0w/eQHD7PUgG3DmIg7JpuY9UF5CmzJCue0hKx5L17UsO
 LPjT3ffMuJ0p69aG+W3a+GJiig1khvTVVtBYwZYfKnc2sw8OX/9M2xSUJ3k5zdQnIJSJx8CMtr4y
 AOhcG9m5AXoV87GoKQmhpW1fdqHlX8zF1IWABgYR7cIkmO7tM9PL
 -----END CERTIFICATE-----",
-           name_identifier_format:              "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified",
+           name_identifier_format:              "urn:oasis:names:tc:SAML:2.0:nameid-format:transient",
            private_key:                         "-----BEGIN RSA PRIVATE KEY-----
 MIIEpAIBAAKCAQEA98nVb2tUJaW8FgX36pTB0PD3ipvfoHhqSaI2+RytgcOzduxm
 BUYIzeowi5RkG/ox7pRU1WwY4HHvJ9pCzNmcR2kECCyV+TYLOgjqp1zYx3igQ4sj
@@ -93,13 +93,13 @@ Hiw+Y0UUMIr1pAlYdnrlv2fL7XW2XBKOIca1LVxQRhrJifDj5+dQqV8=
 -----END CERTIFICATE-----",
            security:                            {
                                                   :authn_requests_signed      => true,
-                                                  :logout_requests_signed     => false,
+                                                  :logout_requests_signed     => true,
                                                   :logout_responses_signed    => false,
                                                   :want_assertions_signed     => false,
                                                   :want_assertions_encrypted  => false,
                                                   :want_name_id               => false,
                                                   :metadata_signed            => false,
-                                                  :embed_sign                 => false,
+                                                  :embed_sign                 => true,
                                                   :digest_method              => XMLSecurity::Document::SHA256,
                                                   :signature_method           => XMLSecurity::Document::RSA_SHA256
                                                 }
