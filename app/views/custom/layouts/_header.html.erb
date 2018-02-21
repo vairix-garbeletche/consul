@@ -1,11 +1,12 @@
 <header>
 
-  <div class="row">
+      <%= image_tag 'header-colors.png', class: 'float-left', alt: 'precidencia' %>
+  <div class="row header-bg">
     <div class="top-bar">
 
       <%= link_to root_path, class: "logo show-for-small-only" , accesskey: "0" do %>
-        Gobierno Abierto <br>
-        Propuestas para el 4ª Plan de Acción
+        <p class="logo-yellow margin-top-10"> Propone tus ideas </p><br>
+            Propuestas para el 4ª Plan de Acción
       <% end %>
 
       <span data-responsive-toggle="responsive_menu" data-hide-for="medium" class="float-right">
@@ -14,15 +15,14 @@
       </span>
 
       <div id="responsive_menu">
-        <div class="top-bar-title">
-          <%= link_to root_path, class: "hide-for-small-only", accesskey: "0" do %>
-            <%= image_tag(image_path_for('logo_header.png'), class: 'hide-for-small-only float-left', size: '80x80', alt: t("layouts.header.logo")) %>
-            Gobierno Abierto <br>
+        <div class="top-bar-title medium-5 large-6">
+          <%= link_to root_path, class: "hide-for-small-only logo", accesskey: "0" do %>
+           <h3 class="logo-yellow"> Propone tus ideas </h3><br>
             Propuestas para el 4ª Plan de Acción
           <% end %>
         </div>
 
-        <div class="top-bar-right">
+        <div class="top-bar-right medium-4 menu-margin large-6">
           <ul class="menu" data-responsive-menu="medium-dropdown">
             <%= render "shared/admin_login_items" %>
             <%= render "devise/menu/login_items" %>
