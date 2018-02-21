@@ -6,7 +6,7 @@ class ProposalsController < ApplicationController
   before_action :parse_tag_filter, only: :index
   before_action :load_categories, only: [:index, :new, :create, :edit, :map, :summary]
   before_action :load_geozones, only: [:edit, :map, :summary]
-  before_action :authenticate_user!, except: [:index, :show, :map, :summary]
+  before_action :authenticate_user!, except: [:index, :show, :map, :summary, :show_pdf]
   before_action :load_settings
   before_action :validate_settings, only: [:new, :create]
   before_action :validate_date, only: [:new, :create, :edit]
