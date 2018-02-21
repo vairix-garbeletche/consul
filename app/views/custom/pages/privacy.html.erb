@@ -1,0 +1,57 @@
+<% provide :title do %><%= t('pages.titles.privacy') %><% end %>
+<% content_for :canonical do %>
+  <%= render "shared/canonical", href: page_url("privacy") %>
+<% end %>
+
+<div class="row margin-top">
+
+  <div class="small-12 medium-9 column">
+    <h1>Política de privacidad</h1>
+    <h4>Conforme a lo dispuesto en la Ley N° 18.331, de 11 de agosto de 2008, y el Decreto N° 414/009, de 21 de agosto de 2009, modificativas y concordantes, sobre protección de datos personales y Habeas Data, el tratamiento de datos personales que se realiza en el sitio web www.agesic.gub.uy de la Agencia para el Desarrollo del Gobierno de Gestión Electrónica y Sociedad de la Información y del Conocimiento (AGESIC), se rige por las siguientes disposiciones:</h4>
+    <ol>
+      <li><strong>Finalidad.</strong></li>
+      <ul>
+          <li>Los datos personales que se recaben serán utilizados con la finalidad de crear una propuesta, comentar, dar apoyo a una propuesta y realizar seguimiento.
+          Respecto de la recolección y tratamiento de datos realizado mediante mecanismos automatizados con el objeto de generar registros de actividad de los visitantes, AGESIC en ningún caso realizará operaciones que impliquen asociar dicha información a algún usuario identificado o identificable
+          </li>
+        </ul>
+      <li><strong>Los datos y formularios web</strong></li>
+        <ul>
+          <li>Los datos personales se mantendrán con la finalidad de recibir y responder consultas, así como obtener datos estadísticos de éstas.
+          Los datos personales de los usuarios que se registren en el sitio Web mediante formularios establecidos para esos efectos, serán utilizados para el cumplimiento de los fines indicados en cada uno de ellos.
+          </li>
+        </ul>
+      <li><strong>Comunicación de datos personale</strong></li>
+        <ul>
+          <li>Los datos personales recabados podrán ser comunicados a Entidades Públicas o a terceros, única y exclusivamente, cuando la consecución de la finalidad perseguida por el usuario así lo requiera, o con su consentimiento.
+          </li>
+        </ul>
+      <li><strong>Registro de bases de datos</strong></li>
+      <ul>
+          <li>Los datos personales de los Usuarios del sitio web se encuentran en la base de datos denominada “ID Uruguay (B7582) y AGESIC (XX)”, la cual se encuentra debidamente inscripta ante la Unidad Reguladora y de Control de Datos Personales con el N° .
+          </li>
+        </ul>
+      <li><strong>Ejercicio de los derechos</strong></li>
+        <ul>
+          <li>El Usuario podrá en todo momento ejercer los derechos de acceso, rectificación, actualización, inclusión y supresión, otorgados por la Ley Nº 18.331, sus modificativas y concordantes, ante AGESIC a través del formulario de “Contáctenos”, o personalmente dirigiéndose a Liniers 1324, piso 4°, Torre Ejecutiva Sur de la ciudad de Montevideo, Uruguay.
+          </li>
+        </ul>
+      <li><strong>Cookies</strong></li>
+        <ul>
+          <li>AGESIC podrá utilizar cookies cuando el usuario navega por el sitio web, pero éste puede configurar su navegador para ser avisado de la recepción de las cookies e impedir en caso de considerarlo adecuado su instalación en el disco duro.
+          </li>
+        </ul>
+        <li><strong>Enlaces</strong></li>
+        <ul>
+          <li>La presente Política de Privacidad es de aplicación exclusiva al sitio web de AGESIC y no se extiende a los casos de acceso a la misma a través de enlaces externos, ni tampoco en los enlaces de este sitio a otros sitios web, de acuerdo a lo dispuesto en el Numeral 8° de las Condiciones de Uso del presente sitio.
+          </li>
+        </ul>
+    </ol>
+  </div>
+
+  <div class="small-12 medium-3 column">
+    <%= render '/shared/print' %>
+  </div>
+
+</div>
+
