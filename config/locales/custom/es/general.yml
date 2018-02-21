@@ -6,6 +6,9 @@ es:
       pending_aproval: Su comentario quedará pendiente de aprobación por los moderadores
   comments:
     form:
-      comment_as_organism: Organismo | Sociedad Civil | Academia
+      comment_as_organism: Organismo | Sociedad Civil | Academia | Sector Privado
   geozones:
     none: Seleccione un Plan de acción
+  form:
+    no_accept_terms: No Acepto la %{policy} y las %{conditions}
+    no_accept_terms_title: No Acepto la Política de privacidad y las Condiciones de uso
