@@ -92,7 +92,7 @@ footer{
 
 @media (min-width: 100px) and (max-width: 375px) {
 	.logo {
-	  font-size: 14px;
+	  font-size: 14px !important;
 	  display: inline;
 	}
 }
@@ -100,7 +100,7 @@ footer{
 
 @media (min-width: 100px) and (max-width: 325px) {
 	.logo {
-	  font-size: 12px;
+	  font-size: 12px !important;
 	  display: inline;
 	}
 	.top-bar {
