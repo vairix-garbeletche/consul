@@ -237,6 +237,10 @@ class Proposal < ActiveRecord::Base
     true
   end
 
+  def aproved_comments_count
+    comments.where(status: Comment::STATUS[:aproved]).count
+  end
+
   protected
 
     def set_responsible_name
