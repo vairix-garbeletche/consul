@@ -11,6 +11,7 @@ class Moderation::CommentsController < Moderation::BaseController
 
   def publish
     @comments = Comment.from_proposals.send(@current_filter)
+                   .order(created_at: :desc)
                    .page(params[:page])
                    .per(50)
   end
