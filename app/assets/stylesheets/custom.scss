@@ -89,11 +89,19 @@ footer{
 	.top-bar .top-bar-right {
     width: min-content;
 	}
+
+	.blue-text{
+		font-size: 28px;
+	}
 }
 
 @media (min-width: 100px) and (max-width: 575px) {
 	.top-bar .top-bar-right {
 		width: initial !important;
+	}
+
+	.menu-margin{
+	  margin-top: 20px;
 	}
 }
 
