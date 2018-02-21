@@ -90,6 +90,12 @@ footer{
 	}
 }
 
+@media (min-width: 100px) and (max-width: 575px) {
+	.top-bar .top-bar-right {
+		width: initial !important;
+	}
+}
+
 @media (min-width: 100px) and (max-width: 375px) {
 	.logo {
 	  font-size: 14px !important;
