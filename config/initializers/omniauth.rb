@@ -1,6 +1,6 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
   provider :saml,
-           assertion_consumer_service_url:      "localhost:3000/users/auth/saml",
+           assertion_consumer_service_url:      "http://localhost:3000/users/auth/saml/callback",
            issuer:                              "http://testconsul.agesic.gub.uy",
            idp_entity_id:                       "https://test-eid.portal.gub.uy/idp",
            idp_sso_target_url:                  "https://test-eid.portal.gub.uy/v1.1/idp/profile/SAML2/Redirect/SSO",
