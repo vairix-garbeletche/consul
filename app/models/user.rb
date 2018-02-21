@@ -87,28 +87,28 @@ class User < ActiveRecord::Base
         oauth_email: oauth_email,
         terms_of_service: '1',
         password: Devise.friendly_token[0, 20],
-        first_name: user_attributes['PrimerNombre'],
-        last_name: user_attributes['SegundoNombre'],
-        second_surname: user_attributes['SegundoApellido'],
-        certificated: user_attributes['Certificado'] == 'true' ? true : false,
-        in_place: user_attributes['Presencial'] == 'true' ? true : false,
-        document_country: user_attributes['PaisDocumento'],
-        document_type: user_attributes['TipoDocumento'],
-        document_number: user_attributes['Documento'],
+        first_name: user_attributes['PrimerNombre'][0],
+        last_name: user_attributes['SegundoNombre'][0],
+        second_surname: user_attributes['SegundoApellido'][0],
+        certificated: user_attributes['Certificado'][0] == 'true' ? true : false,
+        in_place: user_attributes['Presencial'][0] == 'true' ? true : false,
+        document_country: user_attributes['PaisDocumento'][0],
+        document_type: user_attributes['TipoDocumento'][0],
+        document_number: user_attributes['Documento'][0],
         confirmed_at: nil,
         verified_at: nil,
         uid: auth.uid
       )
     else
       if auth.extra.raw_info.attributes
-        oauth_user.first_name = user_attributes['PrimerNombre']
-        oauth_user.last_name = user_attributes['SegundoNombre']
-        oauth_user.second_surname = user_attributes['SegundoApellido']
-        oauth_user.certificated = user_attributes['Certificado'] == 'true' ? true : false
-        oauth_user.in_place = user_attributes['Presencial'] == 'true' ? true : false
-        oauth_user.document_country = user_attributes['PaisDocumento']
-        oauth_user.document_type = user_attributes['TipoDocumento']
-        oauth_user.document_number = user_attributes['Documento']
+        oauth_user.first_name = user_attributes['PrimerNombre'][0]
+        oauth_user.last_name = user_attributes['SegundoNombre'][0]
+        oauth_user.second_surname = user_attributes['SegundoApellido'][0]
+        oauth_user.certificated = user_attributes['Certificado'][0] == 'true' ? true : false
+        oauth_user.in_place = user_attributes['Presencial'][0] == 'true' ? true : false
+        oauth_user.document_country = user_attributes['PaisDocumento'][0]
+        oauth_user.document_type = user_attributes['TipoDocumento'][0]
+        oauth_user.document_number = user_attributes['Documento'][0]
         oauth_user.uid = auth.uid
       end
     end
