@@ -5,3 +5,4 @@
 //
 //= require proposals
 //= require custom_documentable
+//= require custom_comments

@@ -2,6 +2,8 @@ es:
   proposals:
     inactive: "El periodo de propuestas es entre %{date_from} y %{date_to}"
     require_permission: No tiene los permisos para realizar esta acción
+    comments:
+      pending_aproval: Su comentario quedará pendiente de aprobación por los moderadores
   comments:
     form:
       comment_as_organism: Organismo | Sociedad Civil | Academia | Sector Privado

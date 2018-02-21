@@ -72,6 +72,10 @@ module AdminHelper
     user_roles(user).join(", ")
   end
 
+  def auto_publish_comments
+    ["true", '1'].include?(Setting["auto_publish_comments"])
+  end
+
   private
 
     def namespace

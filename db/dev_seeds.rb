@@ -74,6 +74,7 @@ section "Creating Settings" do
   Setting.create(key: 'proposals_end_date', value: nil)
   Setting.create(key: 'proposals_start_date', value: nil)
   Setting.create(key: 'proposals_require_admin', value: nil)
+  Setting.create(key: 'auto_publish_comments', value: 'true')
 end
 
 section "Creating Geozones" do

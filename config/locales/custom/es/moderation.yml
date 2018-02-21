@@ -1,0 +1,10 @@
+es:
+  moderation:
+    comments:
+      index:
+        filters:
+          pending_publish_flag: Pendientes
+          aproved_flag: Aprobados
+          disaproved_flag: Desaprobados
+        aprove_comments: Aprobar comentarios
+        disaprove_comments: Desaprobar comentarios
