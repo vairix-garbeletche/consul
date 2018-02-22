@@ -1,0 +1,13 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: t("proposals.excel.title")) do |sheet|
+  sheet.add_row [t("proposals.excel.link"), t("proposals.excel.title"), t("proposals.excel.summary"), t("proposals.excel.text"), t("proposals.excel.video_link"),
+                 t("proposals.excel.documents_link"), t("proposals.excel.image_absolute_url"), t("proposals.excel.documents_absolute_url"),
+                 t("proposals.excel.action_plan"), t("proposals.excel.categories"), t("proposals.excel.full_name"),
+                 t("proposals.excel.comments_count"), t("proposals.excel.support_count")]
+  @proposals.each do |proposal|
+    sheet.add_row [proposal_url(proposal), proposal.title, proposal.summary, proposal.description, proposal.video_url ? "#{@url}#{proposal.video_url}" : '',
+                   proposal.documents.map { |doc| "#{@url}#{doc.attachment.url},"}, proposal.image ? "#{@url}#{proposal.image.attachment.url}" : '',
+                   proposal.documents.map { |doc| "#{@url}#{doc.attachment.url},"}, '', '', proposal.author.username,
+                   proposal.comments_count, proposal.total_votes]
+  end
+end

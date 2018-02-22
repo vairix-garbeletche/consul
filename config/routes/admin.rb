@@ -27,6 +27,9 @@ namespace :admin do
       put :restore
       put :confirm_hide
     end
+    collection do
+      get :download_excel
+    end
   end
 
   resources :spending_proposals, only: [:index, :show, :edit, :update] do

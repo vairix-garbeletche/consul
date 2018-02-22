@@ -142,7 +142,7 @@ class ProposalsController < ApplicationController
         redirect_to proposals_path, notice: t('proposals.require_permission')
      end
     end
-  
+
     def validate_date
       unless Proposal.in_active_period?
         redirect_to proposals_path, notice: t('proposals.inactive', date_from: @proposal_date_from, date_to: @proposal_date_to)
