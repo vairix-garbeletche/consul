@@ -2,12 +2,20 @@
   <tbody>
     <tr id="<%= dom_id(document)%>">
       <td class="document-link">
-        <%= link_to  document.title ,
+      <td class="text-center">
+        <% if !local_assigns[:pdf] %>
+          <%= link_to  document.title ,
                     document.attachment.url,
                     target: "_blank",
                     rel: "nofollow" %>
+        <% else %>
+          <%= link_to  document.title ,
+                    "#{request.base_url}#{document.attachment.url}",
+                    target: "_blank",
+                    rel: "nofollow" %>
+        <% end %>
       </td>
-      <% if !local_assigns[:inactive] %>
+      <% if !local_assigns[:inactive] && !local_assigns[:pdf] %>
         <td class="text-center">
           <% if can?(:destroy, document) %>
             <%= link_to t('documents.buttons.destroy_document'),

@@ -1,0 +1,9 @@
+<div class="documents-list">
+  <%= f.label :documents, t("documents.form.title") %>
+  <p class="help-text"><%= documentables_note(documentable) %></p>
+
+    <%= f.fields_for :documents do |documents_builder| %>
+      <%= render 'documents/document_fields.html.erb', f: documents_builder %>
+    <% end %>
+  </div>
+</div>

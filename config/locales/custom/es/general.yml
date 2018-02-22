@@ -2,6 +2,8 @@ es:
   proposals:
     inactive: "El periodo de propuestas es entre %{date_from} y %{date_to}"
     require_permission: No tiene los permisos para realizar esta acción
+    show:
+      download_pdf: Descargar como PDF
     comments:
       pending_aproval: Su comentario quedará pendiente de aprobación por los moderadores
   comments:
