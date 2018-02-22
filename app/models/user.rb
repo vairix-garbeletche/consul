@@ -113,7 +113,7 @@ class User < ActiveRecord::Base
       end
     end
 
-    if (oauth_user.uid.include?('uy-ci') || oauth_user.uid.include?('uy-dni')) && oauth_user.residence_verified_at.blank?
+    if oauth_user.residence_verified_at.blank?
       oauth_user.residence_verified_at = Date.today
       oauth_user.level_two_verified_at = Date.today
     end
