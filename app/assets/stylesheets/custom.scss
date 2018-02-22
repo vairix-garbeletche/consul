@@ -4,9 +4,29 @@
 // * Spanish: https://github.com/consul/consul/blob/master/CUSTOMIZE_ES.md#css
 //
 
+footer{
+  background-color: #fff;
+  border-top: 6px solid #fff;
+}
+
+.footer {
+  background: #fff;
+  border-top: 6px solid #fff;
+}
 
 .proposals-create, .proposal-edit{
   position: relative;
+}
+
+.line-h-2{
+	line-height: 2.0rem !important;
+}
+
+.log-text{
+	font-size: 22px;
+	display: inline-block;
+	margin-top: 20px;
+	text-align: left;
 }
 
 .comments {
@@ -18,7 +38,7 @@
 }
 
 .top-bar .top-bar-title a {
-  line-height: 2.5rem;
+  line-height: 0.5rem;
   width: 550px;
 }
 
@@ -38,15 +58,97 @@
 	.top-bar {
     line-height: 1.2rem;
 	}
+
+	.big-text{
+		font-size: 32px !important;
+	}
+
+	.medium-text{
+		font-size: 18px !important;
+	}
+
+	.line-h-3_5{
+		line-height: 2.0rem !important;
+	}
+
+	.yellow-border{
+		margin-bottom: 5px;
+	}
+
+	.highlight{
+		background-image: asset_url('home-bg-small.png') !important;
+		min-height: 200px;
+	}
+	.logo-yellow {
+    margin-bottom: -15px !important;
+	}
+
+	.small-margin-top-30{
+		margin-top: 50px !important;
+	}
+	.margin-bot-50{
+		margin-bottom: 0px !important;
+	}
 }
+
+@media (min-width: 100px) and (max-width: 768px) {
+	.logo {
+	  font-size: 18px !important;
+	  display: inline;
+	}
+
+	.top-bar .top-bar-right {
+    width: min-content;
+	}
+
+	.blue-text{
+		font-size: 28px;
+	}
+
+	.log-text{
+		font-size: 15px;
+		display: inline-block;
+		text-align: left;
+		margin-top: 20px;
+	}
+}
+
+@media (min-width: 100px) and (max-width: 575px) {
+	.top-bar .top-bar-right {
+		width: initial !important;
+	}
+
+	.menu-margin{
+	  margin-top: 20px;
+	  float: left !important;
+	}
+
+	.log-text{
+		font-size: 22px;
+		display: block;
+		margin-top: 0px;
+	}
+}
+
+@media (min-width: 100px) and (max-width: 375px) {
+	.logo {
+	  font-size: 14px !important;
+	  display: inline;
+	}
+}
+
 
 @media (min-width: 100px) and (max-width: 325px) {
 	.logo {
-	  font-size: 15px;
+	  font-size: 12px !important;
 	  display: inline;
 	}
 	.top-bar {
     line-height: 1.2rem;
+	}
+
+	.log-text{
+		font-size: 18px;
 	}
 }
 

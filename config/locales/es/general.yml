@@ -296,6 +296,12 @@ es:
     info_sign_in: "Entra con:"
     info_sign_up: "Regístrate con:"
     or_fill: "O rellena el siguiente formulario:"
+    saml:
+      name: SAML
+      sign_in: Autenticarse
+      sign_up: Entrar
+      other_login: O ingresa con tu
+      name: IDUruguay
   proposals:
     create:
       form:

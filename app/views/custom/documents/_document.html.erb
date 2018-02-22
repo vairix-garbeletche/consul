@@ -2,21 +2,17 @@
   <tbody>
     <tr id="<%= dom_id(document)%>">
       <td class="document-link">
-        <%= document.title %>
-      </td>
       <td class="text-center">
         <% if !local_assigns[:pdf] %>
-          <%= link_to t('documents.buttons.download_document'),
-                      document.attachment.url,
-                      target: "_blank",
-                      rel: "nofollow",
-                      class: 'button hollow' %>
+          <%= link_to  document.title ,
+                    document.attachment.url,
+                    target: "_blank",
+                    rel: "nofollow" %>
         <% else %>
-          <%= link_to t('documents.buttons.download_document'),
-                      "#{request.base_url}#{document.attachment.url}",
-                      target: "_blank",
-                      rel: "nofollow",
-                      class: 'button hollow' %>
+          <%= link_to  document.title ,
+                    "#{request.base_url}#{document.attachment.url}",
+                    target: "_blank",
+                    rel: "nofollow" %>
         <% end %>
       </td>
       <% if !local_assigns[:inactive] && !local_assigns[:pdf] %>

@@ -1,5 +1,15 @@
 class Users::SessionsController < Devise::SessionsController
 
+  def destroy
+    # Preserve the saml_uid in the session
+    saml_uid = session["saml_uid"]
+    saml_session_index = session["saml_session_index"]
+    super do
+      session["saml_uid"] = saml_uid
+      session["saml_session_index"] = saml_session_index
+    end
+  end
+
   private
 
     def after_sign_in_path_for(resource)
@@ -11,7 +21,12 @@ class Users::SessionsController < Devise::SessionsController
     end
 
     def after_sign_out_path_for(resource)
-      request.referer.present? ? request.referer : super
+      if session['saml_uid']
+        session.delete(:saml_uid)
+        user_omniauth_authorize_path(:saml) + "/spslo"
+      else
+        request.referer.present? ? request.referer : super
+      end
     end
 
     def verifying_via_email?

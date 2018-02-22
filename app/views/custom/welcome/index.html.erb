@@ -13,14 +13,12 @@
 
 <div class="jumbo highlight">
   <div class="row">
-    <div class="small-12 medium-9 small-centered column text-center">
-      <h1>El 4° Plan de Acción lo construimos entre todos.</h1>
-      <p class="lead">
-        Por eso te invitamos a que formes parte de él, ingresando tu propuesta. Súmate a esta herramienta de participación on line que se pone a disposición de todas las personas de nuestro país, con el objetivo de fomentar la construcción colectiva de los planes de acción de gobierno abierto
-      </p>
-      <div class="small-12 medium-6 large-4 small-centered">
-        <%= link_to "Propuestas", proposals_path, class: "button expanded large" %>
-      </div>
+    <div class="small-12 medium-9 column pull-left">
+      <p class="big-text margin-top-30 line-h-3_5">El 4° Plan de Acción lo construimos entre todos.</p>
+      <p class="lead medium-text show-for-small-only">
+        Sumate a esta herramienta de participacion ingresando tu propuesta
+      </p><br>
+       <p class="medium-text margin-top-30">Etapas del proceso de pro-creacion</p>
     </div>
   </div>
 </div>
@@ -31,26 +29,28 @@
               recommended_proposals: @recommended_proposals %>
   <hr>
 <% end %>
-
+<div class="row">
+  <p class="blue-text big-text hide-for-small-only hide-for-medium-only">Etapas del proceso de pro-creacion</p>
+</div>
 <% cache [locale_and_user_status, @featured_debates, @featured_proposals, 'featured'] do %>
   <main>
-    <div class="small-12 column text-center">
+    <div class="small-12 column text-center margin-bot-50">
       <div class="row margin padding">
-        <div class="small-12 medium-3 column">
-          <h2><%= t("welcome.debates.title") %></h2>
-          <p><%= t("welcome.debates.description") %></p>
+        <div class="small-12 medium-3 pull-left yellow-border column">
+          <h2 class="blue-text">crear</h2>
+          <p>tu propuesta de forma presencial o virtual</p>
         </div>
-        <div class="small-12 medium-3 column">
-          <h2><%= t("welcome.proposal.title") %></h2>
-          <p><%= t("welcome.proposal.description") %></p>
+        <div class="small-12 medium-3 pull-left yellow-border column">
+          <h2 class="blue-text">priorizar</h2>
+          <p>los compromisos que se incorporaran al 4to plan</p>
         </div>
-        <div class="small-12 medium-3 column">
-          <h2><%= t("welcome.decide.title") %></h2>
-          <p><%= t("welcome.decide.description") %></p>
+        <div class="small-12 medium-3 pull-left yellow-border column">
+          <h2 class="blue-text">compartir</h2>
+          <p>las propuestas a travez de una consultapublica</p>
         </div>
-        <div class="small-12 medium-3 column">
-          <h2><%= t("welcome.do.title") %></h2>
-          <p><%= t("welcome.do.description") %></p>
+        <div class="small-12 medium-3 pull-left yellow-border column">
+          <h2 class="blue-text">aprobar</h2>
+          <p>los compromisos definidos y publicar el 4to plan</p>
         </div>
       </div>
     </div>
