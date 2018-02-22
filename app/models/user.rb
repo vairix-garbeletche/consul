@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-
+  devise :omniauthable, :omniauth_providers => [:saml, :facebook, :twitter, :google_oauth2]
   include Verification
 
   devise :database_authenticatable, :registerable, :confirmable, :recoverable, :rememberable,
@@ -35,6 +35,7 @@ class User < ActiveRecord::Base
   belongs_to :geozone
 
   validates :username, presence: true, if: :username_required?
+  validates :email, presence: true
   validates :username, uniqueness: { scope: :registering_with_oauth }, if: :username_required?
   validates :document_number, uniqueness: { scope: :document_type }, allow_nil: true
 
@@ -68,19 +69,56 @@ class User < ActiveRecord::Base
   before_validation :clean_document_number
 
   # Get the existing user by email if the provider gives us a verified email.
-  def self.first_or_initialize_for_oauth(auth)
-    oauth_email           = auth.info.email
-    oauth_email_confirmed = oauth_email.present? && (auth.info.verified || auth.info.verified_email)
-    oauth_user            = User.find_by(email: oauth_email) if oauth_email_confirmed
+  def self.first_or_initialize_for_oauth_saml(auth, user=nil)
+    unless user
+      oauth_email           = nil
+      oauth_email_confirmed = false
+      oauth_user            = nil
+    else
+      oauth_user = user
+    end
+    user_attributes = auth.extra.raw_info.attributes
 
-    oauth_user || User.new(
-      username:  auth.info.name || auth.uid,
-      email: oauth_email,
-      oauth_email: oauth_email,
-      password: Devise.friendly_token[0, 20],
-      terms_of_service: '1',
-      confirmed_at: oauth_email_confirmed ? DateTime.current : nil
-    )
+    if oauth_user.blank?
+      username = nil
+      oauth_user = User.new(
+        username:  username,
+        email: oauth_email,
+        oauth_email: oauth_email,
+        terms_of_service: '1',
+        password: Devise.friendly_token[0, 20],
+        first_name: user_attributes['PrimerNombre'][0],
+        last_name: user_attributes['SegundoNombre'][0],
+        second_surname: user_attributes['SegundoApellido'][0],
+        certificated: user_attributes['Certificado'][0] == 'true' ? true : false,
+        in_place: user_attributes['Presencial'][0] == 'true' ? true : false,
+        document_country: user_attributes['PaisDocumento'][0],
+        document_type: user_attributes['TipoDocumento'][0],
+        document_number: user_attributes['Documento'][0],
+        confirmed_at: nil,
+        verified_at: nil,
+        uid: auth.uid
+      )
+    else
+      if auth.extra.raw_info.attributes
+        oauth_user.first_name = user_attributes['PrimerNombre'][0]
+        oauth_user.last_name = user_attributes['SegundoNombre'][0]
+        oauth_user.second_surname = user_attributes['SegundoApellido'][0]
+        oauth_user.certificated = user_attributes['Certificado'][0] == 'true' ? true : false
+        oauth_user.in_place = user_attributes['Presencial'][0] == 'true' ? true : false
+        oauth_user.document_country = user_attributes['PaisDocumento'][0]
+        oauth_user.document_type = user_attributes['TipoDocumento'][0]
+        oauth_user.document_number = user_attributes['Documento'][0]
+        oauth_user.uid = auth.uid
+      end
+    end
+
+    if (oauth_user.uid.include?('uy-ci') || oauth_user.uid.include?('uy-dni')) && oauth_user.residence_verified_at.blank?
+      oauth_user.residence_verified_at = Date.today
+      oauth_user.level_two_verified_at = Date.today
+    end
+
+    oauth_user
   end
 
   def name
