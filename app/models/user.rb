@@ -88,8 +88,9 @@ class User < ActiveRecord::Base
         terms_of_service: '1',
         password: Devise.friendly_token[0, 20],
         first_name: user_attributes['PrimerNombre'][0],
-        last_name: user_attributes['SegundoNombre'][0],
-        second_surname: user_attributes['SegundoApellido'][0],
+        last_name:  user_attributes['SegundoNombre'].blank? ? '' : user_attributes['SegundoNombre'][0],
+        surname:  user_attributes['PrimerApellido'][0],
+        second_surname: user_attributes['SegundoApellido'].blank? ? '' : user_attributes['SegundoApellido'][0],
         certificated: user_attributes['Certificado'][0] == 'true' ? true : false,
         in_place: user_attributes['Presencial'][0] == 'true' ? true : false,
         document_country: user_attributes['PaisDocumento'][0],
@@ -102,8 +103,9 @@ class User < ActiveRecord::Base
     else
       if auth.extra.raw_info.attributes
         oauth_user.first_name = user_attributes['PrimerNombre'][0]
-        oauth_user.last_name = user_attributes['SegundoNombre'][0]
-        oauth_user.second_surname = user_attributes['SegundoApellido'][0]
+        oauth_user.last_name = user_attributes['SegundoNombre'].blank? ? '' : user_attributes['SegundoNombre'][0]
+        oauth_user.surname = user_attributes['PrimerApellido'][0]
+        oauth_user.second_surname = user_attributes['SegundoApellido'].blank? ? '' : user_attributes['SegundoApellido'][0]
         oauth_user.certificated = user_attributes['Certificado'][0] == 'true' ? true : false
         oauth_user.in_place = user_attributes['Presencial'][0] == 'true' ? true : false
         oauth_user.document_country = user_attributes['PaisDocumento'][0]
