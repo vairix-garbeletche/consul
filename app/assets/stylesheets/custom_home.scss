@@ -43,6 +43,14 @@
 	margin-top: -15px;
 }
 
+form .checkbox, form .radio {
+  display: unset !important;
+}
+
+.margin-right-10{
+	margin-right: 10px;
+}
+
 .pull-left{
 	text-align: left;
 }
