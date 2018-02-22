@@ -13,7 +13,7 @@
       <%= f.hidden_field :parent_id, value: parent_id %>
 
       <div class="documents small-12 column">
-        <%= render 'documents/nested_documents', documentable: @comment, f: f, parent_id: css_id %>
+        <%= render 'documents/nested_documents.html.erb', documentable: @comment, f: f, parent_id: css_id %>
       </div>
 
       <%= f.submit comment_button_text(parent_id, commentable), class: "button", id: "publish_comment" %>

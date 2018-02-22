@@ -3,3 +3,21 @@ es:
     stats:
       show:
         excel: Excel
+    menu:
+      geozones: Gestionar planes de acción
+    geozones:
+      index:
+        title: Planes de acción
+        create: Crear un plan de acción
+      errors:
+        form:
+          error:
+            one: "error impidió guardar el plan de acción"
+            other: 'errores impidieron guardar el plan de acción.'
+      edit:
+        editing: Editando plan de acción
+      new:
+        creating: Crear plan de acción
+      delete:
+        success: Plan de acción borrado correctamente
+        error: No se puede borrar el plan de acción porque ya tiene elementos asociados

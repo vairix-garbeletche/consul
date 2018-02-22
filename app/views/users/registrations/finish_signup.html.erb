@@ -1,7 +1,9 @@
 <h2><%= t('omniauth.finish_signup.title') %></h2>
 
 <%= form_for current_user, as: :user, url: do_finish_signup_path, html: { role: 'form'} do |f| %>
-  <%= render 'shared/errors', resource: current_user %>
+  <% if !@saml_callback %>
+    <%= render 'shared/errors', resource: current_user %>
+  <% end %>
 
   <div class='callout primary'>
     <%= t("omniauth.finish_signup.username_warning") %>
@@ -12,7 +14,7 @@
   <% else %>
     <%= f.hidden_field :username %>
   <% end %>
-
+  <br/>
   <% if current_user.errors.include? :email %>
     <%= f.email_field :email, placeholder: t("devise_views.users.registrations.new.email_label") %>
   <% else %>

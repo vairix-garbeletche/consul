@@ -6,6 +6,7 @@ resources :proposals do
     put :unflag
     get :retire_form
     get :share
+    get :show_pdf
     patch :retire
   end
 

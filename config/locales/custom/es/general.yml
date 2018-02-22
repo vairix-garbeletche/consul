@@ -17,6 +17,10 @@ es:
       full_name: Nombre de la persona
       comments_count: Cantidad de comentarios
       support_count: Cantidad de apoyos
+    show:
+      download_pdf: Descargar como PDF
+    comments:
+      pending_aproval: Su comentario quedará pendiente de aprobación por los moderadores
   comments:
     form:
       comment_as_organism: Organismo | Sociedad Civil | Academia | Sector Privado

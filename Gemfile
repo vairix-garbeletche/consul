@@ -52,6 +52,9 @@ gem 'turnout', '~> 2.4.0'
 gem 'uglifier', '~> 4.1.2'
 gem 'unicorn', '~> 5.4.0'
 gem 'whenever', '~> 0.10.0', require: false
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
+gem 'omniauth-saml', '~> 1.8.1'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-leaflet'

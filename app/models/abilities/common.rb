@@ -13,6 +13,7 @@ module Abilities
       end
 
       can :read, Proposal
+      can :show_pdf, Proposal
       can :update, Proposal do |proposal|
         proposal.editable_by?(user)
       end

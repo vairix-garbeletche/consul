@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   include CustomUrlsHelper
+  include AdminHelper
 
   before_action :authenticate_user!, only: :create
   before_action :load_commentable, only: :create
@@ -54,6 +55,7 @@ class CommentsController < ApplicationController
         @comment.documents_attributes = comment_params[:documents_attributes]
       end
       check_for_special_comments
+      @comment.status = @comment.commentable_type != "Proposal" || auto_publish_comments ? Comment::STATUS[:aproved] : Comment::STATUS[:pending]
     end
 
     def check_for_special_comments

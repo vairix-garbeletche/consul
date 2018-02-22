@@ -6,7 +6,7 @@ class ProposalsController < ApplicationController
   before_action :parse_tag_filter, only: :index
   before_action :load_categories, only: [:index, :new, :create, :edit, :map, :summary]
   before_action :load_geozones, only: [:edit, :map, :summary]
-  before_action :authenticate_user!, except: [:index, :show, :map, :summary]
+  before_action :authenticate_user!, except: [:index, :show, :map, :summary, :show_pdf]
   before_action :load_settings
   before_action :validate_settings, only: [:new, :create]
   before_action :validate_date, only: [:new, :create, :edit]
@@ -16,7 +16,7 @@ class ProposalsController < ApplicationController
   invisible_captcha only: [:create, :update], honeypot: :subtitle
 
   has_orders ->(c) { Proposal.proposals_orders(c.current_user) }, only: :index
-  has_orders %w{most_voted newest oldest}, only: :show
+  has_orders %w{most_voted newest oldest}, only: [:show, :show_pdf]
 
   load_and_authorize_resource
   helper_method :resource_model, :resource_name
@@ -28,6 +28,20 @@ class ProposalsController < ApplicationController
     @related_contents = Kaminari.paginate_array(@proposal.relationed_contents).page(params[:page]).per(5)
 
     redirect_to proposal_path(@proposal), status: :moved_permanently if request.path != proposal_path(@proposal)
+  end
+
+  def show_pdf
+    @commentable = resource
+    @comments = @commentable.comments.order(created_at: :desc)
+    set_resource_instance
+    @notifications = @proposal.notifications
+    @related_contents = Kaminari.paginate_array(@proposal.relationed_contents).page(params[:page]).per(5)
+
+    respond_to do |format|
+      format.pdf do
+        render pdf: "show", encoding: "UTF-8"
+      end
+    end
   end
 
   def create

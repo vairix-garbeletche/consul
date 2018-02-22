@@ -1,0 +1,112 @@
+.top-bar {
+	background-color: #08296c !important;
+}
+
+.header-bg{
+	background-color: #08296c !important;
+}
+
+.highlight{
+	background-image: asset_url('home-bg.png');
+	background-size: cover;
+  background-repeat: no-repeat;
+  background-position: right;
+	color: #fff;
+	min-height: 400px;
+}
+
+.line-h-3_5{
+	line-height: 3.5rem;
+}
+
+.margin-top-30{
+	margin-top: 30px;
+}
+
+.margin-top-10{
+	margin-top: 10px;
+}
+
+.margin-bot-50{
+	margin-bottom: 50px;
+}
+
+.margin-bot-10{
+	margin-bottom: 10px;
+}
+
+.social{
+	margin-right: 50px;
+}
+
+.negativ-margin {
+	margin-top: -15px;
+}
+
+form .checkbox, form .radio {
+  display: unset !important;
+}
+
+.margin-right-10{
+	margin-right: 10px;
+}
+
+.pull-left{
+	text-align: left;
+}
+
+.logo-yellow{
+	color: #f2ca30;
+	margin-bottom: 3px;
+}
+.top-bar .top-bar-title h3:hover {
+  color: #f2ca30 !important;
+}
+
+a:hover h3 {
+  color: #f2ca30 !important;
+}
+
+.pull-right{
+	float: right;
+}
+
+h3.logo:hover {
+	color: #f2ca30 !important;
+}
+
+.yellow-border{
+	border-left: 6px solid #f2ca30;
+}
+
+.blue-text{
+	color: #08296c;
+}
+
+.big-text{
+	font-size: 52px;
+}
+
+.medium-text{
+	font-size: 32px;
+}
+
+.fa {
+    padding: 10px;
+    font-size: 20px;
+    width: 40px;
+    text-align: center;
+    text-decoration: none;
+}
+
+/* Facebook */
+.fa-facebook {
+    background: #3B5998;
+    color: white;
+}
+
+/* Twitter */
+.fa-twitter {
+    background: #55ACEE;
+    color: white;
+}

@@ -19,7 +19,10 @@ namespace :moderation do
   end
 
   resources :comments, only: :index do
+    get :publish, on: :collection
     put :hide, on: :member
+    put :aprove, on: :collection
+    put :disaprove, on: :collection
     put :moderate, on: :collection
   end
 end
