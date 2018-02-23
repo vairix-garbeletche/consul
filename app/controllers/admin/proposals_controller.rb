@@ -23,6 +23,12 @@ class Admin::ProposalsController < Admin::BaseController
     redirect_to request.query_parameters.merge(action: :index)
   end
 
+  def download_excel
+    @proposals = Proposal.all
+    @url = request.base_url
+    render xlsx: 'download_excel'
+  end
+
   private
 
     def load_proposal

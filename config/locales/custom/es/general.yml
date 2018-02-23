@@ -2,6 +2,21 @@ es:
   proposals:
     inactive: "El periodo de propuestas es entre %{date_from} y %{date_to}"
     require_permission: No tiene los permisos para realizar esta acción
+    excel:
+      title: Propuestas
+      link: Enlace
+      title: Título
+      summary: Resumen
+      text: Texto desarrollado
+      video_link: Enlace a video externo
+      documents_link: Enlace a documentación adicional
+      image_absolute_url: Url absoluta de la imagen
+      documents_absolute_url: Url absolutas de los documentos
+      action_plan: Plan de acción seleccionado
+      categories: Categorías
+      full_name: Nombre de la persona
+      comments_count: Cantidad de comentarios
+      support_count: Cantidad de apoyos
     show:
       download_pdf: Descargar como PDF
     comments:
@@ -12,5 +27,7 @@ es:
   geozones:
     none: Seleccione un Plan de acción
   form:
-    no_accept_terms: No Acepto la %{policy} y las %{conditions}
-    no_accept_terms_title: No Acepto la Política de privacidad y las Condiciones de uso
+    no_accept_terms: No Acepto
+    accept_terms: Acepto
+    no_accept_terms_title: No Acepto
+    accept_terms_title: Acepto

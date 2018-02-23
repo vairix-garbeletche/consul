@@ -1,5 +1,8 @@
 es:
   admin:
+    stats:
+      show:
+        excel: Descargar Excel de propuestas
     menu:
       geozones: Gestionar planes de acción
     geozones:
