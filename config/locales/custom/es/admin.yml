@@ -2,7 +2,7 @@ es:
   admin:
     stats:
       show:
-        excel: Excel
+        excel: Descargar Excel de propuestas
     menu:
       geozones: Gestionar planes de acción
     geozones:
