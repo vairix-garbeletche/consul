@@ -27,5 +27,7 @@ es:
   geozones:
     none: Seleccione un Plan de acción
   form:
-    no_accept_terms: No Acepto la %{policy} y las %{conditions}
-    no_accept_terms_title: No Acepto la Política de privacidad y las Condiciones de uso
+    no_accept_terms: No Acepto
+    accept_terms: Acepto
+    no_accept_terms_title: No Acepto
+    accept_terms_title: Acepto
