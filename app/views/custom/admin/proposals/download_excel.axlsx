@@ -8,8 +8,8 @@ wb.add_worksheet(name: t("proposals.excel.title")) do |sheet|
     sheet.add_row [
                     proposal_url(proposal), proposal.title, proposal.summary, ActionView::Base.full_sanitizer.sanitize(proposal.description),
                     proposal.video_url ? "#{@url}#{proposal.video_url}" : '', proposal.external_url,
-                    proposal.image ? "#{@url}#{proposal.image.attachment.url}" : '', proposal.documents.map { |doc| "#{@url}#{doc.attachment.url},"},
-                    proposal.geozone ? proposal.geozone.name : '', proposal.tags.map { |tag| "#{tag},"}, proposal.author.username,
+                    proposal.image ? "#{@url}#{proposal.image.attachment.url}" : '', proposal.documents.map { |doc| "#{@url}#{doc.attachment.url},"}.join(', '),
+                    proposal.geozone ? proposal.geozone.name : '', proposal.tags.pluck(:name).join(', '), proposal.author.username,
                     proposal.comments_count, proposal.total_votes
                   ]
   end
