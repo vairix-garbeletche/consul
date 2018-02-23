@@ -97,7 +97,7 @@
         <p class="accept-terms-text">De conformidad con lo dispuesto en el artículo 13 de la Ley N° 18.331, de 11 de agosto de 2008, le informamos que al realizar la presente propuesta sus datos personales serán asociados a la propuesta con la finalidad de formar parte del proceso de co creación del 4° Plan de Acción Nacional de Gobierno Abierto 2018-2020, siendo la propuesta ingresada no viculante. <br>Esta información será incorporada a la base de datos de ID Uruguay (B7582)y  AGESIC responsabilidad de Agesic. Usted podrá ejercer los derechos de acceso, rectificación, actualización, inclusión o supresión en Liniers 1324, piso 4, Torre Ejecutiva Sur o enviando un correo a gobiernoabierto@agesic.gub.uy. <br> Acceda a nuestras <%=link_to "Póliticas de privacidad", "/privacy", target: '_blank' %> y <%=link_to "Condiciones de Uso", "/conditions", target: '_blank' %>  ante cualquier duda.
         </p>
         <%= f.label :terms_of_service do %>
-          <%= f.check_box :terms_of_service, title: "t('form.accept_terms_title')", class: "chk", label: false %>
+          <%= f.check_box :terms_of_service, title: t('form.accept_terms_title'), class: "chk", label: false %>
           <span class="checkbox">
             <%= t("form.accept_terms") %>
           </span>
