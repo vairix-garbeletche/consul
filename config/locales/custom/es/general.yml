@@ -24,6 +24,24 @@ es:
     form:
       proposal_responsible_name: Organismo | Sociedad Civil | Academia | Sector Privado
       proposal_responsible_name_note: '(Si ustede esta publicando en nombre de un "Organismo | Sociedad Civil | Academia | Sector Privado" indique el nombre del mismo)'
+      geozone: Ámbito de actuación
+      proposal_external_url: Enlace a documentación adicional
+      proposal_question: Pregunta de la propuesta
+      proposal_question_example_html: "Debe ser resumida en una pregunta cuya respuesta sea Sí o No. <br>Ej. '¿Está usted de acuerdo en peatonalizar la calle Mayor?'"
+      proposal_summary: "* Resumen de la propuesta"
+      proposal_summary_note: "(máximo 200 caracteres)"
+      proposal_text: Texto desarrollado de la propuesta
+      proposal_title: "* Título de la propuesta"
+      proposal_video_url: Enlace a vídeo externo
+      proposal_video_url_note: Puedes añadir un enlace a YouTube o Vimeo
+      tag_category_label: "Categorías"
+      tags_instructions: "Etiqueta esta propuesta. Puedes elegir entre las categorías propuestas o introducir las que desees"
+      tags_label: Temas
+      tags_placeholder: "Escribe las etiquetas que desees separadas por una coma (',')"
+      map_location: "Ubicación en el mapa"
+      map_location_instructions: "Navega por el mapa hasta la ubicación y coloca el marcador."
+      map_remove_marker: "Eliminar el marcador"
+      map_skip_checkbox: "Esta propuesta no tiene una ubicación concreta o no la conozco."
   comments:
     form:
       comment_as_organism: Organismo | Sociedad Civil | Academia | Sector Privado
@@ -31,6 +49,6 @@ es:
     none: Seleccione un Plan de acción
   form:
     no_accept_terms: No Acepto
-    accept_terms: Acepto
+    accept_terms: "* Acepto"
     no_accept_terms_title: No Acepto
     accept_terms_title: Acepto
