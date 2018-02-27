@@ -36,18 +36,14 @@ class Proposal < ActiveRecord::Base
   validates :summary, presence: true
   validates :geozone_id, presence: true
   validates :author, presence: true
-  validates :responsible_name, presence: true
 
   validates :title, length: { in: 4..Proposal.title_max_length }
   validates :description, length: { maximum: Proposal.description_max_length }
-  validates :responsible_name, length: { in: 6..Proposal.responsible_name_max_length }
   validates :retired_reason, inclusion: { in: RETIRE_OPTIONS, allow_nil: true }
 
   validates :terms_of_service, acceptance: { allow_nil: false }, on: :create
 
   validate :valid_video_url?
-
-  before_validation :set_responsible_name
 
   before_save :calculate_hot_score, :calculate_confidence_score
 
@@ -240,13 +236,5 @@ class Proposal < ActiveRecord::Base
   def aproved_comments_count
     comments.where(status: Comment::STATUS[:aproved]).count
   end
-
-  protected
-
-    def set_responsible_name
-      if author && author.document_number?
-        self.responsible_name = author.document_number
-      end
-    end
 
 end
