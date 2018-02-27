@@ -57,14 +57,25 @@ form .checkbox, form .radio {
 
 .logo-yellow{
 	color: #f2ca30;
+	font-size: 1rem !important;
 	margin-bottom: 3px;
+	margin-top: 8px;
 }
 .top-bar .top-bar-title h3:hover {
   color: #f2ca30 !important;
 }
 
+.top-bar .top-bar-title a:focus {
+	padding-bottom: 10px;
+}
+
 a:hover h3 {
   color: #f2ca30 !important;
+}
+
+.button:hover {
+	background: #e7f2fc;
+	color: black;
 }
 
 .pull-right{
@@ -77,6 +88,8 @@ h3.logo:hover {
 
 .yellow-border{
 	border-left: 6px solid #f2ca30;
+	max-height: 7rem;
+	min-height: 7rem;
 }
 
 .blue-text{

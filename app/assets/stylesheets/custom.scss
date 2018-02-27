@@ -12,7 +12,41 @@ footer{
 .footer {
   background: #fff;
   border-top: 6px solid #fff;
+  margin-top: 0px !important;
 }
+
+.padding {
+  padding-bottom: 0rem;
+}
+
+.text-white{
+	color: #fff;
+}
+
+p{
+	font-size: 0.8rem;
+}
+
+a:hover, a:active {
+    color: #fff;
+}
+
+footer .logo a:hover {
+  color: #08296c;
+}
+
+.logo a:hover {
+  color: #fff !important;
+}
+
+a:focus {
+    color: #fff;
+    outline: 3px solid #ffbf47;
+}
+
+a:hover, a:focus {
+    color: #fff;
+  }
 
 .proposals-create, .proposal-edit{
   position: relative;
@@ -95,6 +129,7 @@ footer{
 	.logo {
 	  font-size: 18px !important;
 	  display: inline;
+	  margin-left: 12px;
 	}
 
 	.top-bar .top-bar-right {
@@ -128,6 +163,10 @@ footer{
 		display: block;
 		margin-top: 0px;
 	}
+
+	.presidencia-margin{
+		margin-right: 60px;
+	}
 }
 
 @media (min-width: 100px) and (max-width: 375px) {
@@ -149,6 +188,10 @@ footer{
 
 	.log-text{
 		font-size: 18px;
+	}
+
+	.presidencia-margin{
+		margin-right: 60px;
 	}
 }
 
