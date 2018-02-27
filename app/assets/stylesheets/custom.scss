@@ -14,6 +14,10 @@ footer{
   border-top: 6px solid #fff;
 }
 
+a:focus {
+  outline: 3px solid #f2ca30 !important;
+}
+
 .padding {
   padding-bottom: 0rem;
 }
@@ -28,6 +32,10 @@ p{
 
 a:hover, a:active {
     color: #fff;
+}
+
+.body-link:hover {
+    color: #000;
 }
 
 footer .logo a:hover {
