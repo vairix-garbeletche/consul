@@ -21,6 +21,9 @@ es:
       download_pdf: Descargar como PDF
     comments:
       pending_aproval: Su comentario quedará pendiente de aprobación por los moderadores
+    form:
+      proposal_responsible_name: Organismo | Sociedad Civil | Academia | Sector Privado
+      proposal_responsible_name_note: '(Si ustede esta publicando en nombre de un "Organismo | Sociedad Civil | Academia | Sector Privado" indique el nombre del mismo)'
   comments:
     form:
       comment_as_organism: Organismo | Sociedad Civil | Academia | Sector Privado

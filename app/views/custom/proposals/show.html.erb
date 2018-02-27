@@ -38,7 +38,9 @@
 
         <div class="proposal-info">
           <%= render '/shared/author_info', resource: @proposal %>
-
+          <% unless @proposal.responsible_name.blank? %>
+            <span>Publicado como <%= @proposal.responsible_name%></span>
+          <% end %>
           <span class="bullet">&nbsp;&bull;&nbsp;</span>
           <%= l @proposal.created_at.to_date %>
           <span class="bullet">&nbsp;&bull;&nbsp;</span>

@@ -1,3 +1,15 @@
+<style>
+  .header-pdf {
+    background-color: #08296c;
+  }
+  .header-pdf p{
+    color: #fff;
+    padding-left: 10px;
+  }
+</style>
+<h1 class="header-pdf">
+  <p>4to Plan de Accion de Gobierno Abierto</p>
+</h1>
 <% provide :title do %><%= @proposal.title %><% end %>
 <% content_for :meta_description do %><%= @proposal.summary %><% end %>
 <% cache [locale_and_user_status(@proposal), @proposal, @proposal.author, Flag.flagged?(current_user, @proposal), @proposal_votes] do %>
@@ -18,8 +30,19 @@
         <% end %>
 
         <div class="proposal-info">
-          <%= render '/shared/author_info_pdf.html.erb', resource: @proposal %>
-
+          <% if @proposal.author.hidden? || @proposal.author.erased? %>
+            <span class="icon-deleted author-deleted"></span>
+            <span class="author deleted">
+                <%= t("shared.author_info.author_deleted") %>
+            </span>
+          <% else %>
+            <span class="author">
+              <%= @proposal.author.name %>.
+            </span>
+          <% end %>
+          <% unless @proposal.responsible_name.blank? %>
+            <span>Publicado como <%= @proposal.responsible_name%></span>
+          <% end %>
           <span class="bullet">&nbsp;&bull;&nbsp;</span>
           <%= l @proposal.created_at.to_date %>
         </div>

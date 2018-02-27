@@ -4,7 +4,7 @@
       <%= render partial: "documents/document.html.erb", collection: documents, locals: {pdf: true} %>
     <% else %>
       <div class="callout primary text-center">
-        <%= t('documents.no_documents') %>
+        No hay documentos cargados en la propuesta
       </div>
     <% end %>
   </div>
