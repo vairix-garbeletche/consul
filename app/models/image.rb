@@ -5,7 +5,7 @@ class Image < ActiveRecord::Base
   TITLE_LEGHT_RANGE = 4..80
   MIN_SIZE = 475
   MAX_IMAGE_SIZE = 1.megabyte
-  ACCEPTED_CONTENT_TYPE = %w(image/jpeg image/jpg).freeze
+  ACCEPTED_CONTENT_TYPE = %w(image/jpeg image/jpg image/png).freeze
 
   has_attached_file :attachment, styles: { large: "x#{MIN_SIZE}", medium: "300x300#", thumb: "140x245#" },
                                  url: "/system/:class/:prefix/:style/:hash.:extension",
