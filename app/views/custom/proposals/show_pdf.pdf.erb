@@ -4,12 +4,12 @@
   }
   .header-pdf p{
     color: #fff;
-    padding-left: 10px;
+    text-align: center;
   }
 </style>
-<h1 class="header-pdf">
-  <p>4to Plan de Accion de Gobierno Abierto</p>
-</h1>
+<h2 class="header-pdf">
+  <p>4to Plan de Accion de Gobierno Abierto 2018-2020</p>
+</h2>
 <% provide :title do %><%= @proposal.title %><% end %>
 <% content_for :meta_description do %><%= @proposal.summary %><% end %>
 <% cache [locale_and_user_status(@proposal), @proposal, @proposal.author, Flag.flagged?(current_user, @proposal), @proposal_votes] do %>
