@@ -18,6 +18,10 @@ a:focus {
   outline: 3px solid #f2ca30 !important;
 }
 
+.margin-left-10{
+	margin-left: 15px;
+}
+
 .padding {
   padding-bottom: 0rem;
 }
@@ -26,12 +30,16 @@ a:focus {
 	color: #fff;
 }
 
-p{
-	font-size: 0.8rem;
+.m-big-text{
+	font-size: 32px;
 }
 
-a:hover, a:active {
-    color: #fff;
+.big-p{
+	font-size: 18px;
+}
+
+p{
+	font-size: 0.8rem;
 }
 
 .body-link:hover {
@@ -46,13 +54,17 @@ footer .logo a:hover {
   color: #fff !important;
 }
 
+.ih-footer {
+	line-height: 1.2rem !important;
+}
+
 a:focus {
     color: #fff;
     outline: 3px solid #ffbf47;
 }
 
 a:hover, a:focus {
-    color: #fff;
+    color: none !important;
   }
 
 .proposals-create, .proposal-edit{
@@ -95,10 +107,35 @@ a:hover, a:focus {
 	margin-right: 0px;
 }
 
-@media (min-width: 768px) and (max-width: 1025px) {
-	.pull-top-2{
-		margin-top: -25px !important;
+@media (min-width: 1300px) {
+
+	.margin-footer-p{
+		padding-left: 0px;
 	}
+
+}
+
+@media (min-width: 768px) and (max-width: 1025px) {
+	.pull-top-3{
+		margin-top: -35px !important;
+	}
+
+	.pull-top-2{
+		margin-top: -10px !important;
+	}
+
+	.pull-top-1{
+		margin-top: -10px !important;
+	}
+
+	.titel-margin-left{
+		margin-left: 15px;
+	}
+
+	.small-margin-left{
+		margin-left: 30px;
+	}
+
 }
 
 @media (min-width: 100px) and (max-width: 700px) {
@@ -149,8 +186,25 @@ a:hover, a:focus {
 	  margin-left: 12px;
 	}
 
+	.m-big-text{
+		font-size: 22px !important;
+	}
+
+	.titel-margin-left{
+		margin-left: 10px;
+	}
+
+
+	.big-p {
+    font-size: 16px !important;
+	}
+
 	footer .medium-text{
 		font-size: 18px !important;
+	}
+
+	.title-margin-left{
+		margin-left: 15px;
 	}
 
 	.tablet-logo{
@@ -161,8 +215,14 @@ a:hover, a:focus {
     width: min-content;
 	}
 
+	.yellow-border{
+		max-height: 10rem !important;
+		min-height: 10rem !important;
+		margin-bottom: 20px;
+	}
+
 	.pull-top-3{
-		margin-top: -35px !important;
+		margin-top: -10px !important;
 	}
 
 	.pull-top-2{
@@ -183,6 +243,17 @@ a:hover, a:focus {
 		text-align: left;
 		margin-top: 20px;
 	}
+
+	.margin-footer-p{
+		margin-right: 0px;
+		margin-top: -50px !important;
+		margin-left: 5px !important;
+		margin-bottom: 0px;
+	}
+
+	.small-margin-left{
+		margin-left: 20px;
+	}
 }
 
 @media (min-width: 100px) and (max-width: 575px) {
@@ -190,9 +261,25 @@ a:hover, a:focus {
 		width: initial !important;
 	}
 
+	.big-p {
+    font-size: 18px !important;
+	}
+
+	.margin-footer-p{
+		margin-right: 0px !important;
+		margin-top: 0px !important;
+		margin-left: 60px !important;
+	}
+
 	.menu-margin{
 	  margin-top: 20px;
 	  float: left !important;
+	}
+
+	.yellow-border{
+		max-height: 8rem !important;
+		min-height: 8rem !important;
+		margin-bottom: 5px;
 	}
 
 	.log-text{
@@ -206,7 +293,7 @@ a:hover, a:focus {
 	}
 
 	.pull-top-3{
-		margin-top: -5px !important;
+		margin-top: -15px !important;
 	}
 
 	.pull-top-2{
@@ -237,7 +324,25 @@ a:hover, a:focus {
 	}
 
 	.small-margin-left{
-		margin-left: 45px;
+		margin-left: 55px;
+	}
+
+	.pull-top-3{
+		margin-top: -15px !important;
+	}
+
+	.pull-top-2{
+		margin-top: -15px !important;
+	}
+
+	.pull-top-1{
+		margin-top: -15px !important;
+	}
+
+	.margin-footer-p{
+		margin-right: 0px !important;
+		margin-top: 0px !important;
+		margin-left: 45px !important;
 	}
 }
 
@@ -256,7 +361,7 @@ a:hover, a:focus {
 	}
 
 	.small-margin-left{
-		margin-left: 20px;
+		margin-left: 30px;
 	}
 
 	.log-text{
@@ -267,8 +372,8 @@ a:hover, a:focus {
 		margin-right: 60px;
 	}
 
-	.pull-top-3{
-		margin-top: -25px !important;
+	.margin-footer-p{
+		margin-left: 20px !important;
 	}
 }
 
