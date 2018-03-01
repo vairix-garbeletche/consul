@@ -39,7 +39,7 @@ a:hover, a:active {
 }
 
 footer .logo a:hover {
-  color: #08296c;
+  color: #08296c !important;
 }
 
 .logo a:hover {
@@ -223,6 +223,7 @@ a:hover, a:focus {
 
 	.small-margin-left{
 		margin-left: 70px;
+		margin-top: 10px;
 	}
 }
 
