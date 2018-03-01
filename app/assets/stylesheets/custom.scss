@@ -107,6 +107,14 @@ a:hover, a:focus {
 	margin-right: 0px;
 }
 
+@media (min-width: 1300px) {
+
+	.margin-footer-p{
+		padding-left: 0px;
+	}
+
+}
+
 @media (min-width: 768px) and (max-width: 1025px) {
 	.pull-top-3{
 		margin-top: -35px !important;
@@ -239,7 +247,7 @@ a:hover, a:focus {
 	.margin-footer-p{
 		margin-right: 0px;
 		margin-top: -50px !important;
-		margin-left: 10px !important;
+		margin-left: 5px !important;
 		margin-bottom: 0px;
 	}
 
