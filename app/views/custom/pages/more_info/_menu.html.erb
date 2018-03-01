@@ -1,13 +1,26 @@
 <div class="row">
   <div class="small-12 column">
     <ul class="menu-pages" data-magellan>
-      <% if feature?(:proposals) %>
-        <li>
-          <%= link_to t("pages.more_info.menu.proposals"), "#proposals", class: "button hollow expanded" %>
-        </li>
-      <% end %>
       <li>
-        <%= link_to t("pages.more_info.menu.other"), "#other", class: "button hollow expanded" %>
+        <%= link_to "1. Crear", "#crear", class: "button expanded" %>
+      </li>
+      <li>
+        <%= image_tag 'flecha.png', alt: 'flecha' %>
+      </li>
+      <li>
+        <%= link_to "2. Priorizar", "#priorizar", class: "button expanded" %>
+      </li>
+      <li>
+        <%= image_tag 'flecha.png', alt: 'flecha' %>
+      </li>
+      <li>
+        <%= link_to "3. Consultar", "#consultar", class: "button expanded" %>
+      </li>
+      <li>
+        <%= image_tag 'flecha.png', alt: 'flecha' %>
+      </li>
+      <li>
+        <%= link_to "4. Aprobar", "#aprobar", class: "button expanded" %>
       </li>
     </ul>
   </div>
