@@ -88,12 +88,24 @@ h3.logo:hover {
 
 .yellow-border{
 	border-left: 6px solid #f2ca30;
-	max-height: 7rem;
-	min-height: 7rem;
+	max-height: 8rem;
+	min-height: 8rem;
 }
 
 .blue-text{
 	color: #08296c;
+}
+
+.pull-top-1{
+	margin-top: -25px;
+}
+
+.pull-top-2{
+	margin-top: 0px;
+}
+
+.pull-top-3{
+	margin-top: -25px;
 }
 
 .blue-text:hover {
@@ -101,11 +113,11 @@ h3.logo:hover {
 }
 
 .big-text{
-	font-size: 52px;
+	font-size: 35px;
 }
 
 .medium-text{
-	font-size: 32px;
+	font-size: 22px;
 }
 
 .fa {

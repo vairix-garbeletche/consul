@@ -39,7 +39,7 @@ a:hover, a:active {
 }
 
 footer .logo a:hover {
-  color: #08296c;
+  color: #08296c !important;
 }
 
 .logo a:hover {
@@ -91,6 +91,16 @@ a:hover, a:focus {
     margin-top: 15rem;
 }
 
+.small-margin-right-30{
+	margin-right: 0px;
+}
+
+@media (min-width: 768px) and (max-width: 1025px) {
+	.pull-top-2{
+		margin-top: -25px !important;
+	}
+}
+
 @media (min-width: 100px) and (max-width: 700px) {
 	.logo {
 	  font-size: 18px;
@@ -139,8 +149,28 @@ a:hover, a:focus {
 	  margin-left: 12px;
 	}
 
+	footer .medium-text{
+		font-size: 18px !important;
+	}
+
+	.tablet-logo{
+		margin-top: -35px;
+	}
+
 	.top-bar .top-bar-right {
     width: min-content;
+	}
+
+	.pull-top-3{
+		margin-top: -35px !important;
+	}
+
+	.pull-top-2{
+		margin-top: -10px !important;
+	}
+
+	.pull-top-1{
+		margin-top: -10px !important;
 	}
 
 	.blue-text{
@@ -174,12 +204,40 @@ a:hover, a:focus {
 	.presidencia-margin{
 		margin-right: 60px;
 	}
+
+	.pull-top-3{
+		margin-top: -5px !important;
+	}
+
+	.pull-top-2{
+		margin-top: -5px !important;
+	}
+
+	.pull-top-1{
+		margin-top: -5px !important;
+	}
+
+	.small-margin-right{
+		margin-right: 60px;
+	}
+
+	.small-margin-left{
+		margin-left: 70px;
+		margin-top: 10px;
+	}
 }
 
 @media (min-width: 100px) and (max-width: 375px) {
 	.logo {
 	  font-size: 14px !important;
 	  display: inline;
+	}
+	.small-margin-right{
+		margin-right: 40px;
+	}
+
+	.small-margin-left{
+		margin-left: 45px;
 	}
 }
 
@@ -193,12 +251,24 @@ a:hover, a:focus {
     line-height: 1.2rem;
 	}
 
+	.small-margin-right{
+		margin-right: 15px;
+	}
+
+	.small-margin-left{
+		margin-left: 20px;
+	}
+
 	.log-text{
 		font-size: 18px;
 	}
 
 	.presidencia-margin{
 		margin-right: 60px;
+	}
+
+	.pull-top-3{
+		margin-top: -25px !important;
 	}
 }
 
