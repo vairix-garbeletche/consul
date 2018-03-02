@@ -7,6 +7,10 @@
 footer{
   background-color: #fff;
   border-top: 6px solid #fff;
+
+  p {
+  	font-size: 0.5rem;
+  }
 }
 
 .footer {
@@ -100,6 +104,10 @@ a:hover, a:focus {
 }
 
 .footer {
+    margin-top: 0;
+}
+
+.footer-15rem {
     margin-top: 15rem;
 }
 
@@ -115,9 +123,9 @@ a:hover, a:focus {
 
 }
 
-@media (min-width: 768px) and (max-width: 1025px) {
+@media (min-width: 810px) and (max-width: 1030px) {
 	.pull-top-3{
-		margin-top: -35px !important;
+		margin-top: -10px !important;
 	}
 
 	.pull-top-2{
@@ -133,7 +141,53 @@ a:hover, a:focus {
 	}
 
 	.small-margin-left{
-		margin-left: 30px;
+		margin-left: 16px;
+	}
+
+	.top-bar .top-bar-title a {
+		padding-left: 12px;
+	}
+
+	.yellow-border{
+		max-height: 10rem !important;
+		min-height: 10rem !important;
+		margin-bottom: 20px;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 1025px) {
+	.pull-top-3{
+		margin-top: -10px !important;
+	}
+
+	.pull-top-2{
+		margin-top: -10px !important;
+	}
+
+	.pull-top-1{
+		margin-top: -10px !important;
+	}
+
+	.titel-margin-left{
+		margin-left: 15px;
+	}
+
+	.small-margin-left{
+		margin-left: 16px;
+	}
+
+	.top-bar .top-bar-title a {
+		padding-left: 12px;
+	}
+
+	.yellow-border{
+		max-height: 10rem !important;
+		min-height: 10rem !important;
+		margin-bottom: 20px;
+	}
+
+	.big-p {
+    font-size: 16px !important;
 	}
 
 }
@@ -246,7 +300,7 @@ a:hover, a:focus {
 
 	.margin-footer-p{
 		margin-right: 0px;
-		margin-top: -50px !important;
+		margin-top: -88px !important;
 		margin-left: 5px !important;
 		margin-bottom: 0px;
 	}

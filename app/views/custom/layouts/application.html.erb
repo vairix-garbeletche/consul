@@ -57,7 +57,7 @@
       <%= yield %>
       <div class="push"></div>
     </div>
-    <div class="footer">
+    <div class="footer <%= @is_home ? '' : 'footer-15rem' %>">
       <%= render 'layouts/footer' %>
     </div>
   </body>

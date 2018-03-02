@@ -5,6 +5,7 @@ class WelcomeController < ApplicationController
   layout "devise", only: [:welcome, :verification]
 
   def index
+    @is_home = true
   end
 
   def welcome
