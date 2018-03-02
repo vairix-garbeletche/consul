@@ -13,6 +13,23 @@ footer{
   }
 }
 
+.menu li a {
+	font-weight: 300;
+}
+
+.text h2 {
+	font-weight: 300;
+}
+
+.proposal-content a{
+		font-weight: 500;
+	}
+
+ .font-w{
+		font-weight: 500 !important;
+		font-family: Montserrat-Medium !important;
+	}
+
 .footer {
   background: #fff;
   border-top: 6px solid #fff;
@@ -323,7 +340,9 @@ a:hover, a:focus {
 		margin-right: 0px !important;
 		margin-top: 0px !important;
 		margin-left: 60px !important;
-	}
+	
+}
+	
 
 	.menu-margin{
 	  margin-top: 20px;
