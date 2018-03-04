@@ -3,6 +3,9 @@
   <p class="sidebar-title"><%= share_title %></p>
 <% end %>
 <div class="social-share-full">
+  <div class="social-share-button">
+    <a class="ssb-icon ssb-facebook" href="https://www.facebook.com/sharer/sharer.php?u=<%= request.original_url %>" target="_blank"></a>
+    </div>
   <%= social_share_button_tag("#{title} #{setting['twitter_hashtag']}",
                               :url => local_assigns[:url],
                               :image => local_assigns[:image_url].present? ? local_assigns[:image_url] : '' ) %>
