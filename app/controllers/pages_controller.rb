@@ -7,7 +7,7 @@ class PagesController < ApplicationController
     if @custom_page.present?
       render action: :custom_page
     else
-      @is_home = true if params[:id] == 'consulta-publica'
+      @is_home = true if params[:id] == 'consulta-publica' || params[:id] == 'administracion'
       render action: params[:id]
     end
   rescue ActionView::MissingTemplate

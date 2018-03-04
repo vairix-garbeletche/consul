@@ -13,6 +13,24 @@ footer{
   }
 }
 
+
+.menu li a {
+	font-weight: 300;
+}
+
+.text h2 {
+	font-weight: 300;
+}
+
+.proposal-content a{
+		font-weight: 500;
+}
+
+.font-w{
+	font-weight: 500 !important;
+	font-family: Montserrat-Medium !important;
+}
+
 .pull{
 	float: right !important;
 }
@@ -324,11 +342,11 @@ a:hover, a:focus {
 	}
 
 	.margin-footer-p{
-		margin-left: 10px !important;
 		margin-top: 0px !important;
-		float: left !important;
-	}
-
+		margin-left: 60px !important;
+	
+  }
+	
 	.menu-margin{
 	  margin-top: 20px;
 	  float: left !important;

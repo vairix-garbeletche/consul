@@ -6,7 +6,7 @@
 
     <%= avatar_image(@account, seed: @account.id, size: 100, class: "margin-bottom") %>
 
-    <h1 class="inline-block"><%= t("account.show.title") %></h1>
+    <h1 class="inline-block font-w"><%= t("account.show.title") %></h1>
 
     <%= form_for @account, as: :account, url: account_path do |f| %>
       <%= render "shared/errors", resource: @account %>
@@ -14,7 +14,7 @@
       <div class="row">
         <div class="small-12 medium-5 column">
 
-          <h2><%= t("account.show.personal")%></h2>
+          <h2 class="font-w"><%= t("account.show.personal")%></h2>
 
           <div class="small-12 medium-10">
             <% if @account.organization? %>
@@ -49,9 +49,9 @@
           <br>       
         </div>
 
-        <div class="user-permissions small-12 medium-7 column">
+        <div class="user-permissions font-w small-12 medium-7 column">
         <% if @account.email.present? %>
-            <h2><%= t("account.show.notifications")%></h2>
+            <h2 class="font-w"><%= t("account.show.notifications")%></h2>
 
             <div>
               <%= f.label :email_on_comment do %>
