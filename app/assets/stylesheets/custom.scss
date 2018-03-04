@@ -13,6 +13,7 @@ footer{
   }
 }
 
+
 .menu li a {
 	font-weight: 300;
 }
@@ -23,12 +24,16 @@ footer{
 
 .proposal-content a{
 		font-weight: 500;
-	}
+}
 
- .font-w{
-		font-weight: 500 !important;
-		font-family: Montserrat-Medium !important;
-	}
+.font-w{
+	font-weight: 500 !important;
+	font-family: Montserrat-Medium !important;
+}
+
+.pull{
+	float: right !important;
+}
 
 .footer {
   background: #fff;
@@ -166,8 +171,8 @@ a:hover, a:focus {
 	}
 
 	.yellow-border{
-		max-height: 10rem !important;
-		min-height: 10rem !important;
+		max-height: 8rem !important;
+		min-height: 8rem !important;
 		margin-bottom: 20px;
 	}
 }
@@ -198,8 +203,8 @@ a:hover, a:focus {
 	}
 
 	.yellow-border{
-		max-height: 10rem !important;
-		min-height: 10rem !important;
+		max-height: 8rem !important;
+		min-height: 8rem !important;
 		margin-bottom: 20px;
 	}
 
@@ -337,13 +342,11 @@ a:hover, a:focus {
 	}
 
 	.margin-footer-p{
-		margin-right: 0px !important;
 		margin-top: 0px !important;
 		margin-left: 60px !important;
 	
-}
+  }
 	
-
 	.menu-margin{
 	  margin-top: 20px;
 	  float: left !important;
@@ -377,13 +380,13 @@ a:hover, a:focus {
 		margin-top: -5px !important;
 	}
 
-	.small-margin-right{
-		margin-right: 60px;
+	.pull{
+		float: left !important;
 	}
 
 	.small-margin-left{
-		margin-left: 70px;
-		margin-top: 10px;
+		margin-top: 20px;
+		float: left !important;
 	}
 }
 
@@ -391,13 +394,6 @@ a:hover, a:focus {
 	.logo {
 	  font-size: 14px !important;
 	  display: inline;
-	}
-	.small-margin-right{
-		margin-right: 40px;
-	}
-
-	.small-margin-left{
-		margin-left: 55px;
 	}
 
 	.pull-top-3{
@@ -412,11 +408,6 @@ a:hover, a:focus {
 		margin-top: -15px !important;
 	}
 
-	.margin-footer-p{
-		margin-right: 0px !important;
-		margin-top: 0px !important;
-		margin-left: 45px !important;
-	}
 }
 
 
@@ -429,24 +420,12 @@ a:hover, a:focus {
     line-height: 1.2rem;
 	}
 
-	.small-margin-right{
-		margin-right: 15px;
-	}
-
-	.small-margin-left{
-		margin-left: 30px;
-	}
-
 	.log-text{
 		font-size: 18px;
 	}
 
 	.presidencia-margin{
 		margin-right: 60px;
-	}
-
-	.margin-footer-p{
-		margin-left: 20px !important;
 	}
 }
 

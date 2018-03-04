@@ -1,10 +1,14 @@
 <footer>
   <div class="row">
 
-    <div class="negativ-margin small-12 medium-8 small-margin-right small-margin-top-30 large-6 float-right">
+    <div class="negativ-margin small-12 medium-8 small-margin-top-30 large-6 pull">
       <div class=" column">
-        <%= image_tag 'LogoPresidencia.png', class: 'float-right presidencia-margin negativ-margin margin-bot-10', alt: 'precidencia' %>
-        <%= image_tag 'LogoAgesic.png', class: 'float-right', alt: 'agesic' %>
+        <%= link_to "http://presidencia.gub.uy" , target: "_blank"  do %>
+          <%= image_tag 'LogoPresidencia.png', class: 'pull presidencia-margin negativ-margin margin-bot-10', alt: 'precidencia' %>
+        <% end %>
+        <%= link_to "http://agesic.gub.uy" , target: "_blank"  do %>
+          <%= image_tag 'LogoAgesic.png', class: 'pull', alt: 'agesic' %>
+        <% end %>
       </div>
     </div>
     <div class="small-8 medium-4 tablet-logo small-margin-left large-6">
@@ -14,13 +18,15 @@
 
 
   <div>
-    <div class="small-10 medium-4 large-3 margin-footer-p column">
+    <div class="small-9 medium-4 large-3 margin-footer-p column">
       <p class="ih-footer"> Este portal usa la <%= link_to "aplicacion CONSUL", "https://github.com/consul/consul" , target: "_blank" %> que es <%= link_to "software de codigo abierto", "http://www.gnu.org/licenses/agpl-3.0.html" , target: "_blank" %>. Para asistencia tecnica entra en <%= link_to "Asistencia tecnica", faq_path %></p>
     </div>
-
-    <div class="small-12 medium-4 column social">
+  <div class="small-12 medium-4 column ">
       <div class="text-right margin-top-30">
         <ul>
+          <li class="inline-block ">
+            <p>  <%= link_to "Politicas de privacidad", '/privacy' %> y <%= link_to "Condiciones de uso", '/conditions' %></p>
+          </li>
           <li class="inline-block">
             <%= link_to "https://twitter.com/agesic", target: "_blank",
                          title: 'agesic twitter' do %>
