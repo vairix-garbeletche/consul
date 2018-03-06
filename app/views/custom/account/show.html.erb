@@ -1,12 +1,12 @@
 <div class="row account">
   <div class="small-12 column">
     <div class="float-right text-right">
-      <%= link_to t("account.show.erase_account_link"), users_registrations_delete_form_path, class: "delete" %>
+      <%= link_to t("account.show.erase_account_link"), users_registrations_delete_form_path, class: "delete blue-text" %>
     </div>
 
-    <%= avatar_image(@account, seed: @account.id, size: 100, class: "margin-bottom") %>
+    <span class="avatar-title header-bg" > <%=  @account.name[0].try(:upcase) %></span>
 
-    <h1 class="inline-block"><%= t("account.show.title") %></h1>
+    <h2 class="inline-block"><%= t("account.show.title") %></h2>
 
     <%= form_for @account, as: :account, url: account_path do |f| %>
       <%= render "shared/errors", resource: @account %>
