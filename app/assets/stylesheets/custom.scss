@@ -133,6 +133,10 @@ a:hover, a:focus {
 	margin-right: 0px;
 }
 
+a:focus {
+  color: initial;
+}
+
 @media (min-width: 1300px) {
 
 	.margin-footer-p{

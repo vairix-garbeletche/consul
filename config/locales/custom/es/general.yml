@@ -52,3 +52,6 @@ es:
     accept_terms: "* Acepto"
     no_accept_terms_title: No Acepto
     accept_terms_title: Acepto
+  account:
+    show:
+      username_label: Alias

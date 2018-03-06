@@ -3,3 +3,13 @@ es:
     mailer:
       confirmation_instructions:
         title: Te damos la bienvenida al 4º Plan de Gobierno Abierto
+    sessions:
+      new:
+        login_label: Email o alias
+    users:
+      registrations:
+        new:
+          username_is_available: Alias disponible
+          username_is_not_available: Alias ya existente
+          username_label: Alias
+

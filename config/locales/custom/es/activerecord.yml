@@ -3,3 +3,6 @@ es:
     attributes:
       comment:
         organism: "Organismo | Sociedad Civil | Academia | Sector Privado"
+      user:
+        login: "Email o alias"
+        username: "Alias"

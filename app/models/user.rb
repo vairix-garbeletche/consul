@@ -237,7 +237,8 @@ class User < ActiveRecord::Base
       reset_password_token: nil,
       email_verification_token: nil,
       confirmed_phone: nil,
-      unconfirmed_phone: nil
+      unconfirmed_phone: nil,
+      document_number: nil
     )
     identities.destroy_all
   end
