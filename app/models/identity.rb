@@ -9,6 +9,9 @@ class Identity < ActiveRecord::Base
   def self.first_or_create_from_oauth(auth)
     if auth.provider == SAML_PROVIDER
       uid = auth.extra.raw_info.attributes["uid"][0]
+      if uid.include?('uy-dni')
+        uid = uid.split('uy-dni-')[1]
+      end
       where(uid: uid, provider: auth.provider).first_or_create
     else
       where(uid: auth.uid, provider: auth.provider).first_or_create

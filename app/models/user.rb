@@ -78,7 +78,9 @@ class User < ActiveRecord::Base
       oauth_user = user
     end
     user_attributes = auth.extra.raw_info.attributes
-
+    first_name = user_attributes['NombreCompleto'].blank? ? '' : user_attributes['NombreCompleto'][0]
+    first_name = user_attributes['PrimerNombre'].blank? ? '' : user_attributes['PrimerNombre'][0] if first_name.blank?
+    in_place = user_attributes['Presencial'][0] == 'true' ? true : false unless user_attributes['Presencial'].blank?
     if oauth_user.blank?
       username = nil
       oauth_user = User.new(
@@ -87,12 +89,12 @@ class User < ActiveRecord::Base
         oauth_email: oauth_email,
         terms_of_service: '1',
         password: Devise.friendly_token[0, 20],
-        first_name: user_attributes['PrimerNombre'][0],
+        first_name: first_name,
         last_name:  user_attributes['SegundoNombre'].blank? ? '' : user_attributes['SegundoNombre'][0],
-        surname:  user_attributes['PrimerApellido'][0],
+        surname:  user_attributes['PrimerApellido'].blank? ? '' : user_attributes['PrimerApellido'][0],
         second_surname: user_attributes['SegundoApellido'].blank? ? '' : user_attributes['SegundoApellido'][0],
         certificated: user_attributes['Certificado'][0] == 'true' ? true : false,
-        in_place: user_attributes['Presencial'][0] == 'true' ? true : false,
+        in_place: in_place || false,
         document_country: user_attributes['PaisDocumento'][0],
         document_type: user_attributes['TipoDocumento'][0],
         document_number: user_attributes['Documento'][0],
@@ -102,12 +104,12 @@ class User < ActiveRecord::Base
       )
     else
       if auth.extra.raw_info.attributes
-        oauth_user.first_name = user_attributes['PrimerNombre'][0]
+        oauth_user.first_name = first_name
         oauth_user.last_name = user_attributes['SegundoNombre'].blank? ? '' : user_attributes['SegundoNombre'][0]
-        oauth_user.surname = user_attributes['PrimerApellido'][0]
+        oauth_user.surname = user_attributes['PrimerApellido'].blank? ? '' : user_attributes['PrimerApellido'][0]
         oauth_user.second_surname = user_attributes['SegundoApellido'].blank? ? '' : user_attributes['SegundoApellido'][0]
         oauth_user.certificated = user_attributes['Certificado'][0] == 'true' ? true : false
-        oauth_user.in_place = user_attributes['Presencial'][0] == 'true' ? true : false
+        oauth_user.in_place = in_place || false
         oauth_user.document_country = user_attributes['PaisDocumento'][0]
         oauth_user.document_type = user_attributes['TipoDocumento'][0]
         oauth_user.document_number = user_attributes['Documento'][0]

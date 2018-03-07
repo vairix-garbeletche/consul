@@ -1,12 +1,12 @@
 <div class="row account">
   <div class="small-12 column">
     <div class="float-right text-right">
-      <%= link_to t("account.show.erase_account_link"), users_registrations_delete_form_path, class: "delete blue-text" %>
+      <%= link_to t("account.show.erase_account_link"), users_registrations_delete_form_path, class: "delete" %>
     </div>
 
-    <span class="avatar-title header-bg" > <%=  @account.name[0].try(:upcase) %></span>
+    <span class="avatar-title header-bg" > <%=  @account.name[0].try(:upcase) if @account %></span>
 
-    <h2 class="inline-block"><%= t("account.show.title") %></h2>
+    <h3 class="inline-block"><%= t("account.show.title") %></h3>
 
     <%= form_for @account, as: :account, url: account_path do |f| %>
       <%= render "shared/errors", resource: @account %>
@@ -14,7 +14,7 @@
       <div class="row">
         <div class="small-12 medium-5 column">
 
-          <h2><%= t("account.show.personal")%></h2>
+          <h4><%= t("account.show.personal")%></h4>
 
           <div class="small-12 medium-10">
             <% if @account.organization? %>
@@ -46,12 +46,12 @@
               </span>
             <% end %>
           </div>
-          <br>       
+          <br>
         </div>
 
         <div class="user-permissions small-12 medium-7 column">
         <% if @account.email.present? %>
-            <h2><%= t("account.show.notifications")%></h2>
+            <h4><%= t("account.show.notifications")%></h4>
 
             <div>
               <%= f.label :email_on_comment do %>

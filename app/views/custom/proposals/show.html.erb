@@ -18,10 +18,10 @@
       <div class="small-12 medium-9 column">
         <%= back_link_to %>
 
-        <h1>
+        <h2>
           <%= @proposal.title %>
           <%= link_to t("proposals.show.download_pdf"), show_pdf_proposal_path(@proposal, :format => :pdf), class: 'button pull-right', target: '_blank' %>
-        </h1>
+        </h2>
 
         <% if @proposal.retired? %>
           <div data-alert class="callout alert margin-top proposal-retired">
