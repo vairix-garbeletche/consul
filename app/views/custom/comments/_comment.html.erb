@@ -19,7 +19,7 @@
           <% elsif comment.user.organization? %>
             <%= image_tag("avatar_collective.png", size: 32, class: "avatar float-left") %>
           <% else %>
-           <span class="avatar-mini header-bg" > <%=  @account.name[0].try(:upcase) %></span>
+           <span class="avatar-mini header-bg" > <%=  @account.name[0].try(:upcase) if @account %></span>
           <% end %>
         <% end %>
 
