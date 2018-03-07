@@ -11,7 +11,7 @@
     <% end %>
     <% if feature?(:proposals) %>
       <li>
-        <%= layout_menu_link_to t("layouts.header.proposals"),
+        <%= layout_menu_link_to "PROPUESTAS",
                                 proposals_path,
                                 controller_name == 'proposals',
                                 accesskey: "2",
@@ -19,7 +19,7 @@
       </li>
     <% end %>
     <li>
-        <%=link_to "Consulta Pública",
+        <%=link_to "CONSULTA PÚBLICA",
                                 "/consulta-publica",
                                 accesskey: "3" %>
     </li>
@@ -58,7 +58,7 @@
       </li>
     <% end %>
     <li>
-      <%= link_to t("layouts.header.more_info"),
+      <%= link_to "MAS INFORMACIÓN",
                     more_info_path,
                     accesskey: "5",
                     class: ("active" if current_page?(more_info_path)),
