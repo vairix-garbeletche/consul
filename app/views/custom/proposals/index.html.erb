@@ -47,9 +47,9 @@
       <% if @featured_proposals.present? %>
         <div id="featured-proposals" class="row featured-proposals">
           <div class="small-12 column">
-            <h2>
+            <h3>
               <%= t("proposals.index.featured_proposals") %>
-            </h2>
+            </h3>
           </div>
           <% @featured_proposals.each do |featured_proposal| %>
             <%= render "featured_proposal", proposal: featured_proposal %>

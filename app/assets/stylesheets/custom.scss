@@ -52,12 +52,33 @@ a:focus {
 	color: #fff;
 }
 
-.m-big-text{
+.small-margin-right{
+	margin-right: 10px;
+}
+
+.subnavigation a {
+    font-weight: 300;
+}
+
+.m-big-title{
 	font-size: 32px;
+}
+
+.m-big-text{
+	font-size: 28px;
+	font-weight: 100 !important;
+}
+
+.proposal-title {
+	font-size: 1.4rem !important;
 }
 
 .big-p{
 	font-size: 18px;
+}
+
+.big-date{
+	font-size: 16px;
 }
 
 p{
