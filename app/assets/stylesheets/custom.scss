@@ -4,6 +4,74 @@
 // * Spanish: https://github.com/consul/consul/blob/master/CUSTOMIZE_ES.md#css
 //
 
+h2{
+	font-size: 32px;
+	color: #08296c;
+}
+
+h3 {
+	color: #08296c;
+}
+
+h4{
+	font-size: 22px;
+}
+
+h4 a {
+	color: black;
+}
+
+.padding-top-10 {
+	padding-top: 10px;
+}
+
+.proposal-show h2{
+	font-size: 26px;
+	color: black;
+}
+
+.proposal-show h3{
+	font-size: 26px;
+	color: black;
+}
+
+.jumbo.light {
+	background-color: #e7f2fc;
+}
+
+ul.menu.vertical.margin-top li {
+	margin-left: 6px;
+  font-size: 16px;
+}
+
+ul.menu.vertical.margin-top {
+  background-color: #e7f2fc;
+}
+
+.privacy h5{
+	font-weight: 100;
+}
+
+.proposal-form .recommendations li::before, .document-form .recommendations li::before, .topic-form .recommendations li::before, .topic-new .recommendations li::before {
+	color: black;
+}
+
+.conditions ul li, .privacy ul li {
+	font-size: 0.9rem;
+}
+
+.account .delete {
+	color: black;
+}
+
+.total-supports{
+	font-weight: 500 !important;
+}
+
+.account span {
+	font-size: 14px;
+}
+
 footer{
   background-color: #fff;
   border-top: 6px solid #fff;
@@ -14,7 +82,7 @@ footer{
 }
 
 .avatar-title{
-  font-size: 44px;
+  font-size: 32px;
   color: white;
   padding: 5px 15px;
   border-radius: 65px;
@@ -34,6 +102,7 @@ footer{
 .footer {
   background: #fff;
   border-top: 6px solid #fff;
+  padding-top: 3.5rem;
 }
 
 a:focus {
@@ -61,11 +130,11 @@ a:focus {
 }
 
 .m-big-title{
-	font-size: 32px;
+	font-size: 30px;
 }
 
 .m-big-text{
-	font-size: 28px;
+	font-size: 25px;
 	font-weight: 100 !important;
 }
 
@@ -78,11 +147,11 @@ a:focus {
 }
 
 .big-date{
-	font-size: 16px;
+	font-size: 14px;
 }
 
 p{
-	font-size: 0.8rem;
+	font-size: 0.9rem;
 }
 
 .body-link:hover {
@@ -146,8 +215,8 @@ a:hover, a:focus {
     margin-top: 0;
 }
 
-.footer-15rem {
-    margin-top: 15rem;
+.footer-5rem {
+  margin-top: 8rem;
 }
 
 .small-margin-right-30{
@@ -409,6 +478,10 @@ a:focus {
 		margin-top: 20px;
 		float: left !important;
 	}
+
+	.footer {
+		padding-top: 0.5rem;
+	}
 }
 
 @media (min-width: 100px) and (max-width: 375px) {
@@ -432,6 +505,7 @@ a:focus {
 	.condition-and-privacy-small {
 	  display: block;
 	}
+
 }
 
 
@@ -451,15 +525,23 @@ a:focus {
 	.presidencia-margin{
 		margin-right: 60px;
 	}
+
+	.m-big-title{
+		font-size: 24px !important;
+	}
+
 }
 
+.m-big-title-blue {
+	color: #08296c;
+}
 
 .pull-right {
   float: right;
 }
 
 .accept-terms-text{
-	font-size: 0.8rem;
+	font-size: 0.9rem;
 }
 
 .terms-and-conditions label {
