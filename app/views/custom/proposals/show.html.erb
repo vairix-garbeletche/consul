@@ -55,16 +55,17 @@
           <% end %>
 
         </div>
-
-        <%= render_image(@proposal.image, :large, true) if @proposal.image.present? %>
-
-        <br>
         <p>
           <%= t("proposals.show.code") %>
           <strong><%= @proposal.code %></strong>
         </p>
 
         <blockquote><%= @proposal.summary %></blockquote>
+        <%= render_image(@proposal.image, :large, false) if @proposal.image.present? %>
+
+        <br>
+
+        <%= safe_html_with_links @proposal.description %>
 
         <% if @proposal.video_url.present? %>
           <div class="small-12 medium-7 small-centered">
@@ -73,8 +74,6 @@
             </div>
           </div>
         <% end %>
-
-        <%= safe_html_with_links @proposal.description %>
 
         <% if feature?(:map) && map_location_available?(@proposal.map_location) %>
           <div class="margin">
