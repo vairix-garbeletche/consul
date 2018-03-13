@@ -25,20 +25,20 @@
         </div>
       </div>
 
-      <div class="row">
+      <div>
         <% if can? :comment_as_moderator, commentable %>
-          <div class="">
+          <div class="pull-right">
             <%= f.check_box :as_moderator, title: t('comments.form.comment_as_moderator'), id: "comment-as-moderator-#{css_id}", label: false %>
             <%= label_tag "comment-as-moderator-#{css_id}", t("comments.form.comment_as_moderator"), class: "checkbox" %>
           </div>
         <% end %>
         <% if can? :comment_as_administrator, commentable %>
-          <div class="">
+          <div class="pull-right">
             <%= f.check_box :as_administrator, title: t('comments.form.comment_as_admin'), id: "comment-as-administrator-#{css_id}",label: false %>
             <%= label_tag "comment-as-administrator-#{css_id}", t("comments.form.comment_as_admin"), class: "checkbox" %>
           </div>
         <% end %>
-        <%= f.submit comment_button_text(parent_id, commentable), class: "button pull-right", id: "publish_comment" %>
+        <%= f.submit comment_button_text(parent_id, commentable), class: "button", id: "publish_comment" %>
 
       </div>
 
