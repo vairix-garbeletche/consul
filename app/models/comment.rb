@@ -10,6 +10,7 @@ class Comment < ActiveRecord::Base
 
   COMMENTABLE_TYPES = %w(Debate Proposal Budget::Investment Poll Topic Legislation::Question Legislation::Annotation Legislation::Proposal).freeze
   STATUS = {pending: 1, aproved: 2, disaproved: 3}
+  AUTHOR_TYPES = {personal_title: 0, state_organism: 1, organized_society: 2, academy: 3, private_sector: 4}
 
   acts_as_paranoid column: :hidden_at
   include ActsAsParanoidAliases
@@ -24,6 +25,8 @@ class Comment < ActiveRecord::Base
   validates :commentable_type, inclusion: { in: COMMENTABLE_TYPES }
 
   validate :validate_body_length
+
+  validates :organism, presence: true, if: -> {author_type != AUTHOR_TYPES[:personal_title]}
 
   belongs_to :commentable, -> { with_hidden }, polymorphic: true, counter_cache: true
   belongs_to :user, -> { with_hidden }
@@ -59,11 +62,12 @@ class Comment < ActiveRecord::Base
 
   after_create :call_after_commented
 
-  def self.build(commentable, user, body, p_id = nil)
+  def self.build(commentable, user, body, p_id = nil, author_type)
     new commentable: commentable,
         user_id:     user.id,
         body:        body,
-        parent_id:   p_id
+        parent_id:   p_id,
+        author_type:   author_type
   end
 
   def self.find_commentable(c_type, c_id)

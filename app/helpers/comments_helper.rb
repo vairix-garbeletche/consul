@@ -97,4 +97,8 @@ module CommentsHelper
     end
   end
 
+  def author_type_select_options
+    Comment::AUTHOR_TYPES.map { |v| [ t("comments.form.#{v[0]}"), v[1] ] }
+  end
+
 end

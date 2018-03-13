@@ -61,7 +61,10 @@ App.Comments =
         false
       )
 
-    $('body .float-right [id^=comment-as-organism]').unbind('click').on 'click', (e) ->
+    $('[id^=comment-as-organism]').change ->
         text_field_id = "#{$(this).context.id}-name"
         console.debug(text_field_id)
-        $("##{text_field_id}").toggle('slow')
+        if ($(this).val()) > 0
+          $("##{text_field_id}").show('slow')
+        else
+          $("##{text_field_id}").hide('slow')

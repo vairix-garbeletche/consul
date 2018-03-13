@@ -45,12 +45,12 @@ class CommentsController < ApplicationController
   private
 
     def comment_params
-      params.require(:comment).permit(:commentable_type, :commentable_id, :parent_id, :body, :as_moderator, :as_administrator, :organism, :as_organism,
+      params.require(:comment).permit(:commentable_type, :commentable_id, :parent_id, :body, :as_moderator, :as_administrator, :organism, :author_type,
                                       documents_attributes: [:id, :title, :attachment, :cached_attachment, :user_id, :_destroy])
     end
 
     def build_comment
-      @comment = Comment.build(@commentable, current_user, comment_params[:body], comment_params[:parent_id].presence)
+      @comment = Comment.build(@commentable, current_user, comment_params[:body], comment_params[:parent_id].presence, comment_params[:author_type])
       if comment_params[:documents_attributes]
         @comment.documents_attributes = comment_params[:documents_attributes]
       end
@@ -81,7 +81,7 @@ class CommentsController < ApplicationController
     end
 
     def organism_comment?
-      ["1", true].include?(comment_params[:as_organism])
+      comment_params[:as_organism] != Comment::AUTHOR_TYPES[:personal_title]
     end
 
     def add_notification(comment)
