@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180307130016) do
+ActiveRecord::Schema.define(version: 20180313083649) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -250,6 +250,7 @@ ActiveRecord::Schema.define(version: 20180307130016) do
     t.integer  "confidence_score",   default: 0, null: false
     t.string   "organism"
     t.integer  "status",             default: 1, null: false
+    t.integer  "author_type",        default: 0
   end
 
   add_index "comments", ["ancestry"], name: "index_comments_on_ancestry", using: :btree
@@ -860,6 +861,7 @@ ActiveRecord::Schema.define(version: 20180307130016) do
     t.string   "retired_reason"
     t.text     "retired_explanation"
     t.integer  "community_id"
+    t.integer  "author_type",                    default: 0
   end
 
   add_index "proposals", ["author_id", "hidden_at"], name: "index_proposals_on_author_id_and_hidden_at", using: :btree

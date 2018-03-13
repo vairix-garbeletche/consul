@@ -2,7 +2,7 @@ es:
   activerecord:
     attributes:
       comment:
-        organism: "Organismo | Sociedad Civil | Academia | Sector Privado"
+        organism: Nombre de la institución
       user:
         login: "Email o alias"
         username: "Alias"

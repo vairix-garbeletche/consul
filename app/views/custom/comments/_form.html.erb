@@ -5,36 +5,43 @@
     <%= form_for @comment, remote: true do |f| %>
       <%= label_tag "comment-body-#{css_id}", leave_comment_text(commentable) %>
       <%= f.text_area :body, id: "comment-body-#{css_id}", maxlength: Comment.body_max_length, label: false %>
-      <div id="<%= "comment-as-organism-#{css_id}-name"%>" style="display: none;">
-        <%= f.text_field :organism %>
+      <div class="row">
+        <div class="small-12 medium-6 column">
+          <%= f.label :author_type,  t('comments.form.author_type') %>
+          <%= f.select :author_type, author_type_select_options, {label: false}, id: "comment-as-organism-#{css_id}" %>
+          <div id="<%= "comment-as-organism-#{css_id}-name"%>" style="display: none;">
+            <%= f.text_field :organism %>
+          </div>
+        </div>
       </div>
+
       <%= f.hidden_field :commentable_type, value: commentable.class.name %>
       <%= f.hidden_field :commentable_id, value: commentable.id %>
       <%= f.hidden_field :parent_id, value: parent_id %>
 
-      <div class="documents small-12 column">
-        <%= render 'documents/nested_documents.html.erb', documentable: @comment, f: f, parent_id: css_id %>
+      <div class="row">
+        <div class="documents small-12 column">
+          <%= render 'documents/nested_documents.html.erb', documentable: @comment, f: f, parent_id: css_id %>
+        </div>
       </div>
 
-      <%= f.submit comment_button_text(parent_id, commentable), class: "button", id: "publish_comment" %>
+      <div>
+        <% if can? :comment_as_moderator, commentable %>
+          <div class="pull-right">
+            <%= f.check_box :as_moderator, title: t('comments.form.comment_as_moderator'), id: "comment-as-moderator-#{css_id}", label: false %>
+            <%= label_tag "comment-as-moderator-#{css_id}", t("comments.form.comment_as_moderator"), class: "checkbox" %>
+          </div>
+        <% end %>
+        <% if can? :comment_as_administrator, commentable %>
+          <div class="pull-right">
+            <%= f.check_box :as_administrator, title: t('comments.form.comment_as_admin'), id: "comment-as-administrator-#{css_id}",label: false %>
+            <%= label_tag "comment-as-administrator-#{css_id}", t("comments.form.comment_as_admin"), class: "checkbox" %>
+          </div>
+        <% end %>
+        <%= f.submit comment_button_text(parent_id, commentable), class: "button", id: "publish_comment" %>
 
-      <% if can? :comment_as_moderator, commentable %>
-        <div class="float-right">
-          <%= f.check_box :as_moderator, title: t('comments.form.comment_as_moderator'), id: "comment-as-moderator-#{css_id}", label: false %>
-          <%= label_tag "comment-as-moderator-#{css_id}", t("comments.form.comment_as_moderator"), class: "checkbox" %>
-        </div>
-      <% end %>
-      <% if can? :comment_as_administrator, commentable %>
-        <div class="float-right">
-          <%= f.check_box :as_administrator, title: t('comments.form.comment_as_admin'), id: "comment-as-administrator-#{css_id}",label: false %>
-          <%= label_tag "comment-as-administrator-#{css_id}", t("comments.form.comment_as_admin"), class: "checkbox" %>
-        </div>
-      <% end %>
-
-      <div class="float-right">
-        <%= f.check_box :as_organism, title: t('comments.form.comment_as_organism'), id: "comment-as-organism-#{css_id}",label: false %>
-        <%= label_tag "comment-as-organism-#{css_id}", t("comments.form.comment_as_organism"), class: "checkbox comment-by-organism" %>
       </div>
+
 
     <% end %>
   </div>

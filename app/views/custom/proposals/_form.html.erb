@@ -87,10 +87,17 @@
     </div>
 
     <div class="small-12 column">
-      <%= f.label :responsible_name, t("proposals.form.proposal_responsible_name") %>
-      <p class="help-text" id="responsible-name-help-text"><%= t("proposals.form.proposal_responsible_name_note") %></p>
-      <%= f.text_field :responsible_name, placeholder: t("proposals.form.proposal_responsible_name"), label: false,
-                                          aria: {describedby: "responsible-name-help-text"} %>
+      <div class="row">
+        <div class="small-12 medium-6 column">
+          <%= f.label :author_type,  t('comments.form.author_type') %>
+          <%= f.select :author_type, author_type_select_options, {label: false}, id: "publish-as-organism" %>
+        </div>
+      </div>
+      <div id="responsible-row" <% if @proposal.author_type == 0 %>style="display: none;" <% end %>>
+        <%= f.label :responsible_name, t("proposals.form.proposal_responsible_name") %>
+        <%= f.text_field :responsible_name, placeholder: t("proposals.form.proposal_responsible_name"), label: false,
+                                            aria: {describedby: "responsible-name-help-text"} %>
+      </div>
     </div>
 
     <div class="small-12 column terms-and-conditions">

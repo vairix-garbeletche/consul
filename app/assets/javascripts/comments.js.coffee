@@ -60,8 +60,3 @@ App.Comments =
         $(this).children('.js-child-toggle').toggle()
         false
       )
-
-    $('body .float-right [id^=comment-as-organism]').unbind('click').on 'click', (e) ->
-        text_field_id = "#{$(this).context.id}-name"
-        console.debug(text_field_id)
-        $("##{text_field_id}").toggle('slow')
