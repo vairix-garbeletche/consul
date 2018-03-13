@@ -60,11 +60,3 @@ App.Comments =
         $(this).children('.js-child-toggle').toggle()
         false
       )
-
-    $('[id^=comment-as-organism]').change ->
-        text_field_id = "#{$(this).context.id}-name"
-        console.debug(text_field_id)
-        if ($(this).val()) > 0
-          $("##{text_field_id}").show('slow')
-        else
-          $("##{text_field_id}").hide('slow')

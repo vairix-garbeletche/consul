@@ -119,6 +119,7 @@ var initialize_modules = function() {
   App.InvestmentReportAlert.initialize();
   App.Proposals.initialize();
   App.CustomDocumentable.initialize();
+  App.CustomComments.initialize();
 };
 
 $(function(){

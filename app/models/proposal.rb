@@ -26,6 +26,7 @@ class Proposal < ActiveRecord::Base
   include ActsAsParanoidAliases
 
   RETIRE_OPTIONS = %w(duplicated started unfeasible done other)
+  AUTHOR_TYPES = {personal_title: 0, state_organism: 1, organized_society: 2, academy: 3, private_sector: 4}
 
   belongs_to :author, -> { with_hidden }, class_name: 'User', foreign_key: 'author_id'
   belongs_to :geozone
@@ -44,6 +45,8 @@ class Proposal < ActiveRecord::Base
   validates :terms_of_service, acceptance: { allow_nil: false }, on: :create
 
   validate :valid_video_url?
+
+  validates :responsible_name, presence: true, if: -> {author_type != AUTHOR_TYPES[:personal_title]}
 
   before_save :calculate_hot_score, :calculate_confidence_score
 

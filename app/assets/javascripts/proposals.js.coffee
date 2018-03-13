@@ -13,4 +13,11 @@ App.Proposals =
   initialize: ->
     App.Proposals.hoverize "div.proposals-create"
     App.Proposals.hoverize "div.proposal-edit"
+
+    $('#publish-as-organism').change ->
+      if ($(this).val()) > 0
+        $("#responsible-row").show('slow')
+      else
+        $("#responsible-row").hide('slow')
+
     false
