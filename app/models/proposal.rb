@@ -171,6 +171,10 @@ class Proposal < ActiveRecord::Base
     retired_at.present?
   end
 
+  def permit_delete_or_edit?
+    !(comments.count > 0 || total_votes > 0)
+  end
+
   def register_vote(user, vote_value)
     if votable_by?(user) && !archived?
       vote_by(voter: user, vote: vote_value)
@@ -225,7 +229,7 @@ class Proposal < ActiveRecord::Base
   end
 
   def self.proposals_orders(user)
-    orders = %w{hot_score confidence_score created_at relevance}
+    orders = %w{hot_score created_at relevance}
     orders
   end
 

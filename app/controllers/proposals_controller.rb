@@ -11,14 +11,17 @@ class ProposalsController < ApplicationController
   before_action :validate_settings, only: [:new, :create]
   before_action :validate_date, only: [:new, :create, :edit]
 
+
   feature_flag :proposals
 
   invisible_captcha only: [:create, :update], honeypot: :subtitle
 
   has_orders ->(c) { Proposal.proposals_orders(c.current_user) }, only: :index
-  has_orders %w{most_voted newest oldest}, only: [:show, :show_pdf]
+  has_orders %w{newest oldest}, only: [:show, :show_pdf]
 
   load_and_authorize_resource
+  before_action :check_permit_edit, only: :update
+
   helper_method :resource_model, :resource_name
   respond_to :html, :js
 
@@ -66,10 +69,14 @@ class ProposalsController < ApplicationController
   end
 
   def retire
-    if valid_retired_params? && @proposal.update(retired_params.merge(retired_at: Time.current))
-      redirect_to proposal_path(@proposal), notice: t('proposals.notice.retired')
+    if @proposal.permit_delete_or_edit?
+      if valid_retired_params? && @proposal.update(retired_params.merge(retired_at: Time.current))
+        redirect_to proposal_path(@proposal), notice: t('proposals.notice.retired')
+      else
+        render action: :retire_form
+      end
     else
-      render action: :retire_form
+      redirect_to proposal_path(@proposal), notice: "No se puede retirar esta propuesta porque ya ha recibido apoyos o comentarios."
     end
   end
 
@@ -160,6 +167,12 @@ class ProposalsController < ApplicationController
     def validate_date
       unless Proposal.in_active_period?
         redirect_to proposals_path, notice: t('proposals.inactive', date_from: @proposal_date_from, date_to: @proposal_date_to)
+      end
+    end
+
+    def check_permit_edit
+      if @proposal && !@proposal.permit_delete_or_edit?
+        redirect_to proposal_path(@proposal), notice: "No se puede editar esta propuesta porque ya ha recibido apoyos o comentarios."
       end
     end
 

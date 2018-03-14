@@ -12,6 +12,14 @@ module ImageablesHelper
     bytes_to_megabytes(Image::MAX_IMAGE_SIZE)
   end
 
+  def min_width
+    Image::MIN_SIZE.to_s
+  end
+
+  def min_height
+    Image::MIN_HEIGHT.to_s
+  end
+
   def bytes_to_megabytes(bytes)
     bytes / Numeric::MEGABYTE
   end
@@ -34,7 +42,10 @@ module ImageablesHelper
 
   def imageables_note(_imageable)
     t "images.form.note", accepted_content_types: imageable_humanized_accepted_content_types,
-                          max_file_size: imageable_max_file_size
+                          max_file_size: imageable_max_file_size,
+                          min_width: min_width,
+                          min_height: min_height
+
   end
 
 end

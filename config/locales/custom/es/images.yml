@@ -1,0 +1,5 @@
+es:
+  images:
+    remove_image: Eliminar imagen
+    form:
+      note: 'Puedes subir una imagen en los formatos: %{accepted_content_types}, y de hasta %{max_file_size} MB por archivo. La imagén debe ser de %{min_width}px de largo y %{min_height}px de alto para que se visualice correctamente'

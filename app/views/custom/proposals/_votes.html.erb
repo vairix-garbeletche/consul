@@ -10,7 +10,7 @@
       </div>
     <% elsif author_of_proposal?(proposal)%>
       <div class="supported callout success">
-        Los autores no pueden votar su propia propuesta
+        Los autores no pueden apoyar su propia propuesta
       </div>
     <% elsif user_signed_in? && proposal.votable_by?(current_user)%>
       <%= link_to vote_url,

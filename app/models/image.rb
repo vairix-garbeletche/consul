@@ -3,11 +3,12 @@ class Image < ActiveRecord::Base
   include ImageablesHelper
 
   TITLE_LEGHT_RANGE = 4..80
-  MIN_SIZE = 475
+  MIN_SIZE = 280
+  MIN_HEIGHT = 490
   MAX_IMAGE_SIZE = 1.megabyte
   ACCEPTED_CONTENT_TYPE = %w(image/jpeg image/jpg image/png).freeze
 
-  has_attached_file :attachment, styles: { large: "x#{MIN_SIZE}", medium: "300x300#", thumb: "140x245#" },
+  has_attached_file :attachment, styles: { large: "280x490#", medium: "280x490#", thumb: "140x245#" },
                                  url: "/system/:class/:prefix/:style/:hash.:extension",
                                  hash_data: ":class/:style",
                                  use_timestamp: false,
@@ -70,7 +71,7 @@ class Image < ActiveRecord::Base
       if attachment_of_valid_content_type?
         dimensions = Paperclip::Geometry.from_file(attachment.queued_for_write[:original].path)
         errors.add(:attachment, :min_image_width, required_min_width: MIN_SIZE) if dimensions.width < MIN_SIZE
-        errors.add(:attachment, :min_image_height, required_min_height: MIN_SIZE) if dimensions.height < MIN_SIZE
+        errors.add(:attachment, :min_image_height, required_min_height: MIN_HEIGHT) if dimensions.height < MIN_HEIGHT
       end
     end
 

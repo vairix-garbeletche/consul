@@ -176,8 +176,8 @@ a:focus {
 }
 
 a:hover, a:focus {
-    color: none !important;
-  }
+
+}
 
 .proposals-create, .proposal-edit{
   position: relative;
@@ -559,4 +559,22 @@ a:focus {
 
 .proposal-show .persisted-image {
   max-width: 70%;
+}
+
+.more-info-sidebar .sidebar-card {
+	border: none;
+}
+
+.link-proposal-home a {
+	background: #e7f2fc;
+  color: #08296c;
+}
+
+.link-proposal-home a:hover {
+	background: #08296c;
+  color: #fff;
+}
+
+.link-proposal-home {
+	text-align: center;
 }
