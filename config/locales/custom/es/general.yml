@@ -61,3 +61,6 @@ es:
   account:
     show:
       username_label: Alias
+  omniauth:
+    finish_signup:
+      username_warning: "Es posible que tu alias o correo electrónico aparezcan como 'ya en uso' o no hayas confirmado tu cuenta a traves del mensaje enviado a tu correo electrónico. Vuelve a ingresar tu correo electrónico o alias para confirmar tu cuenta y haz clic en registrarse."

@@ -1,7 +1,24 @@
 <% provide :title do %><%= t("devise_views.sessions.new.title") %><% end %>
-<h2>Regístrate</h2>
-
-<%= render 'devise/omniauth_form' %>
+<h2>Iniciar sesión / Registrarse</h2>
+<p> Si no tiene una cuenta por favor haga clic en</p>
+<% if feature? :saml_login %>
+  <div class="small-12 medium-6 large-4 column end">
+    <%= link_to "Registrase", user_omniauth_authorize_path(:saml),
+                            title: "Registrase",
+                            class: "button expanded" %>
+  </div>
+<% end %>
+<% render 'devise/omniauth_form' %>
+<br><br><br><br>
+<p>Para acceder a la plataforma haga clic en
+<% if feature? :saml_login %>
+  <div class="small-12 medium-6 large-4 column end">
+    <%= link_to "Iniciar sesión", user_omniauth_authorize_path(:saml),
+                            title: "Iniciar sesión",
+                            class: "button expanded" %>
+  </div>
+<% end %>
+<br><br><br><br>
 <% if params[:login_admin] %>
 <p>
   <%= t("devise_views.shared.links.signup",

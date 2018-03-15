@@ -1,0 +1,6 @@
+es:
+  devise:
+    confirmations:
+      confirmed: "Tu cuenta ha sido confirmada. Para acceder a la plataforma de Gestión de Propuestas y Consulta Pública haga clic en Iniciar Sesión."
+    omniauth_callbacks:
+      success: ""
