@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
   validate :validate_username_length
 
   validates :official_level, inclusion: {in: 0..5}
-  validates :terms_of_service, acceptance: { allow_nil: false }, on: :create
+  validates :terms_of_service, inclusion: { in: [ true ], message: "Debe aceptar" }
 
   validates_associated :organization, message: false
 
@@ -87,7 +87,7 @@ class User < ActiveRecord::Base
         username:  username,
         email: oauth_email,
         oauth_email: oauth_email,
-        terms_of_service: '1',
+        #terms_of_service: '1',
         password: Devise.friendly_token[0, 20],
         first_name: first_name,
         last_name:  user_attributes['SegundoNombre'].blank? ? '' : user_attributes['SegundoNombre'][0],

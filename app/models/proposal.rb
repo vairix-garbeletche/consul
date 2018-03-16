@@ -42,7 +42,7 @@ class Proposal < ActiveRecord::Base
   validates :description, length: { maximum: Proposal.description_max_length }
   validates :retired_reason, inclusion: { in: RETIRE_OPTIONS, allow_nil: true }
 
-  validates :terms_of_service, acceptance: { allow_nil: false }, on: :create
+  #validates :terms_of_service, acceptance: { allow_nil: false }, on: :create
 
   validate :valid_video_url?
 

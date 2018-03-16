@@ -5,4 +5,5 @@ es:
         organism: Nombre de la institución
       user:
         login: "Email o alias"
-        username: "Alias"
+        username: "* Alias"
+        email: "* Correo electrónico"
