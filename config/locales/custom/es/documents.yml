@@ -1,4 +1,4 @@
 es:
   documents:
     form:
-      note: 'Puedes subir %{max_documents_allowed} documento con el formato: %{accepted_content_types}, y de hasta %{max_file_size} MB.'
+      note: 'Es posible subir %{max_documents_allowed} documento en formato %{accepted_content_types}, y de hasta %{max_file_size} MB.<br>Sólo se considerarán aquellos documentos adjuntos que aporten información específica y concreta que contribuya a esclarecer y justificar los comentarios realizados (máximo 3 páginas)'

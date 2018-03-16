@@ -29,9 +29,9 @@ module DocumentablesHelper
   end
 
   def documentables_note(documentable)
-    t "documents.form.note", max_documents_allowed: max_documents_allowed(documentable),
+    (t "documents.form.note", max_documents_allowed: max_documents_allowed(documentable),
                              accepted_content_types: documentable_humanized_accepted_content_types(documentable.class),
-                             max_file_size: max_file_size(documentable.class)
+                             max_file_size: max_file_size(documentable.class)).html_safe
   end
 
   def max_documents_allowed?(documentable)
