@@ -22,7 +22,7 @@ es:
     comments:
       pending_aproval: Su comentario quedará pendiente de aprobación por los moderadores
     form:
-      proposal_responsible_name: Nombre de la institución
+      proposal_responsible_name: "* Nombre de la institución"
       proposal_responsible_name_note: '(Si ustede esta publicando en nombre de un "Organismo | Sociedad Civil | Academia | Sector Privado" indique el nombre del mismo)'
       geozone: Ámbito de actuación
       proposal_external_url: Enlace a documentación adicional
@@ -44,8 +44,8 @@ es:
       map_skip_checkbox: "Esta propuesta no tiene una ubicación concreta o no la conozco."
   comments:
     form:
-      comment_as_organism: Nombre de la institución
-      author_type: "En representación de"
+      comment_as_organism: "Nombre de la institución"
+      author_type: "* En representación de"
       personal_title: "A título personal"
       state_organism: "Organismo de Estado"
       organized_society: "Sociedad organizada"

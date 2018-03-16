@@ -2,7 +2,7 @@ es:
   activerecord:
     attributes:
       comment:
-        organism: Nombre de la institución
+        organism: "* Nombre de la institución"
       user:
         login: "Email o alias"
         username: "* Alias"

@@ -15,7 +15,7 @@ class Proposal < ActiveRecord::Base
   include Mappable
   include Notifiable
   include Documentable
-  documentable max_documents_allowed: 3,
+  documentable max_documents_allowed: 1,
                max_file_size: 3.megabytes,
                accepted_content_types: [ "application/pdf" ]
   include EmbedVideosHelper

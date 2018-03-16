@@ -4,3 +4,5 @@ es:
       confirmed: "Tu cuenta ha sido confirmada. Para acceder a la plataforma de Gestión de Propuestas y Consulta Pública haga clic en Iniciar Sesión."
     omniauth_callbacks:
       success: ""
+    registrations:
+      destroyed: "Su usuario de la plataforma ha sido eliminado, le recordamos que su IDUruguay sigue activo por lo cual esperamos verlo pronto. Le informamos que de conformidad con su petición, sus datos personales registrados como usuario de la plataforma  han sido suprimidos  de acuerdo con lo previsto en el  articulo 15 de la Ley N° 18.331, de 11 de agosto de 2008 y su Decreto reglamentario N° 414/009, de 31 de agosto de 2009."

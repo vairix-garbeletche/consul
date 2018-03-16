@@ -47,8 +47,6 @@
           <%= l @proposal.created_at.to_date %>
         </div>
 
-        <%= render_pdf_image(@proposal.image, :large, true) if @proposal.image.present? %>
-
         <br>
         <p>
           <%= t("proposals.show.code") %>
@@ -57,29 +55,11 @@
 
         <blockquote><%= @proposal.summary %></blockquote>
 
-        <% if @proposal.video_url.present? %>
-          <div class="small-12 medium-7 small-centered">
-            <div class="flex-video">
-              <div id="js-embedded-video" data-video-code="<%= embedded_video_code %>"></div>
-            </div>
-          </div>
-        <% end %>
-
         <%= safe_html_with_links @proposal.description %>
 
         <% if feature?(:map) && map_location_available?(@proposal.map_location) %>
           <div class="margin">
             <%= render_map(@proposal.map_location, "proposal", false, nil) %>
-          </div>
-        <% end %>
-
-        <% if @proposal.external_url.present? %>
-          <div class="document-link">
-            <p>
-              <span class="icon-document"></span>&nbsp;
-              <strong><%= t('proposals.show.title_external_url') %></strong>
-            </p>
-              <%= text_with_links @proposal.external_url %>
           </div>
         <% end %>
 
@@ -92,6 +72,16 @@
             <%= text_with_links @proposal.video_url %>
           </div>
 
+        <% end %>
+
+        <% if @proposal.external_url.present? %>
+          <div class="document-link">
+            <p>
+              <span class="icon-document"></span>&nbsp;
+              <strong><%= t('proposals.show.title_external_url') %></strong>
+            </p>
+              <%= text_with_links @proposal.external_url %>
+          </div>
         <% end %>
 
         <h4><%= @proposal.question %></h4>
