@@ -53,8 +53,10 @@
           <strong><%= @proposal.code %></strong>
         </p>
 
-        <blockquote><%= @proposal.summary %></blockquote>
-
+        <strong>Resumen:</strong><br>
+        <%= @proposal.summary %>
+        <br><br>
+        <strong>Texto desarrollado:</strong><br>
         <%= safe_html_with_links @proposal.description %>
 
         <% if feature?(:map) && map_location_available?(@proposal.map_location) %>

@@ -21,6 +21,8 @@ es:
       download_pdf: Descargar como PDF
     comments:
       pending_aproval: Su comentario quedará pendiente de aprobación por los moderadores
+    retire_form:
+      retired_explanation_placeholder: Explica brevemente por que vas a eliminar esta propuesta
     form:
       proposal_responsible_name: "* Nombre de la institución"
       proposal_responsible_name_note: '(Si ustede esta publicando en nombre de un "Organismo | Sociedad Civil | Academia | Sector Privado" indique el nombre del mismo)'
@@ -34,7 +36,7 @@ es:
       proposal_title: "* Título de la propuesta"
       proposal_video_url: Enlace a vídeo externo
       proposal_video_url_note: Puedes añadir un enlace a YouTube o Vimeo
-      tag_category_label: "Categorías"
+      tag_category_label: "* Categorías"
       tags_instructions: "Etiqueta esta propuesta. Puedes elegir entre las categorías propuestas o introducir las que desees"
       tags_label: Temas
       tags_placeholder: "Escribe las etiquetas que desees separadas por una coma (',')"
@@ -51,6 +53,7 @@ es:
       organized_society: "Sociedad organizada"
       academy: "Academia"
       private_sector: "Sector privado"
+      leave_comment: "* Deja tu comentario"
   geozones:
     none: Seleccione un Plan de acción
   form:
@@ -64,3 +67,13 @@ es:
   omniauth:
     finish_signup:
       username_warning: "Es posible que tu alias o correo electrónico aparezcan como 'ya en uso' o no hayas confirmado tu cuenta a traves del mensaje enviado a tu correo electrónico. Vuelve a ingresar tu correo electrónico o alias para confirmar tu cuenta y haz clic en registrarse."
+  related_content:
+    help: "Puedes introducir cualquier enlace de Propuestas que esté dentro de esta plataforma."
+  shared:
+    followable:
+      proposal:
+        create:
+          notice_html: "¡Ahora estás siguiendo esta propuesta! </br> Te notificaremos los cambios a medida que se produzcan para que estés al día."
+        destroy:
+          notice_html: "¡Has dejado de seguir esta propuesta! </br> Ya no recibirás más notificaciones relacionadas con esta propuesta."
+

@@ -34,10 +34,18 @@
                                      t("layouts.header.my_account_link") %>
   </li>
   <li>
+    <%= link_to "Contacto",
+                '/contacto', rel: "nofollow" %>
+  </li>
+  <li>
     <%= link_to t("devise_views.menu.login_items.logout"),
                 destroy_user_session_path, rel: "nofollow", method: :delete %>
   </li>
 <% else %>
+  <li>
+    <%= link_to "Contacto",
+                '/contacto', rel: "nofollow" %>
+  </li>
   <li>
     <%= link_to "Acceder",
                 new_user_session_path, rel: "nofollow" %>

@@ -7,3 +7,10 @@ es:
         login: "Email o alias"
         username: "* Alias"
         email: "* Correo electrónico"
+    errors:
+      models:
+        proposal:
+          attributes:
+            tag_list:
+              less_than_or_equal_to: "las categorías deben ser menor o igual que %{count}"
+

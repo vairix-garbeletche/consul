@@ -37,7 +37,7 @@ class Proposal < ActiveRecord::Base
   validates :summary, presence: true
   validates :geozone_id, presence: true
   validates :author, presence: true
-
+  validates :tag_list, presence: true
   validates :title, length: { in: 4..Proposal.title_max_length }
   validates :description, length: { maximum: Proposal.description_max_length }
   validates :retired_reason, inclusion: { in: RETIRE_OPTIONS, allow_nil: true }

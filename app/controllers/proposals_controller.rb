@@ -27,10 +27,14 @@ class ProposalsController < ApplicationController
 
   def show
     super
-    @notifications = @proposal.notifications
-    @related_contents = Kaminari.paginate_array(@proposal.relationed_contents).page(params[:page]).per(5)
+    if @proposal.retired_at.blank?
+      @notifications = @proposal.notifications
+      @related_contents = Kaminari.paginate_array(@proposal.relationed_contents).page(params[:page]).per(5)
 
-    redirect_to proposal_path(@proposal), status: :moved_permanently if request.path != proposal_path(@proposal)
+      redirect_to proposal_path(@proposal), status: :moved_permanently if request.path != proposal_path(@proposal)
+    else
+      redirect_to proposals_path, notice: 'La propuesta ha sido eliminada.'
+    end
   end
 
   def show_pdf

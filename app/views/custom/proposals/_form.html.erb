@@ -24,6 +24,7 @@
 
     <div class="ckeditor small-12 column">
       <%= f.label :description, t("proposals.form.proposal_text") %>
+      <p class="help-text">(máximo 2.500 caracteres)</p>
       <%= f.cktext_area :description, maxlength: Proposal.description_max_length, ckeditor: { language: I18n.locale }, label: false %>
     </div>
 
@@ -38,12 +39,6 @@
       <%= f.label :external_url, 'Enlace a información adicional' %>
       <%= f.text_field :external_url, placeholder: 'Enlace a información adicional', label: false %>
     </div>
-
-    <% if feature?(:allow_images) %>
-      <div class="images small-12 column">
-        <%= render 'images/nested_image.html.erb', imageable: @proposal, f: f %>
-      </div>
-    <% end %>
 
     <div class="documents small-12 column">
       <%= render 'documents/nested_documents.html.erb', documentable: @proposal, f: f %>

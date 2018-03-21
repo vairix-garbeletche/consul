@@ -20,6 +20,7 @@ class Document < ActiveRecord::Base
   validates :user_id, presence: true
   validates :documentable_id, presence: true,         if: -> { persisted? }
   validates :documentable_type, presence: true,       if: -> { persisted? }
+  validates :title, length: { in: 1..30 }
 
   before_save :set_attachment_from_cached_attachment, if: -> { cached_attachment.present? }
   after_save :remove_cached_attachment,               if: -> { cached_attachment.present? }

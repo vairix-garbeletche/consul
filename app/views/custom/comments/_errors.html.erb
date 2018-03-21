@@ -1,0 +1,16 @@
+<% if !@comment.blank? && @comment.errors.include?(:body) %>
+  <div data-alert class="callout alert error-comment">
+    Comentario <%= @comment.errors[:body][0] %>
+  </div>
+<% end %>
+<% if !@comment.blank? && @comment.errors.include?(:organism) %>
+  <div data-alert class="callout alert error-comment">
+   Institución <%= @comment.errors[:organism][0] %>
+  </div>
+<% end %>
+<% if !@comment.blank? && @comment.errors.include?(:'documents.title') %>
+  <div data-alert class="callout alert error-comment">
+   Título <%= @comment.errors[:'documents.title'][0] %>
+  </div>
+<% end %>
+

@@ -59,9 +59,10 @@
           <%= t("proposals.show.code") %>
           <strong><%= @proposal.code %></strong>
         </p>
-
-        <blockquote><%= @proposal.summary %></blockquote>
-
+        <strong>Resumen:</strong><br>
+        <%= @proposal.summary %>
+        <br><br>
+        <strong>Texto desarrollado:</strong><br>
         <%= safe_html_with_links @proposal.description %>
 
         <% if @proposal.video_url.present? %>
@@ -128,9 +129,9 @@
               <div class="proposal-edit">
                 <%= link_to "Eliminar",
                       retire_form_proposal_path(@proposal),
-                      class: 'button hollow expanded' %>
+                      class: 'button expanded' %>
                 <% if current_editable?(@proposal) %>
-                  <%= link_to edit_proposal_path(@proposal), class: 'button hollow expanded' do %>
+                  <%= link_to edit_proposal_path(@proposal), class: 'button expanded' do %>
                               <span class="icon-edit"></span>
                               <%= t("proposals.show.edit_proposal_link") %>
                   <% end %>
@@ -198,7 +199,6 @@
 
 <div class="tabs-content" data-tabs-content="proposals-tabs" role="tablist">
   <%= render "proposals/filter_subnav" %>
-  <%= render "proposals/notifications" %>
 
   <div class="tabs-panel is-active" id="tab-comments">
     <%= render "proposals/comments" %>
