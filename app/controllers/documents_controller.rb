@@ -5,13 +5,22 @@ class DocumentsController < ApplicationController
 
   def destroy
     respond_to do |format|
+      debugger
       format.html do
+        object_redirect = nil
+        if @document.documentable_type == "Comment"
+          object_redirect = @document.documentable.commentable
+        end
         if @document.destroy
           flash[:notice] = t "documents.actions.destroy.notice"
         else
           flash[:alert] = t "documents.actions.destroy.alert"
         end
-        redirect_to params[:from]
+        if object_redirect
+          redirect_to object_redirect
+        else
+          redirect_to params[:from]
+        end
       end
       format.js do
         if @document.destroy
