@@ -65,15 +65,9 @@
       <% end %>
     </li>
     <% unless child_comments_of(comment).empty? %>
-    <li>
-      <ul id="<%= dom_id(comment) %>_children" class="no-bullet comment-children">
         <% child_comments_of(comment).each do |child| %>
-          <li>
             <%= render 'comments/comment_pdf.html.erb', comment: child, inactive: local_assigns[:inactive] %>
-          </li>
         <% end %>
-      </ul>
-    </li>
     <% end %>
   </ul>
 <% end %>

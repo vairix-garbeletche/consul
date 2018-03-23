@@ -1,7 +1,10 @@
 <% cache [locale_and_user_status, commentable_cache_key(@proposal), @comments, @proposal.comments_count] do %>
   <div class="row comments">
     <div id="comments" class="small-12 column">
-      <% @comments.aproved.each do |comment| %>
+      <div class="comments-header">
+        <p>Comentarios<p>
+      </div>
+      <% @comment_tree.root_comments.each do |comment| %>
         <%= render 'comments/comment_pdf.html.erb', {comment: comment, inactive: !Proposal.in_active_period?} %>
       <% end %>
     </div>

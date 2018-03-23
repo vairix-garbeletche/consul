@@ -39,6 +39,7 @@ class ProposalsController < ApplicationController
   end
 
   def show_pdf
+    super
     @commentable = resource
     @comments = @commentable.comments.order(created_at: :desc)
     set_resource_instance

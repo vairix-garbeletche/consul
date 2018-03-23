@@ -2,10 +2,6 @@
   <div class="small-12 column">
     <% if documents.any? %>
       <%= render partial: "documents/document.html.erb", collection: documents, locals: {pdf: true} %>
-    <% else %>
-      <div class="callout primary text-center">
-        No hay documentos cargados en la propuesta
-      </div>
     <% end %>
   </div>
 </div>
