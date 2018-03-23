@@ -1,7 +1,9 @@
 <div class="row account">
   <div class="small-12 column">
     <div class="float-right text-right">
-      <%= link_to t("account.show.erase_account_link"), users_registrations_delete_form_path, class: "delete" %>
+      <% if current_user.can_delete_account? %>
+        <%= link_to t("account.show.erase_account_link"), users_registrations_delete_form_path, class: "delete" %>
+      <% end %>
     </div>
 
     <span class="avatar-title header-bg" > <%=  @account.name[0].try(:upcase) if @account %></span>

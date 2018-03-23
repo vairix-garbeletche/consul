@@ -34,7 +34,17 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
       identity = Identity.first_or_create_from_oauth(auth)
       if auth.provider == Identity::SAML_PROVIDER
-        @user = current_user || User.first_or_initialize_for_oauth_saml(auth, identity.try(:user))
+        if identity.user.blank? && !identity.user_id.blank?
+          user = User.unscoped.find_by_id identity.user_id
+          if user && !user.hidden_at.blank?
+            redirect_to root_path, notice: "Su usuario ha sido bloqueado por un administrador."
+            return
+          else
+            @user = current_user || User.first_or_initialize_for_oauth_saml(auth, identity.try(:user))
+          end
+        else
+          @user = current_user || User.first_or_initialize_for_oauth_saml(auth, identity.try(:user))
+        end
       else
         @user = current_user || identity.user || User.first_or_initialize_for_oauth(auth)
       end

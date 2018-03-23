@@ -249,6 +249,10 @@ class User < ActiveRecord::Base
     erased_at.present?
   end
 
+  def can_delete_account?
+    self.proposals.count == 0 && self.comments.count == 0
+  end
+
   def take_votes_if_erased_document(document_number, document_type)
     erased_user = User.erased.where(document_number: document_number).where(document_type: document_type).first
     if erased_user.present?

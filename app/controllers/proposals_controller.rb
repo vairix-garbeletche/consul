@@ -19,6 +19,7 @@ class ProposalsController < ApplicationController
   has_orders ->(c) { Proposal.proposals_orders(c.current_user) }, only: :index
   has_orders %w{newest oldest}, only: [:show, :show_pdf]
 
+  before_action :find_proposal, :only => :show
   load_and_authorize_resource
   before_action :check_permit_edit, only: :update
 
@@ -177,6 +178,16 @@ class ProposalsController < ApplicationController
     def check_permit_edit
       if @proposal && !@proposal.permit_delete_or_edit?
         redirect_to proposal_path(@proposal), notice: "No se puede editar esta propuesta porque ya ha recibido apoyos o comentarios."
+      end
+    end
+
+    def find_proposal
+      @proposal = Proposal.find_by_id(params[:id])
+      unless @proposal
+        proposal = Proposal.unscoped.find_by_id(params[:id])
+        if proposal && !proposal.hidden_at.blank?
+          redirect_to proposals_path, notice: 'La propuesta que intenta acceder fue eliminada.'
+        end
       end
     end
 

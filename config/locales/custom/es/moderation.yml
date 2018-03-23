@@ -8,3 +8,5 @@ es:
           disaproved_flag: Desaprobados
         aprove_comments: Aprobar comentarios
         disaprove_comments: Desaprobar comentarios
+    users:
+      notice_hide: Usuario bloqueado. Se han ocultado todos sus propuestas y comentarios.
