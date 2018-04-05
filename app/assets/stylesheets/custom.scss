@@ -236,17 +236,6 @@ a:focus {
 }
 
 @media (min-width: 810px) and (max-width: 1030px) {
-	.pull-top-3{
-		margin-top: -10px !important;
-	}
-
-	.pull-top-2{
-		margin-top: -10px !important;
-	}
-
-	.pull-top-1{
-		margin-top: -10px !important;
-	}
 
 	.titel-margin-left{
 		margin-left: 15px;
@@ -261,24 +250,13 @@ a:focus {
 	}
 
 	.yellow-border{
-		max-height: 8rem !important;
-		min-height: 8rem !important;
+		max-height: 10rem !important;
+		min-height: 10rem !important;
 		margin-bottom: 20px;
 	}
 }
 
 @media (min-width: 768px) and (max-width: 1025px) {
-	.pull-top-3{
-		margin-top: -10px !important;
-	}
-
-	.pull-top-2{
-		margin-top: -10px !important;
-	}
-
-	.pull-top-1{
-		margin-top: -10px !important;
-	}
 
 	.titel-margin-left{
 		margin-left: 15px;
@@ -293,8 +271,8 @@ a:focus {
 	}
 
 	.yellow-border{
-		max-height: 8rem !important;
-		min-height: 8rem !important;
+		max-height: 9rem !important;
+		min-height: 9rem !important;
 		margin-bottom: 20px;
 	}
 
@@ -382,21 +360,21 @@ a:focus {
 	}
 
 	.yellow-border{
-		max-height: 10rem !important;
-		min-height: 10rem !important;
+		max-height: 11rem !important;
+		min-height: 11rem !important;
 		margin-bottom: 20px;
 	}
 
 	.pull-top-3{
-		margin-top: -10px !important;
+		margin-top: 40px !important;
 	}
 
 	.pull-top-2{
-		margin-top: -10px !important;
+		margin-top: 14px !important;
 	}
 
 	.pull-top-1{
-		margin-top: -10px !important;
+		margin-top: 39px !important;
 	}
 
 	.blue-text{
@@ -459,15 +437,15 @@ a:focus {
 	}
 
 	.pull-top-3{
-		margin-top: -15px !important;
+		margin-top: 10px !important;
 	}
 
 	.pull-top-2{
-		margin-top: -5px !important;
+		margin-top: 10px !important;
 	}
 
 	.pull-top-1{
-		margin-top: -5px !important;
+		margin-top: 10px !important;
 	}
 
 	.pull{
@@ -490,18 +468,6 @@ a:focus {
 	  display: inline;
 	}
 
-	.pull-top-3{
-		margin-top: -15px !important;
-	}
-
-	.pull-top-2{
-		margin-top: -15px !important;
-	}
-
-	.pull-top-1{
-		margin-top: -15px !important;
-	}
-
 	.condition-and-privacy-small {
 	  display: block;
 	}
@@ -518,12 +484,29 @@ a:focus {
     line-height: 1.2rem;
 	}
 
+	.yellow-border{
+		max-height: 9rem !important;
+		min-height: 9rem !important;
+	}
+
 	.log-text{
 		font-size: 18px;
 	}
 
 	.presidencia-margin{
 		margin-right: 60px;
+	}
+
+	.pull-top-3{
+		margin-top: 9px !important;
+	}
+
+	.pull-top-2{
+		margin-top: 9px !important;
+	}
+
+	.pull-top-1{
+		margin-top: 35px !important;
 	}
 
 	.m-big-title{
