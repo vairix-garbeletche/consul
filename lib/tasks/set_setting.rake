@@ -18,5 +18,7 @@ namespace :set_setting do
     if setting.blank?
       Setting['proposals_end_date'] = Date.today + 100.days
     end
+    Setting['mailer_from_name'] = 'Gobierno Abierto'
+    Setting['mailer_from_address'] = 'gobiernoabierto@agesic.gub.uy'
   end
 end
