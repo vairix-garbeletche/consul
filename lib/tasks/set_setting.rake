@@ -20,5 +20,16 @@ namespace :set_setting do
     end
     Setting['mailer_from_name'] = 'Gobierno Abierto'
     Setting['mailer_from_address'] = 'gobiernoabierto@agesic.gub.uy'
+    if User.where(email: 'jose.poncedeleon@agesic.gub.uy').empty?
+      pass = SecureRandom.hex(8)
+      admin = User.create!(username: 'jose.poncedeleon', email: 'jose.poncedeleon@agesic.gub.uy', password: pass, password_confirmation: pass, confirmed_at: Time.current, terms_of_service: "1")
+      admin.residence_verified_at = Date.today
+      admin.level_two_verified_at = Date.today
+      admin.save
+      admin.create_administrator
+    end
+    Setting["meta_title"] = '4to Plan de Acción Nacional 2018 - 2020'
+    Setting["meta_description"] = 'Proponé y participa: Podés presentar propuestas y hacer comentarios hasta el 15 de mayo de 2018. Proponé ideas o iniciativas que fortalezcan la transparencia, el acceso a la información pública, la rendición de cuentas, la participación y la colaboración ciudadana.'
+    Setting["meta_keywords"] = "4to Plan de Acción Nacional"
   end
 end
