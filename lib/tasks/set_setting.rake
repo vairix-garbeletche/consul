@@ -29,7 +29,7 @@ namespace :set_setting do
       admin.create_administrator
     end
     Setting["meta_title"] = '4to Plan de Acción Nacional 2018 - 2020'
-    Setting["meta_description"] = 'Proponé y participa: Podés presentar propuestas y hacer comentarios hasta el 15 de mayo de 2018. Proponé ideas o iniciativas que fortalezcan la transparencia, el acceso a la información pública, la rendición de cuentas, la participación y la colaboración ciudadana.'
+    Setting["meta_description"] = 'Proponé y participa: Podés presentar propuestas y hacer comentarios hasta el 17 de junio de 2018. Proponé ideas o iniciativas que fortalezcan la transparencia, el acceso a la información pública, la rendición de cuentas, la participación y la colaboración ciudadana.'
     Setting["meta_keywords"] = "4to Plan de Acción Nacional"
   end
 end

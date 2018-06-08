@@ -46,7 +46,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
           @user = current_user || User.first_or_initialize_for_oauth_saml(auth, identity.try(:user))
         end
       else
-        @user = current_user || identity.user || User.first_or_initialize_for_oauth(auth)
+        redirect_to root_path, notice: "No se puede autenticar por otro medio que no sea por ID Uruguay."
       end
 
       if save_user
