@@ -5,11 +5,20 @@
       <%= t("related_content.title") %>&nbsp;<span>(<%= relationable.relationed_contents.count %>)</span>
     </h4>
     <% if current_user %>
-      <a>
-        <button type="button" data-toggle="related_content" class="add-related-content" id="add-related-content">
-          <%= t("related_content.add") %>
-        </button>
-      </a>
+      <div class="proposal-edit">
+        <a>
+          <button type="button" data-toggle="related_content" class="add-related-content" id="add-related-content">
+            <%= t("related_content.add") %>
+          </button>
+          <% if !Proposal.in_active_period? %>
+            <div class="participation-not-allowed" style='display:none' aria-hidden="false">
+              <%= t("proposals.inactive",
+                    date_from: @proposal_date_from,
+                    date_to: @proposal_date_to).html_safe %>
+            </div>
+          <% end %>
+        </a>
+      </div>
     <% end %>
   </div>
 
