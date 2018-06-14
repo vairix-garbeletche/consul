@@ -76,6 +76,11 @@ section "Creating Settings" do
   Setting.create(key: 'proposals_start_date', value: nil)
   Setting.create(key: 'proposals_require_admin', value: nil)
   Setting.create(key: 'auto_publish_comments', value: 'true')
+  Setting.create(key: 'title_home', value: "Proponé y participá")
+  Setting.create(key: 'sub_title_home', value: "Podés presentar propuestas y hacer comentarios hasta el 30 de junio de 2018.")
+  Setting.create(key: 'description_home', value: "Proponé ideas o iniciativas que fortalezcan la transparencia, el acceso a la información pública, la rendición de cuentas, la participación y la colaboración ciudadana.")
+  Setting.create(key: 'title_link_home', value: "Ver propuestas")
+  Setting.create(key: 'url_link_home', value: "http://localhost:3000/proposals")
 end
 
 section "Creating Geozones" do

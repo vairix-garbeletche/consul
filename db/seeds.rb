@@ -55,6 +55,13 @@ Setting["blog_url"] = nil
 Setting["transparency_url"] = nil
 Setting["opendata_url"] = "/opendata"
 
+#home
+Setting["title_home"] = "Proponé y participá"
+Setting["sub_title_home"] = "Podés presentar propuestas y hacer comentarios hasta el 30 de junio de 2018."
+Setting["description_home"] = "Proponé ideas o iniciativas que fortalezcan la transparencia, el acceso a la información pública, la rendición de cuentas, la participación y la colaboración ciudadana."
+Setting["title_link_home"] = "Ver propuestas"
+Setting["url_link_home"] = "http://localhost:3000/proposals"
+
 # Public-facing URL of the app.
 Setting["url"] = "http://example.com"
 

@@ -32,4 +32,13 @@ namespace :set_setting do
     Setting["meta_description"] = 'Proponé y participa: Podés presentar propuestas y hacer comentarios hasta el 17 de junio de 2018. Proponé ideas o iniciativas que fortalezcan la transparencia, el acceso a la información pública, la rendición de cuentas, la participación y la colaboración ciudadana.'
     Setting["meta_keywords"] = "4to Plan de Acción Nacional"
   end
+
+  desc "set data home"
+  task set_data_home: :environment do
+    Setting["title_home"] = "Proponé y participá"
+    Setting["sub_title_home"] = "Podés presentar propuestas y hacer comentarios hasta el 30 de junio de 2018."
+    Setting["description_home"] = "Proponé ideas o iniciativas que fortalezcan la transparencia, el acceso a la información pública, la rendición de cuentas, la participación y la colaboración ciudadana."
+    Setting["title_link_home"] = "Ver propuestas"
+    Setting["url_link_home"] = "http://localhost:3000/proposals"
+  end
 end

@@ -4,3 +4,8 @@ es:
     proposals_start_date: "Fecha de inicio de propuesta"
     auto_publish_comments: "Comentarios publicados automáticamente"
     proposals_require_admin: "Creación de Propuestas solo para administradores y moderadores"
+    title_home: "Título Home"
+    sub_title_home: "Sub título Home"
+    description_home: "Descripción Home"
+    title_link_home: "Título link home"
+    url_link_home: "URL link Home"
