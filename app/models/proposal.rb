@@ -69,6 +69,8 @@ class Proposal < ActiveRecord::Base
   scope :unsuccessful,             -> { where("cached_votes_up < ?", Proposal.votes_needed_for_success) }
   scope :public_for_api,           -> { all }
   scope :not_supported_by_user,    ->(user) { where.not(id: user.find_voted_items(votable_type: "Proposal").compact.map(&:id)) }
+  scope :is_proposal, -> { where(is_proposal: true) }
+  scope :is_legislation_proposal, -> { where(is_proposal: false) }
 
   def url
     proposal_path(self)

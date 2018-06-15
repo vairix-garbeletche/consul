@@ -5,6 +5,7 @@ namespace :initial_modules do
     # Feature flags
     Setting['feature.debates'] = false
     Setting['feature.proposals'] = true
+    Setting['feature.legislation_proposals'] = true
     Setting['feature.spending_proposals'] = false
     Setting['feature.polls'] = false
     Setting['feature.twitter_login'] = false

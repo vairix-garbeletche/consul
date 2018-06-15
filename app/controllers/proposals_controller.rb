@@ -11,7 +11,6 @@ class ProposalsController < ApplicationController
   before_action :validate_settings, only: [:new, :create]
   before_action :validate_date, only: [:new, :create, :edit]
 
-
   feature_flag :proposals
 
   invisible_captcha only: [:create, :update], honeypot: :subtitle
@@ -25,7 +24,7 @@ class ProposalsController < ApplicationController
 
   helper_method :resource_model, :resource_name
   respond_to :html, :js
-
+  
   def show
     super
     if @proposal.retired_at.blank?
@@ -153,7 +152,7 @@ class ProposalsController < ApplicationController
 
     def load_featured
       return unless !@advanced_search_terms && @search_terms.blank? && @tag_filter.blank? && params[:retired].blank? && @current_order != "recommendations"
-      @featured_proposals = Proposal.not_archived.sort_by_confidence_score.limit(3)
+      @featured_proposals = Proposal.not_archived.is_proposal.sort_by_confidence_score.limit(3)
       if @featured_proposals.present?
         set_featured_proposal_votes(@featured_proposals)
         @resources = @resources.where('proposals.id NOT IN (?)', @featured_proposals.map(&:id))

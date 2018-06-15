@@ -1,8 +1,8 @@
 <% provide :title do %><%= t('proposals.index.title') %><% end %>
 <% content_for :header_addon do %>
   <%= render "shared/search_form",
-             search_path: proposals_path(page: 1),
-             i18n_namespace: "proposals.index.search_form" %>
+             search_path: legislation_proposals_path(page: 1),
+             i18n_namespace: "legislation_proposals.index.search_form" %>
 <% end %>
 <% content_for :canonical do %>
   <%= render "shared/canonical", href: proposals_url %>
@@ -10,11 +10,7 @@
 
 <main>
 
-  <% if @search_terms || @advanced_search_terms || @tag_filter || params[:retired].present? %>
-    <%= render "shared/section_header", i18n_namespace: "proposals.index.section_header", image: "proposals", is_proposals: true %>
-  <% else %>
-    <%= render "shared/section_header", i18n_namespace: "proposals.index.section_header", image: "proposals", is_proposals: true %>
-  <% end %>
+  <%= render "shared/section_header", i18n_namespace: "legislation_proposals.index.section_header", image: "proposals", is_proposals: false %>
 
   <div class="row">
     <div id="proposals" class="proposals-list small-12 medium-9 column">
@@ -23,21 +19,8 @@
         <%= render "shared/banner" %>
       <% end %>
 
-      <% if @featured_proposals.present? %>
-        <div id="featured-proposals" class="row featured-proposals">
-          <div class="small-12 column">
-            <h3>
-              <%= t("proposals.index.featured_proposals") %>
-            </h3>
-          </div>
-          <% @featured_proposals.each do |featured_proposal| %>
-            <%= render "featured_proposal", proposal: featured_proposal %>
-          <% end %>
-        </div>
-      <% end %>
-
       <%= render 'shared/order_links', i18n_namespace: "proposals.index" %>
-      
+
       <% if @proposals.any? %>
         <div class="show-for-small-only">
           <%= link_to t("proposals.index.start_proposal"),
@@ -48,9 +31,9 @@
 
       <div id="proposals-list">
         <% if @proposals.any? || current_user.blank? %>
-          <%= render partial: 'proposals/proposal', collection: @proposals %>
+          <%= render partial: 'proposal', collection: @proposals %>
         <% else %>
-          <%= empty_recommended_proposals_message_text(current_user, true) %>
+          <%= empty_recommended_proposals_message_text(current_user, false) %>
         <% end %>
         <%= paginate @proposals %>
       </div>
@@ -59,7 +42,7 @@
     <div class="small-12 medium-3 column">
       <aside class="margin-bottom">
         <div class="proposals-create expanded">
-          <% if !Proposal.is_proposal.in_active_period? %>
+          <% if !Proposal.in_active_period? %>
             <div class="participation-not-allowed" style='display:none' aria-hidden="false">
               <%= t("proposals.inactive",
                     date_from: @proposal_date_from,
@@ -67,8 +50,8 @@
             </div>
           <% end %>
           <% if Proposal.can_manage? current_user %>
-            <%= link_to t("proposals.index.start_proposal"),
-                        new_proposal_guide,
+            <%= link_to t("legislation_proposals.index.start_proposal"),
+                         new_legislation_proposal_path,
                         class: 'button expanded' %>
           <% end %>
         </div>

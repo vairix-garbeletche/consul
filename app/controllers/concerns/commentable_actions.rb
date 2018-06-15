@@ -4,7 +4,13 @@ module CommentableActions
   include Search
 
   def index
-    @resources = resource_model.all
+    if !params[:is_proposal].blank? && params[:is_proposal] == 'true'
+      @resources = resource_model.is_proposal
+    elsif !params[:is_proposal].blank? && params[:is_proposal] == 'false'
+      @resources = resource_model.is_legislation_proposal
+    else
+      @resources = resource_model.all
+    end
 
     @resources = @current_order == "recommendations" && current_user.present? ? @resources.recommendations(current_user) : @resources.for_render
     @resources = @resources.search(@search_terms) if @search_terms.present?
@@ -47,7 +53,13 @@ module CommentableActions
 
   def suggest
     @limit = 5
-    @resources = @search_terms.present? ? resource_relation.search(@search_terms) : nil
+    if !@is_proposal.blank? && @is_proposal == 'true'
+      @resources = @search_terms.present? ? resource_relation.is_proposal.search(@search_terms) : nil
+    elsif !@is_proposal.blank? && @is_proposal == 'false'
+      @resources = @search_terms.present? ? resource_relation.is_legislation_proposal.search(@search_terms) : nil
+    else
+      @resources = @search_terms.present? ? resource_relation.search(@search_terms) : nil
+    end
   end
 
   def create

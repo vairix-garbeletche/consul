@@ -12,23 +12,27 @@
     <% if feature?(:proposals) %>
       <li>
         <%= layout_menu_link_to "PROPUESTAS",
-                                proposals_path,
+                                proposals_path(is_proposal: true),
                                 controller_name == 'proposals',
                                 accesskey: "2",
                                 title: t("shared.go_to_page") + t("layouts.header.proposals") %>
       </li>
     <% end %>
-    <li>
-        <%=link_to "CONSULTA PÚBLICA",
-                                "/consulta-publica",
-                                accesskey: "3" %>
-    </li>
+    <% if feature?(:legislation_proposals) %>
+      <li>
+        <%= layout_menu_link_to "CONSULTAS PÚBLICAS",
+                                  legislation_proposals_path(is_proposal: false),
+                                  controller_name == 'legislation_proposals',
+                                  accesskey: "3",
+                                  title: t("shared.go_to_page") + t("layouts.header.legislation_proposals") %>
+      </li>
+    <% end %>
     <% if feature?(:polls) %>
       <li>
         <%= layout_menu_link_to t("layouts.header.poll_questions"),
                                   polls_path,
                                   controller_name == "polls" || (controller_name == "questions" && controller.class.parent == Polls),
-                                  accesskey: "3",
+                                  accesskey: "4",
                                   title: t("shared.go_to_page") + t("layouts.header.poll_questions") %>
       </li>
     <% end %>

@@ -9,6 +9,7 @@ module Search
 
   def parse_search_terms
     @search_terms = params[:search] if params[:search].present?
+    @is_proposal = params[:is_proposal] if params[:is_proposal].present?
   end
 
   def parse_advanced_search_terms

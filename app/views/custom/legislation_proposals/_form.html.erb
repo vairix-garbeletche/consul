@@ -1,4 +1,4 @@
-<%= form_for(@proposal, url: form_url) do |f| %>
+<%= form_for(@proposal, url: legislation_proposals_path, method: :post ) do |f| %>
   <%= render 'shared/errors.html.erb', resource: @proposal %>
 
   <div class="row">
@@ -6,25 +6,25 @@
       <p>Los campos marcados con * son obligatorios.</p>
     </div>
     <div class="small-12 column">
-      <%= f.label :title, t("proposals.form.proposal_title") %>
+      <%= f.label :title, t("legislation_proposals.form.proposal_title") %>
       <p class="help-text" id="summary-help-text">(máximo 80 caracteres)</p>
-      <%= f.text_field :title, maxlength: Proposal.title_max_length, placeholder: t("proposals.form.proposal_title"), label: false, data: {js_suggest_result: "js_suggest_result", js_suggest: "#js-suggest", js_url: suggest_proposals_path}%>
+      <%= f.text_field :title, maxlength: Proposal.title_max_length, placeholder: t("legislation_proposals.form.proposal_title"), label: false, data: {js_suggest_result: "js_suggest_result", js_suggest: "#js-suggest", js_url: suggest_proposals_path}%>
     </div>
-    <%= hidden_field_tag 'is_proposal', 'true'  %>
+    <%= hidden_field_tag 'is_proposal', 'false'  %>
     <div id="js-suggest"></div>
 
     <%= f.invisible_captcha :subtitle %>
 
     <div class="small-12 column">
-      <%= f.label :summary, t("proposals.form.proposal_summary") %>
-      <p class="help-text" id="summary-help-text"><%= t("proposals.form.proposal_summary_note") %></p>
+      <%= f.label :summary, t("legislation_proposals.form.proposal_summary") %>
+      <p class="help-text" id="summary-help-text"><%= t("legislation_proposals.form.proposal_summary_note") %></p>
       <%= f.text_area :summary, rows: 4, maxlength: 200, label: false,
-                      placeholder: t('proposals.form.proposal_summary'),
+                      placeholder: t('legislation_proposals.form.proposal_summary'),
                       aria: {describedby: "summary-help-text"} %>
     </div>
 
     <div class="ckeditor small-12 column">
-      <%= f.label :description, t("proposals.form.proposal_text") %>
+      <%= f.label :description, t("legislation_proposals.form.proposal_text") %>
       <p class="help-text">(máximo 2.500 caracteres)</p>
       <%= f.cktext_area :description, maxlength: Proposal.description_max_length, ckeditor: { language: I18n.locale }, label: false %>
     </div>
@@ -97,9 +97,10 @@
                                             aria: {describedby: "responsible-name-help-text"} %>
       </div>
     </div>
+    
 
     <div class="actions small-12 column">
-      <%= f.submit(class: "button", value: t("proposals.#{action_name}.form.submit_button")) %>
+      <%= f.submit(class: "button", value: t("legislation_proposals.new.form.submit_button")) %>
     </div>
   </div>
 <% end %>

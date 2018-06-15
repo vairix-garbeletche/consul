@@ -77,4 +77,44 @@ es:
           notice_html: "¡Ahora estás siguiendo esta propuesta! </br> Te notificaremos los cambios a medida que se produzcan para que estés al día."
         destroy:
           notice_html: "¡Has dejado de seguir esta propuesta! </br> Ya no recibirás más notificaciones relacionadas con esta propuesta."
-
+    suggest:
+      legislation_proposal:
+        found:
+          one: "Existe una consulta pública con el término '%{query}', puedes participar en ella en vez de abrir uno nuevo."
+          other: "Existen consulta pública con el término '%{query}', puedes participar en ellas en vez de abrir uno nuevo."
+        message: "Estás viendo %{limit} de %{count} consultas públicas que contienen el término '%{query}'"
+  layouts:
+    header:
+      legislation_proposals: "Consultas Públicas"
+  legislation_proposals:
+    index:
+      section_header:
+        help: Ayuda sobre las consultas públicas
+      search_form:
+        button: Buscar
+        placeholder: Buscar consultas públicas...
+        title: Buscar
+      start_proposal: Crea una consulta pública
+      recommendations:
+        without_results: No existen consultas públicas relacionadas con tus intereses
+        without_interests: Sigue consultas públicas para que podamos darte recomendaciones
+    form:
+      proposal_summary: Resumen de la consulta pública
+      proposal_summary_note: "(máximo 200 caracteres)"
+      proposal_text: Texto desarrollado de la consulta pública
+      proposal_title: Título de la consulta públicas
+    new:
+      start_new: Crear una consulta pública
+      recommendations_title: Recomendaciones para crear una consulta pública
+      form:
+        submit_button: Crear consulta pública
+    legislation_proposal:
+      created: "¡Has creado una consulta pública!"
+      share:
+        view_legislation_proposal: Ahora no, ir a mi consulta pública
+    show:
+      code: 'Código de la consulta pública:'
+  flash:
+    actions:
+      create:
+         legislation_proposal: "Consulta pública creada correctamente."
