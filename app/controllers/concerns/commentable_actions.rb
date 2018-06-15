@@ -4,7 +4,13 @@ module CommentableActions
   include Search
 
   def index
-    @resources = resource_model.all
+    if !params[:is_proposal].blank? && params[:is_proposal] == 'true'
+      @resources = resource_model.is_proposal
+    elsif !params[:is_proposal].blank? && params[:is_proposal] == 'false'
+      @resources = resource_model.is_legislation_proposal
+    else
+      @resources = resource_model.all
+    end
 
     @resources = @current_order == "recommendations" && current_user.present? ? @resources.recommendations(current_user) : @resources.for_render
     @resources = @resources.search(@search_terms) if @search_terms.present?

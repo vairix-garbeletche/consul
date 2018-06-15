@@ -4,8 +4,10 @@ module TagsHelper
     case taggable_type
     when 'debate'
       debates_path(search: tag_name)
+    when 'legislation_proposal'
+      legislation_proposals_path(search: tag_name, is_proposal: false)
     when 'proposal'
-      proposals_path(search: tag_name)
+      proposals_path(search: tag_name, is_proposal: true)
     when 'budget/investment'
       budget_investments_path(@budget, search: tag_name)
     when 'legislation/proposal'

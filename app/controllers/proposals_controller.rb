@@ -24,10 +24,6 @@ class ProposalsController < ApplicationController
 
   helper_method :resource_model, :resource_name
   respond_to :html, :js
-
-  def index
-    @proposals = Proposal.is_proposal.page(params[:page]).per(5)
-  end
   
   def show
     super

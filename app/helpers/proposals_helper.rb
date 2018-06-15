@@ -32,11 +32,19 @@ module ProposalsHelper
     Proposal::RETIRE_OPTIONS.collect { |option| [ t("proposals.retire_options.#{option}"), option ] }
   end
 
-  def empty_recommended_proposals_message_text(user)
+  def empty_recommended_proposals_message_text(user, is_proposals)
     if user.interests.any?
-      t('proposals.index.recommendations.without_results')
+      if is_proposals
+        t('proposals.index.recommendations.without_results')
+      else
+        t('legislation_proposals.index.recommendations.without_results')
+      end
     else
-      t('proposals.index.recommendations.without_interests')
+      if is_proposals
+        t('proposals.index.recommendations.without_interests')
+      else
+        t('legislation_proposals.index.recommendations.without_results')
+      end
     end
   end
 
