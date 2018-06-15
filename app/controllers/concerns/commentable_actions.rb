@@ -47,7 +47,13 @@ module CommentableActions
 
   def suggest
     @limit = 5
-    @resources = @search_terms.present? ? resource_relation.search(@search_terms) : nil
+    if !@is_proposal.blank? && @is_proposal == 'true'
+      @resources = @search_terms.present? ? resource_relation.is_proposal.search(@search_terms) : nil
+    elsif !@is_proposal.blank? && @is_proposal == 'false'
+      @resources = @search_terms.present? ? resource_relation.is_legislation_proposal.search(@search_terms) : nil
+    else
+      @resources = @search_terms.present? ? resource_relation.search(@search_terms) : nil
+    end
   end
 
   def create

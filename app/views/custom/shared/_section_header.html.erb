@@ -1,8 +1,19 @@
-<div class="help-header no-margin-top margin-bottom">
-  <div class="row">
-    <div class="small-12 column" data-magellan>
-      <h3 class=" blue-text inline-block">Propuestas</h3>
-      <%= link_to t("#{i18n_namespace}.help"), "#section_help", class: "float-right" %>
+<% if is_proposals %>
+  <div class="help-header no-margin-top margin-bottom">
+    <div class="row">
+      <div class="small-12 column" data-magellan>
+        <h3 class=" blue-text inline-block">Propuestas</h3>
+        <%= link_to t("#{i18n_namespace}.help"), "#section_help", class: "float-right" %>
+      </div>
     </div>
   </div>
-</div>
+<% else %>
+  <div class="help-header no-margin-top margin-bottom">
+    <div class="row">
+      <div class="small-12 column" data-magellan>
+        <h3 class=" blue-text inline-block">Consultas Públicas</h3>
+        <%= link_to t("#{i18n_namespace}.help"), "#section_help", class: "float-right" %>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -18,11 +18,15 @@
                                 title: t("shared.go_to_page") + t("layouts.header.proposals") %>
       </li>
     <% end %>
-    <li>
-        <%=link_to "CONSULTA PÚBLICA",
-                                "/consulta-publica",
-                                accesskey: "3" %>
-    </li>
+    <% if feature?(:legislation_proposals) %>
+      <li>
+        <%= layout_menu_link_to "CONSULTAS PÚBLICAS",
+                                  legislation_proposals_path,
+                                  controller_name == 'legislation_proposals',
+                                  accesskey: "3",
+                                  title: t("shared.go_to_page") + t("layouts.header.legislation_proposals") %>
+      </li>
+    <% end %>
     <% if feature?(:polls) %>
       <li>
         <%= layout_menu_link_to t("layouts.header.poll_questions"),

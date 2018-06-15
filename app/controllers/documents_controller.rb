@@ -5,7 +5,6 @@ class DocumentsController < ApplicationController
 
   def destroy
     respond_to do |format|
-      debugger
       format.html do
         object_redirect = nil
         if @document.documentable_type == "Comment"
