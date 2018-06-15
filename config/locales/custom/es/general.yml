@@ -4,6 +4,7 @@ es:
     require_permission: No tiene los permisos para realizar esta acción
     excel:
       title: Propuestas
+      type: Tipo
       link: Enlace
       title: Título
       summary: Resumen
