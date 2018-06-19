@@ -114,6 +114,11 @@ es:
         view_legislation_proposal: Ahora no, ir a mi consulta pública
     show:
       code: 'Código de la consulta pública:'
+      retired_warning: "El autor de esta consulta pública considera que ya no debe seguir recogiendo apoyos."
+      flag: Esta consulta pública ha sido marcada como inapropiada por varios usuarios.
+      code: 'Código de la consulta pública:'
+      retired: Consulta pública retirada por el autor
+      edit_proposal_link: Editar consulta pública
   flash:
     actions:
       create:

@@ -1,6 +1,6 @@
 class RelatedContent < ActiveRecord::Base
   RELATED_CONTENT_SCORE_THRESHOLD = Setting['related_content_score_threshold'].to_f
-  RELATIONABLE_MODELS = %w{proposals debates budgets investments}.freeze
+  RELATIONABLE_MODELS = %w{proposals debates budgets investments legislation_proposals}.freeze
 
   acts_as_paranoid column: :hidden_at
   include ActsAsParanoidAliases

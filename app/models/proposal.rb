@@ -73,7 +73,11 @@ class Proposal < ActiveRecord::Base
   scope :is_legislation_proposal, -> { where(is_proposal: false) }
 
   def url
-    proposal_path(self)
+    if self.is_proposal
+      proposal_path(self)
+    else
+      legislation_proposal_path(self)
+    end
   end
 
   def self.recommendations(user)

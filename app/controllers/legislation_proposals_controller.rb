@@ -18,7 +18,7 @@ class LegislationProposalsController < ApplicationController
   has_orders ->(c) { Proposal.is_legislation_proposal.proposals_orders(c.current_user) }, only: :index
   has_orders %w{newest oldest}, only: [:show, :show_pdf]
 
-  before_action :find_proposal, :only => :show
+  before_action :find_proposal, only: [:show, :show_pdf]
   authorize_resource :class => "Proposal"
   before_action :check_permit_edit, only: :update
 
@@ -33,6 +33,21 @@ class LegislationProposalsController < ApplicationController
       redirect_to legislation_proposal_path(@proposal), status: :moved_permanently if request.path != legislation_proposal_path(@proposal)
     else
       redirect_to legislation_proposals_path, notice: 'La consulta pública ha sido eliminada.'
+    end
+  end
+
+  def show_pdf
+    super
+    @commentable = resource
+    @comments = @commentable.comments.order(created_at: :desc)
+    set_resource_instance
+    @notifications = @proposal.notifications
+    @related_contents = Kaminari.paginate_array(@proposal.relationed_contents).page(params[:page]).per(5)
+
+    respond_to do |format|
+      format.pdf do
+        render pdf: "show", encoding: "UTF-8"
+      end
     end
   end
 
