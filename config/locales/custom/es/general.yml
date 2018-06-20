@@ -125,6 +125,11 @@ es:
       submit_button: Retirar consulta pública
     notice:
       retired: Consulta pública retirada
+    edit:
+      editing: Editar consulta pública
+      form:
+        submit_button: Guardar cambios
+      show_link: Ver consulta pública
   flash:
     actions:
       create:

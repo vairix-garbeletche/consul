@@ -1,12 +1,12 @@
 <% provide :title do %><%= @proposal.title %><% end %>
 <% content_for :meta_description do %><%= @proposal.summary %><% end %>
 <% provide :social_media_meta_tags do %>
-<%= render "shared/social_media_meta_tags",
-            social_url: legislation_proposal_url(@proposal),
-            social_title: @proposal.title,
-            social_description: @proposal.summary,
-            twitter_image_url: (@proposal.image.present? ? @proposal.image_url(:thumb) : nil),
-            og_image_url: (@proposal.image.present? ? @proposal.image_url(:thumb) : nil) %>
+  <%= render "shared/social_media_meta_tags",
+              social_url: legislation_proposal_url(@proposal),
+              social_title: @proposal.title,
+              social_description: @proposal.summary,
+              twitter_image_url: (@proposal.image.present? ? @proposal.image_url(:thumb) : nil),
+              og_image_url: (@proposal.image.present? ? @proposal.image_url(:thumb) : nil) %>
 <% end %>
 <% content_for :canonical do %>
   <%= render "shared/canonical", href: legislation_proposal_url(@proposal) %>

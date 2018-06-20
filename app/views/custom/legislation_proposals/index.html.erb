@@ -2,7 +2,8 @@
 <% content_for :header_addon do %>
   <%= render "shared/search_form",
              search_path: legislation_proposals_path(page: 1),
-             i18n_namespace: "legislation_proposals.index.search_form" %>
+             i18n_namespace: "legislation_proposals.index.search_form",
+             is_proposal: false %>
 <% end %>
 <% content_for :canonical do %>
   <%= render "shared/canonical", href: proposals_url %>
