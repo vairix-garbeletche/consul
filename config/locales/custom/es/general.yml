@@ -119,6 +119,17 @@ es:
       code: 'Código de la consulta pública:'
       retired: Consulta pública retirada por el autor
       edit_proposal_link: Editar consulta pública
+    retire_form:
+      retired_reason_label: Razón por la que se retira la consulta pública
+      retired_explanation_placeholder: Explica brevemente por que vas a eliminar esta consulta pública
+      submit_button: Retirar consulta pública
+    notice:
+      retired: Consulta pública retirada
+    edit:
+      editing: Editar consulta pública
+      form:
+        submit_button: Guardar cambios
+      show_link: Ver consulta pública
   flash:
     actions:
       create:

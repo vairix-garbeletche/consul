@@ -19,7 +19,7 @@ class LegislationProposalsController < ApplicationController
   has_orders %w{newest oldest}, only: [:show, :show_pdf]
 
   before_action :find_proposal, only: [:show, :show_pdf]
-  authorize_resource :class => "Proposal"
+  load_and_authorize_resource :proposal, :parent => false
   before_action :check_permit_edit, only: :update
 
   helper_method :resource_model, :resource_name
@@ -32,7 +32,7 @@ class LegislationProposalsController < ApplicationController
       @related_contents = Kaminari.paginate_array(@proposal.relationed_contents).page(params[:page]).per(5)
       redirect_to legislation_proposal_path(@proposal), status: :moved_permanently if request.path != legislation_proposal_path(@proposal)
     else
-      redirect_to legislation_proposals_path, notice: 'La consulta pública ha sido eliminada.'
+      redirect_to legislation_proposals_path(is_proposal: false), notice: 'La consulta pública ha sido eliminada.'
     end
   end
 
@@ -60,8 +60,28 @@ class LegislationProposalsController < ApplicationController
     end
   end
 
+  def index_customization
+    discard_archived
+    load_retired
+    load_successful_proposals
+  end
+
+  def retire_form
+  end
+
+  def retire
+    if @proposal.permit_delete_or_edit?
+      if valid_retired_params? && @proposal.update(retired_params.merge(retired_at: Time.current))
+        redirect_to legislation_proposal_path(@proposal), notice: t('legislation_proposals.notice.retired')
+      else
+        render action: :retire_form
+      end
+    else
+      redirect_to legislation_proposal_path(@proposal), notice: "No se puede retirar esta consulta publica porque ya ha recibido apoyos o comentarios."
+    end
+  end
+
   def share
-    @proposal = Proposal.find_by_id(params[:id])
     if Setting['proposal_improvement_path'].present?
       @proposal_improvement_path = Setting['proposal_improvement_path']
     end
@@ -77,8 +97,31 @@ class LegislationProposalsController < ApplicationController
                                        map_location_attributes: [:latitude, :longitude, :zoom])
     end
 
+    def retired_params
+      params.require(:proposal).permit(:retired_reason, :retired_explanation)
+    end
+
+    def valid_retired_params?
+      @proposal.errors.add(:retired_reason, I18n.t('errors.messages.blank')) if params[:proposal][:retired_reason].blank?
+      @proposal.errors.add(:retired_explanation, I18n.t('errors.messages.blank')) if params[:proposal][:retired_explanation].blank?
+      @proposal.errors.empty?
+    end
+
     def resource_model
       Proposal
+    end
+
+    def discard_archived
+      @resources = @resources.not_archived unless @current_order == "archival_date"
+    end
+
+    def load_retired
+      if params[:retired].present?
+        @resources = @resources.retired
+        @resources = @resources.where(retired_reason: params[:retired]) if Proposal::RETIRE_OPTIONS.include?(params[:retired])
+      else
+        @resources = @resources.not_retired
+      end
     end
 
     def load_settings
@@ -86,15 +129,25 @@ class LegislationProposalsController < ApplicationController
       @proposal_date_to = Setting.exists?(key: "proposals_end_date") ? Setting.find_by(key: "proposals_end_date").value : nil
     end
 
+    def load_successful_proposals
+      @proposal_successful_exists = Proposal.successful.exists?
+    end
+
     def validate_settings
       unless Proposal.can_manage? current_user
-        redirect_to proposals_path, notice: t('proposals.require_permission')
+        redirect_to legislation_proposals_path(is_proposal: false), notice: t('proposals.require_permission')
      end
     end
 
     def validate_date
       unless Proposal.is_legislation_proposal.in_active_period?
-        redirect_to legislation_proposals_path, notice: t('proposals.inactive', date_from: @proposal_date_from, date_to: @proposal_date_to)
+        redirect_to legislation_proposals_path(is_proposal: false), notice: t('proposals.inactive', date_from: @proposal_date_from, date_to: @proposal_date_to)
+      end
+    end
+
+    def check_permit_edit
+      if @proposal && !@proposal.permit_delete_or_edit?
+        redirect_to proposal_path(@proposal), notice: "No se puede editar esta propuesta porque ya ha recibido apoyos o comentarios."
       end
     end
 
@@ -103,7 +156,7 @@ class LegislationProposalsController < ApplicationController
       unless @proposal
         proposal = Proposal.unscoped.find_by_id(params[:id])
         if proposal && !proposal.hidden_at.blank?
-          redirect_to legislation_proposals_path, notice: 'La consulta pública que intenta acceder fue eliminada.'
+          redirect_to legislation_proposals_path(is_proposal: false), notice: 'La consulta pública que intenta acceder fue eliminada.'
         end
       end
     end

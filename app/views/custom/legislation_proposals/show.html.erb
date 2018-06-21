@@ -1,12 +1,12 @@
 <% provide :title do %><%= @proposal.title %><% end %>
 <% content_for :meta_description do %><%= @proposal.summary %><% end %>
 <% provide :social_media_meta_tags do %>
-<%= render "shared/social_media_meta_tags",
-            social_url: legislation_proposal_url(@proposal),
-            social_title: @proposal.title,
-            social_description: @proposal.summary,
-            twitter_image_url: (@proposal.image.present? ? @proposal.image_url(:thumb) : nil),
-            og_image_url: (@proposal.image.present? ? @proposal.image_url(:thumb) : nil) %>
+  <%= render "shared/social_media_meta_tags",
+              social_url: legislation_proposal_url(@proposal),
+              social_title: @proposal.title,
+              social_description: @proposal.summary,
+              twitter_image_url: (@proposal.image.present? ? @proposal.image_url(:thumb) : nil),
+              og_image_url: (@proposal.image.present? ? @proposal.image_url(:thumb) : nil) %>
 <% end %>
 <% content_for :canonical do %>
   <%= render "shared/canonical", href: legislation_proposal_url(@proposal) %>
@@ -128,10 +128,10 @@
             <div class="show-actions-menu">
               <div class="proposal-edit">
                 <%= link_to "Eliminar",
-                      retire_form_proposal_path(@proposal),
+                      retire_form_legislation_proposal_path(@proposal),
                       class: 'button expanded' %>
                 <% if current_editable?(@proposal) %>
-                  <%= link_to edit_proposal_path(@proposal), class: 'button expanded' do %>
+                  <%= link_to edit_legislation_proposal_path(@proposal), class: 'button expanded' do %>
                               <span class="icon-edit"></span>
                               <%= t("legislation_proposals.show.edit_proposal_link") %>
                   <% end %>
@@ -144,7 +144,6 @@
                   </div>
                 <% end %>
               </div>
-
             </div>
           <% end %>
         <% end %>
