@@ -1,8 +1,9 @@
 <% provide :title do %><%= t('proposals.index.title') %><% end %>
 <% content_for :header_addon do %>
   <%= render "shared/search_form",
-             search_path: proposals_path(page: 1),
-             i18n_namespace: "proposals.index.search_form" %>
+             search_path: proposals_path(page: 1, is_proposal: true),
+             i18n_namespace: "proposals.index.search_form",
+             is_proposal: true %>
 <% end %>
 <% content_for :canonical do %>
   <%= render "shared/canonical", href: proposals_url %>
@@ -66,7 +67,7 @@
                     date_to: @proposal_date_to).html_safe %>
             </div>
           <% end %>
-          <% if Proposal.can_manage? current_user %>
+          <% if Proposal.can_manage?(current_user, true) %>
             <%= link_to t("proposals.index.start_proposal"),
                         new_proposal_guide,
                         class: 'button expanded' %>

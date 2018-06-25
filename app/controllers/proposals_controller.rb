@@ -15,7 +15,7 @@ class ProposalsController < ApplicationController
 
   invisible_captcha only: [:create, :update], honeypot: :subtitle
 
-  has_orders ->(c) { Proposal.proposals_orders(c.current_user) }, only: :index
+  has_orders ->(c) { Proposal.is_proposal.proposals_orders(c.current_user) }, only: :index
   has_orders %w{newest oldest}, only: [:show, :show_pdf]
 
   before_action :find_proposal, :only => :show
@@ -30,10 +30,9 @@ class ProposalsController < ApplicationController
     if @proposal.retired_at.blank?
       @notifications = @proposal.notifications
       @related_contents = Kaminari.paginate_array(@proposal.relationed_contents).page(params[:page]).per(5)
-
       redirect_to proposal_path(@proposal), status: :moved_permanently if request.path != proposal_path(@proposal)
     else
-      redirect_to proposals_path, notice: 'La propuesta ha sido eliminada.'
+      redirect_to proposals_path(is_proposal: true), notice: 'La propuesta ha sido eliminada.'
     end
   end
 
@@ -73,6 +72,9 @@ class ProposalsController < ApplicationController
     set_proposal_votes(@proposal)
   end
 
+  def retire_form
+  end
+
   def retire
     if @proposal.permit_delete_or_edit?
       if valid_retired_params? && @proposal.update(retired_params.merge(retired_at: Time.current))
@@ -83,9 +85,6 @@ class ProposalsController < ApplicationController
     else
       redirect_to proposal_path(@proposal), notice: "No se puede retirar esta propuesta porque ya ha recibido apoyos o comentarios."
     end
-  end
-
-  def retire_form
   end
 
   def share
@@ -164,14 +163,14 @@ class ProposalsController < ApplicationController
     end
 
     def validate_settings
-      unless Proposal.can_manage? current_user
-        redirect_to proposals_path, notice: t('proposals.require_permission')
+      unless Proposal.can_manage?(current_user, true)
+        redirect_to proposals_path(is_proposal: true), notice: t('proposals.require_permission')
      end
     end
 
     def validate_date
       unless Proposal.in_active_period?
-        redirect_to proposals_path, notice: t('proposals.inactive', date_from: @proposal_date_from, date_to: @proposal_date_to)
+        redirect_to proposals_path(is_proposal: true), notice: t('proposals.inactive', date_from: @proposal_date_from, date_to: @proposal_date_to)
       end
     end
 
@@ -186,7 +185,7 @@ class ProposalsController < ApplicationController
       unless @proposal
         proposal = Proposal.unscoped.find_by_id(params[:id])
         if proposal && !proposal.hidden_at.blank?
-          redirect_to proposals_path, notice: 'La propuesta que intenta acceder fue eliminada.'
+          redirect_to proposals_path(is_proposal: true), notice: 'La propuesta que intenta acceder fue eliminada.'
         end
       end
     end

@@ -1,15 +1,15 @@
 <% provide :title do %><%= @proposal.title %><% end %>
 <% content_for :meta_description do %><%= @proposal.summary %><% end %>
 <% provide :social_media_meta_tags do %>
-<%= render "shared/social_media_meta_tags",
-            social_url: proposal_url(@proposal),
-            social_title: @proposal.title,
-            social_description: @proposal.summary,
-            twitter_image_url: (@proposal.image.present? ? @proposal.image_url(:thumb) : nil),
-            og_image_url: (@proposal.image.present? ? @proposal.image_url(:thumb) : nil) %>
+  <%= render "shared/social_media_meta_tags",
+              social_url: legislation_proposal_url(@proposal),
+              social_title: @proposal.title,
+              social_description: @proposal.summary,
+              twitter_image_url: (@proposal.image.present? ? @proposal.image_url(:thumb) : nil),
+              og_image_url: (@proposal.image.present? ? @proposal.image_url(:thumb) : nil) %>
 <% end %>
 <% content_for :canonical do %>
-  <%= render "shared/canonical", href: proposal_url(@proposal) %>
+  <%= render "shared/canonical", href: legislation_proposal_url(@proposal) %>
 <% end %>
 
 <% cache [locale_and_user_status(@proposal), @proposal, @proposal.author, Flag.flagged?(current_user, @proposal), @proposal_votes] do %>
@@ -20,19 +20,19 @@
 
         <h2>
           <%= @proposal.title %>
-          <%= link_to t("proposals.show.download_pdf"), show_pdf_proposal_path(@proposal, :format => :pdf), class: 'button pull-right', target: '_blank' %>
+          <%= link_to t("proposals.show.download_pdf"), show_pdf_legislation_proposal_path(@proposal, :format => :pdf), class: 'button pull-right', target: '_blank' %>
         </h2>
 
         <% if @proposal.retired? %>
           <div data-alert class="callout alert margin-top proposal-retired">
             <strong>
-              <%= t("proposals.show.retired_warning") %><br>
+              <%= t("legislation_proposals.show.retired_warning") %><br>
               <%= link_to t("proposals.show.retired_warning_link_to_explanation"), "#retired_explanation" %>
             </strong>
           </div>
         <% elsif @proposal.conflictive? %>
           <div data-alert class="callout alert margin-top">
-            <strong><%= t("proposals.show.flag") %></strong>
+            <strong><%= t("legislation_proposals.show.flag") %></strong>
           </div>
         <% end %>
 
@@ -56,7 +56,7 @@
 
         </div>
         <p>
-          <%= t("proposals.show.code") %>
+          <%= t("legislation_proposals.show.code") %>
           <strong><%= @proposal.code %></strong>
         </p>
         <strong>Resumen:</strong><br>
@@ -111,13 +111,14 @@
 
         <%= render 'shared/tags', taggable: @proposal %>
 
-        <%= render '/proposals/show_geozones', geozonable: @proposal %>
+        <%= render 'show_geozones', geozonable: @proposal %>
 
         <%= render 'relationable/related_content', relationable: @proposal %>
 
         <div class="js-moderator-proposal-actions margin">
           <%= render 'proposals/actions', proposal: @proposal, inactive: !Proposal.in_active_period? %>
         </div>
+        
       </div>
 
       <aside class="small-12 medium-3 column">
@@ -128,23 +129,22 @@
             <div class="show-actions-menu">
               <div class="proposal-edit">
                 <%= link_to "Eliminar",
-                      retire_form_proposal_path(@proposal),
+                      retire_form_legislation_proposal_path(@proposal),
                       class: 'button expanded' %>
                 <% if current_editable?(@proposal) %>
-                  <%= link_to edit_proposal_path(@proposal), class: 'button expanded' do %>
+                  <%= link_to edit_legislation_proposal_path(@proposal), class: 'button expanded' do %>
                               <span class="icon-edit"></span>
-                              <%= t("proposals.show.edit_proposal_link") %>
+                              <%= t("legislation_proposals.show.edit_proposal_link") %>
                   <% end %>
                 <% end %>
-                <% if !Proposal.in_active_period? %>
+                <% if !Proposal.legislation_in_active_period? %>
                   <div class="participation-not-allowed" style='display:none' aria-hidden="false">
-                    <%= t("proposals.inactive",
+                    <%= t("legislation_proposals.inactive",
                           date_from: @proposal_date_from,
                           date_to: @proposal_date_to).html_safe %>
                   </div>
                 <% end %>
               </div>
-
             </div>
           <% end %>
         <% end %>
@@ -152,7 +152,7 @@
         <%= render partial: 'shared/social_share', locals: {
           share_title: t("proposals.show.share"),
           title: @proposal.title,
-          url: proposal_url(@proposal)
+          url: legislation_proposal_url(@proposal)
         } %>
 
         <% if current_user %>
@@ -165,6 +165,7 @@
         <%= render 'communities/access_button', community: @proposal.community %>
 
       </aside>
+
     </div>
   </div>
 <% end %>
@@ -173,7 +174,7 @@
   <%= render "proposals/filter_subnav" %>
 
   <div class="tabs-panel is-active" id="tab-comments">
-    <%= render "proposals/comments" %>
+    <%= render "comments" %>
   </div>
 
   <div class="tabs-panel" id="tab-documents">

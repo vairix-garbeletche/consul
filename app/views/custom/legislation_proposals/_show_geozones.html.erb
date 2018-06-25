@@ -1,7 +1,7 @@
 <ul id="geozone" class="no-bullet geozone">
   <li class="inline-block">
     <% if geozonable && geozonable.geozone %>
-      <%= link_to geozone_name(geozonable), proposals_path(search: geozone_name(geozonable), is_proposal: true) %>
+      <%= link_to geozone_name(geozonable), legislation_proposals_path(search: geozone_name(geozonable), is_proposal: false) %>
     <% end %>
   </li>
 </ul>

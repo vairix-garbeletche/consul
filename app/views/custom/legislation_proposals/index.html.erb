@@ -2,7 +2,8 @@
 <% content_for :header_addon do %>
   <%= render "shared/search_form",
              search_path: legislation_proposals_path(page: 1),
-             i18n_namespace: "legislation_proposals.index.search_form" %>
+             i18n_namespace: "legislation_proposals.index.search_form",
+             is_proposal: false %>
 <% end %>
 <% content_for :canonical do %>
   <%= render "shared/canonical", href: proposals_url %>
@@ -42,14 +43,14 @@
     <div class="small-12 medium-3 column">
       <aside class="margin-bottom">
         <div class="proposals-create expanded">
-          <% if !Proposal.in_active_period? %>
+          <% if !Proposal.legislation_in_active_period? %>
             <div class="participation-not-allowed" style='display:none' aria-hidden="false">
-              <%= t("proposals.inactive",
+              <%= t("legislation_proposals.inactive",
                     date_from: @proposal_date_from,
                     date_to: @proposal_date_to).html_safe %>
             </div>
           <% end %>
-          <% if Proposal.can_manage? current_user %>
+          <% if Proposal.can_manage?(current_user, false) %>
             <%= link_to t("legislation_proposals.index.start_proposal"),
                          new_legislation_proposal_path,
                         class: 'button expanded' %>

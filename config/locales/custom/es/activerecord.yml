@@ -1,5 +1,9 @@
 es:
   activerecord:
+    models:
+      legislation_proposal:
+        one: "Consulta Pública"
+        other: "Consultas Públicas"
     attributes:
       comment:
         organism: "* Nombre de la institución"

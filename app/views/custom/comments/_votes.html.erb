@@ -123,11 +123,18 @@
         <%= comment.total_dislikes %>
       </span>
     </div>
-
-    <div class="participation-not-allowed" style='display:none' aria-hidden="false">
-      <%= t("proposals.inactive",
-            date_from: @proposal_date_from,
-            date_to: @proposal_date_to).html_safe %>
-    </div>
+    <% if @proposal.is_proposal %>
+      <div class="participation-not-allowed" style='display:none' aria-hidden="false">
+        <%= t("proposals.inactive",
+              date_from: @proposal_date_from,
+              date_to: @proposal_date_to).html_safe %>
+      </div>
+    <% else %>
+      <div class="participation-not-allowed" style='display:none' aria-hidden="false">
+        <%= t("legislation_proposals.inactive",
+              date_from: @proposal_date_from,
+              date_to: @proposal_date_to).html_safe %>
+      </div>
+    <% end %>
   <% end %>
 </div>
