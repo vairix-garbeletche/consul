@@ -163,7 +163,7 @@ class ProposalsController < ApplicationController
     end
 
     def validate_settings
-      unless Proposal.can_manage? current_user
+      unless Proposal.can_manage?(current_user, true)
         redirect_to proposals_path(is_proposal: true), notice: t('proposals.require_permission')
      end
     end

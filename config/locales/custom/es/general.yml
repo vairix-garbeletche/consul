@@ -87,6 +87,7 @@ es:
     header:
       legislation_proposals: "Consultas Públicas"
   legislation_proposals:
+    inactive: "El periodo de la consulta pública es entre %{date_from} y %{date_to}"
     index:
       section_header:
         help: Ayuda sobre las consultas públicas

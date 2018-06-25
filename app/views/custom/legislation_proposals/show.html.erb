@@ -112,12 +112,13 @@
         <%= render 'shared/tags', taggable: @proposal %>
 
         <%= render 'show_geozones', geozonable: @proposal %>
-        
+
         <%= render 'relationable/related_content', relationable: @proposal %>
 
         <div class="js-moderator-proposal-actions margin">
           <%= render 'proposals/actions', proposal: @proposal, inactive: !Proposal.in_active_period? %>
         </div>
+        
       </div>
 
       <aside class="small-12 medium-3 column">
@@ -136,9 +137,9 @@
                               <%= t("legislation_proposals.show.edit_proposal_link") %>
                   <% end %>
                 <% end %>
-                <% if !Proposal.in_active_period? %>
+                <% if !Proposal.legislation_in_active_period? %>
                   <div class="participation-not-allowed" style='display:none' aria-hidden="false">
-                    <%= t("proposals.inactive",
+                    <%= t("legislation_proposals.inactive",
                           date_from: @proposal_date_from,
                           date_to: @proposal_date_to).html_safe %>
                   </div>
@@ -173,7 +174,7 @@
   <%= render "proposals/filter_subnav" %>
 
   <div class="tabs-panel is-active" id="tab-comments">
-    <%= render "proposals/comments" %>
+    <%= render "comments" %>
   </div>
 
   <div class="tabs-panel" id="tab-documents">

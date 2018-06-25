@@ -6,6 +6,7 @@ es:
     legislation_proposals_start_date: "Fecha de inicio de la consulta pública"
     auto_publish_comments: "Comentarios publicados automáticamente"
     proposals_require_admin: "Creación de Propuestas solo para administradores y moderadores"
+    legislation_proposals_require_admin: "Creación de Consulta pública solo para administradores y moderadores"
     title_home: "Título Home"
     sub_title_home: "Sub título Home"
     description_home: "Descripción Home"

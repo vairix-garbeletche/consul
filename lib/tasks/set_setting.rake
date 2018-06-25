@@ -54,6 +54,10 @@ namespace :set_setting do
     if setting.blank?
       Setting['legislation_proposals_end_date'] = Date.today + 100.days
     end
+    setting = Setting.find_by_key 'legislation_proposals_require_admin'
+    if setting.blank?
+      Setting['legislation_proposals_require_admin'] = true
+    end
   end
 
 end
