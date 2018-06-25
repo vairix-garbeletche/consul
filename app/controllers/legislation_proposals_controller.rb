@@ -125,8 +125,8 @@ class LegislationProposalsController < ApplicationController
     end
 
     def load_settings
-      @proposal_date_from = Setting.exists?(key: "proposals_start_date") ? Setting.find_by(key: "proposals_start_date").value : nil
-      @proposal_date_to = Setting.exists?(key: "proposals_end_date") ? Setting.find_by(key: "proposals_end_date").value : nil
+      @proposal_date_from = Setting.exists?(key: "legislation_proposals_start_date") ? Setting.find_by(key: "legislation_proposals_start_date").value : nil
+      @proposal_date_to = Setting.exists?(key: "legislation_proposals_end_date") ? Setting.find_by(key: "legislation_proposals_end_date").value : nil
     end
 
     def load_successful_proposals
@@ -134,20 +134,20 @@ class LegislationProposalsController < ApplicationController
     end
 
     def validate_settings
-      unless Proposal.can_manage? current_user
+      unless Proposal.can_manage?(current_user, false)
         redirect_to legislation_proposals_path(is_proposal: false), notice: t('proposals.require_permission')
      end
     end
 
     def validate_date
-      unless Proposal.is_legislation_proposal.in_active_period?
-        redirect_to legislation_proposals_path(is_proposal: false), notice: t('proposals.inactive', date_from: @proposal_date_from, date_to: @proposal_date_to)
+      unless Proposal.legislation_in_active_period?
+        redirect_to legislation_proposals_path(is_proposal: false), notice: t('legislation_proposals.inactive', date_from: @proposal_date_from, date_to: @proposal_date_to)
       end
     end
 
     def check_permit_edit
       if @proposal && !@proposal.permit_delete_or_edit?
-        redirect_to proposal_path(@proposal), notice: "No se puede editar esta propuesta porque ya ha recibido apoyos o comentarios."
+        redirect_to proposal_path(@proposal), notice: "No se puede editar esta consulta pública porque ya ha recibido apoyos o comentarios."
       end
     end
 

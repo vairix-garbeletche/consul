@@ -41,4 +41,21 @@ namespace :set_setting do
     Setting["title_link_home"] = "Ver propuestas"
     Setting["url_link_home"] = "http://localhost:3000/proposals"
   end
+
+  desc "set data legislation proposal"
+  task set_data_legislation_proposal: :environment do
+    setting = Setting.find_by_key 'legislation_proposals_start_date'
+    if setting.blank?
+      Setting['legislation_proposals_start_date'] = Date.today - 20.days
+    end
+    setting = Setting.find_by_key 'legislation_proposals_end_date'
+    if setting.blank?
+      Setting['legislation_proposals_end_date'] = Date.today + 20.days
+    end
+    setting = Setting.find_by_key 'legislation_proposals_require_admin'
+    if setting.blank?
+      Setting['legislation_proposals_require_admin'] = 'true'
+    end
+  end
+
 end

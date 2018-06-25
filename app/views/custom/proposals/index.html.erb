@@ -67,7 +67,7 @@
                     date_to: @proposal_date_to).html_safe %>
             </div>
           <% end %>
-          <% if Proposal.can_manage? current_user %>
+          <% if Proposal.can_manage?(current_user, true) %>
             <%= link_to t("proposals.index.start_proposal"),
                         new_proposal_guide,
                         class: 'button expanded' %>

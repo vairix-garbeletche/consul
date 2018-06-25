@@ -132,3 +132,8 @@ Setting['map_zoom'] = 10
 Setting['related_content_score_threshold'] = -0.3
 
 Setting['auto_publish_comments'] = 'true'
+
+#Legislation Proposal
+Setting.create(key: 'legislation_proposals_start_date', value: Date.today - 20.days)
+Setting.create(key: 'legislation_proposals_end_date', value: Date.today + 20.days)
+Setting.create(key: 'legislation_proposals_require_admin', value:'true')

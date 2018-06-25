@@ -10,12 +10,22 @@
           <button type="button" data-toggle="related_content" class="add-related-content" id="add-related-content">
             <%= t("related_content.add") %>
           </button>
-          <% if !Proposal.in_active_period? %>
-            <div class="participation-not-allowed" style='display:none' aria-hidden="false">
-              <%= t("proposals.inactive",
-                    date_from: @proposal_date_from,
-                    date_to: @proposal_date_to).html_safe %>
-            </div>
+          <% if relationable.is_proposal %>
+            <% if !Proposal.in_active_period? %>
+              <div class="participation-not-allowed" style='display:none' aria-hidden="false">
+                <%= t("proposals.inactive",
+                      date_from: @proposal_date_from,
+                      date_to: @proposal_date_to).html_safe %>
+              </div>
+            <% end %>
+          <% else %>
+            <% if !Proposal.legislation_in_active_period? %>
+              <div class="participation-not-allowed" style='display:none' aria-hidden="false">
+                <%= t("legislation_proposals.inactive",
+                      date_from: @proposal_date_from,
+                      date_to: @proposal_date_to).html_safe %>
+              </div>
+            <% end %>
           <% end %>
         </a>
       </div>

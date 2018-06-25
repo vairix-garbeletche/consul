@@ -173,6 +173,14 @@ class Proposal < ActiveRecord::Base
     true
   end
 
+  def self.legislation_in_active_period?
+    proposal_date_from = Setting.exists?(key: "legislation_proposals_start_date") ? Setting.find_by(key: "legislation_proposals_start_date").value : nil
+    proposal_date_to = Setting.exists?(key: "legislation_proposals_end_date") ? Setting.find_by(key: "legislation_proposals_end_date").value : nil
+    (proposal_date_from.nil? || Date.today >= proposal_date_from.to_date) && (proposal_date_to.nil? || Date.today <= proposal_date_to.to_date)
+  rescue
+    true
+  end
+
   def retired?
     retired_at.present?
   end
@@ -239,9 +247,15 @@ class Proposal < ActiveRecord::Base
     orders
   end
 
-  def self.can_manage? user
-    if Setting.exists?(key: "proposals_require_admin")
-      return !["1","true"].include?(Setting[:proposals_require_admin]) || user.try(:administrator?) || user.try(:moderator?)
+  def self.can_manage?(user, is_proposal)
+    if is_proposal
+      if Setting.exists?(key: "proposals_require_admin")
+        return !["1","true"].include?(Setting[:proposals_require_admin]) || user.try(:administrator?) || user.try(:moderator?)
+      end
+    else
+      if Setting.exists?(key: "legislation_proposals_require_admin")
+        return !["1","true"].include?(Setting[:legislation_proposals_require_admin]) || user.try(:administrator?) || user.try(:moderator?)
+      end
     end
     true
   end
