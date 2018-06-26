@@ -1,0 +1,15 @@
+<table class="margin-top">
+  <thead>
+  	<tr>
+	    <th scope="col"><%= t("users.show.legislation_proposals") %></th>
+	    <th scope="col" colspan="2"><%= t("users.show.actions") %></th>
+	</tr>
+  </thead>
+  <tbody>
+    <% @legislation_proposals.each do |legislation_proposal| %>
+      <%= render "legislation_proposal", legislation_proposal: legislation_proposal %>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @legislation_proposals %>

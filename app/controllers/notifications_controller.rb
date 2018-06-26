@@ -32,7 +32,11 @@ class NotificationsController < ApplicationController
       when "Topic"
         community_topic_path @notification.linkable_resource.community, @notification.linkable_resource
       else
-        url_for @notification.linkable_resource
+        if notification.linkable_resource.class.name == "Proposal" && !notification.linkable_resource.is_proposal
+          legislation_proposal_path @notification.linkable_resource
+        else
+          url_for @notification.linkable_resource
+        end
       end
     end
 

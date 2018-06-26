@@ -135,3 +135,10 @@ es:
     actions:
       create:
          legislation_proposal: "Consulta pública creada correctamente."
+  users:
+    show:
+      legislation_proposals: 'Consultas públicas'
+      filters:
+        legislation_proposals:
+          one: 1 Consulta pública
+          other: "%{count} Consultas públicas"

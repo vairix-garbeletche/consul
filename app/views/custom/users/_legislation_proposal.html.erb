@@ -1,0 +1,38 @@
+<tr id="proposal_<%= legislation_proposal.id %>">
+  <td class="small-9">
+    <strong><%= link_to legislation_proposal.title, legislation_proposal_path(legislation_proposal), legislation_proposal.retired? ? { class: 'retired' } : {} %></strong>
+    <br>
+    <%= legislation_proposal.summary %>
+  </td>
+
+  <% if legislation_proposal.retired? %>
+
+    <td class="text-center" colspan="2">
+      <span class="label color-blue">Consulta pública eliminada</span>
+    </td>
+
+  <% elsif author?(legislation_proposal) %>
+
+    <td>
+      <% if legislation_proposal.permit_delete_or_edit? %>
+        <% if legislation_proposal.retired? %>
+          <span class="label color-blue">Consulta pública eliminada</span>
+        <% else %>
+          <%= link_to "Eliminar",
+                      retire_form_legislation_proposal_path(legislation_proposal),
+                      class: 'button expanded' %>
+        <% end %>
+      <% else %>
+        <span class="label color-blue">Esta consulta pública no puede ser eliminada</span>
+      <% end %>
+    </td>
+
+  <% else %>
+
+    <td class="text-center" colspan="2">
+      <%= link_to t('users.proposals.see'), legislation_proposal, class: 'button' %>
+    </td>
+
+  <% end %>
+
+</tr>
