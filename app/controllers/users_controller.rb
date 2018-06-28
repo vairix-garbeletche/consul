@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  has_filters %w{proposals debates budget_investments comments follows}, only: :show
+  has_filters %w{proposals legislation_proposals debates budget_investments comments follows}, only: :show
 
   load_and_authorize_resource
   helper_method :author?
@@ -13,7 +13,8 @@ class UsersController < ApplicationController
 
     def set_activity_counts
       @activity_counts = HashWithIndifferentAccess.new(
-                          proposals: Proposal.where(author_id: @user.id).not_retired.count,
+                          proposals: Proposal.is_proposal.where(author_id: @user.id).not_retired.count,
+                          legislation_proposals: Proposal.is_legislation_proposal.where(author_id: @user.id).not_retired.count,
                           debates: (Setting['feature.debates'] ? Debate.where(author_id: @user.id).count : 0),
                           budget_investments: (Setting['feature.budgets'] ? Budget::Investment.where(author_id: @user.id).count : 0),
                           comments: only_active_commentables.count,
@@ -24,6 +25,7 @@ class UsersController < ApplicationController
       set_activity_counts
       case params[:filter]
       when "proposals" then load_proposals
+      when "legislation_proposals" then load_legislation_proposals
       when "debates"   then load_debates
       when "budget_investments" then load_budget_investments
       when "comments" then load_comments
@@ -36,6 +38,9 @@ class UsersController < ApplicationController
       if @activity_counts[:proposals] > 0
         load_proposals
         @current_filter = "proposals"
+      elsif @activity_counts[:legislation_proposals] > 0
+        load_legislation_proposals
+        @current_filter = "legislation_proposals"
       elsif @activity_counts[:debates] > 0
         load_debates
         @current_filter = "debates"
@@ -52,7 +57,11 @@ class UsersController < ApplicationController
     end
 
     def load_proposals
-      @proposals = Proposal.where(author_id: @user.id).not_retired.order(created_at: :desc).page(params[:page])
+      @proposals = Proposal.is_proposal.where(author_id: @user.id).not_retired.order(created_at: :desc).page(params[:page])
+    end
+
+    def load_legislation_proposals
+      @legislation_proposals = Proposal.is_legislation_proposal.where(author_id: @user.id).not_retired.order(created_at: :desc).page(params[:page])
     end
 
     def load_debates

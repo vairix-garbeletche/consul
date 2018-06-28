@@ -77,6 +77,11 @@ es:
           notice_html: "¡Ahora estás siguiendo esta propuesta! </br> Te notificaremos los cambios a medida que se produzcan para que estés al día."
         destroy:
           notice_html: "¡Has dejado de seguir esta propuesta! </br> Ya no recibirás más notificaciones relacionadas con esta propuesta."
+      legislation_proposal:
+        create:
+          notice_html: "¡Ahora estás siguiendo esta consulta pública! </br> Te notificaremos los cambios a medida que se produzcan para que estés al día."
+        destroy:
+          notice_html: "¡Has dejado de seguir esta consulta pública! </br> Ya no recibirás más notificaciones relacionadas con esta consulta pública."
     suggest:
       legislation_proposal:
         found:
@@ -90,12 +95,17 @@ es:
     inactive: "El periodo de la consulta pública es entre %{date_from} y %{date_to}"
     index:
       section_header:
-        help: Ayuda sobre las consultas públicas
+        help: Ayuda para participar en la consulta Pública
+      section_footer:
+        title: Ayuda para participar en la consulta Pública
       search_form:
         button: Buscar
         placeholder: Buscar consultas públicas...
         title: Buscar
-      start_proposal: Crea una consulta pública
+      orders:
+        hot_score: Más activas
+        relevance: Más relevantes
+      start_proposal: Ingresar Ficha
       recommendations:
         without_results: No existen consultas públicas relacionadas con tus intereses
         without_interests: Sigue consultas públicas para que podamos darte recomendaciones
@@ -107,6 +117,9 @@ es:
     new:
       start_new: Crear una consulta pública
       recommendations_title: Recomendaciones para crear una consulta pública
+      form:
+        submit_button: Crear consulta pública
+    create:
       form:
         submit_button: Crear consulta pública
     legislation_proposal:
@@ -134,4 +147,16 @@ es:
   flash:
     actions:
       create:
-         legislation_proposal: "Consulta pública creada correctamente."
+        legislation_proposal: "Consulta pública creada correctamente."
+      update:
+        legislation_proposal: "Consulta pública actualizada correctamente."
+  users:
+    show:
+      legislation_proposals: 'Consultas públicas'
+      follows: Seguidos
+      filters:
+        legislation_proposals:
+          one: 1 Consulta pública
+          other: "%{count} Consultas públicas"
+    legislation_proposals:
+      retired: "Consulta pública retirada"

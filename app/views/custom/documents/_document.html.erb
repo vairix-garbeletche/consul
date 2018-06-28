@@ -1,8 +1,7 @@
 <table>
   <tbody>
     <tr id="<%= dom_id(document)%>">
-      <td class="document-link">
-      <td class="text-center">
+      <td class="<% 'text-center' if !@proposal.nil? && @proposal.is_proposal %>">
         <% if !local_assigns[:pdf] %>
           <%= link_to  document.title ,
                     document.attachment.url,
@@ -16,7 +15,7 @@
         <% end %>
       </td>
       <% if !local_assigns[:inactive] && !local_assigns[:pdf] %>
-        <td class="text-center">
+        <td class="<% 'text-center' if !@proposal.nil? && @proposal.is_proposal %>">
           <% if can?(:destroy, document) %>
             <%= link_to t('documents.buttons.destroy_document'),
                           document_path(document, from: request.url), method: :delete,

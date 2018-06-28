@@ -29,6 +29,10 @@
       <%= f.cktext_area :description, maxlength: Proposal.description_max_length, ckeditor: { language: I18n.locale }, label: false %>
     </div>
 
+    <div class="documents small-12 column pull-top-2">
+      <%= render 'documents/nested_documents.html.erb', documentable: @proposal, f: f %>
+    </div>
+
     <div class="small-12 column">
       <%= f.label :video_url, t("proposals.form.proposal_video_url") %>
       <p class="help-text" id="video-url-help-text"><%= t("proposals.form.proposal_video_url_note") %></p>
@@ -39,10 +43,6 @@
     <div class="small-12 column">
       <%= f.label :external_url, 'Enlace a información adicional' %>
       <%= f.text_field :external_url, placeholder: 'Enlace a información adicional', label: false %>
-    </div>
-
-    <div class="documents small-12 column">
-      <%= render 'documents/nested_documents.html.erb', documentable: @proposal, f: f %>
     </div>
 
     <div class="small-12 medium-6 column">

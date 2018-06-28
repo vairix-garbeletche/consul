@@ -1,0 +1,13 @@
+<li id="proposal_<%= proposal.id %>">
+  <% if proposal.is_proposal %>
+    <%= link_to proposal.title, proposal, proposal.retired? ? { class: 'retired' } : {} %>
+    <% if proposal.retired? %>
+      <span class="label alert"><%= t('users.proposals.retired') %></span>
+    <% end %>
+  <% else %>
+    <%= link_to proposal.title, legislation_proposal_path(proposal), proposal.retired? ? { class: 'retired' } : {} %>
+    <% if proposal.retired? %>
+      <span class="label alert"><%= t('users.legislation_proposals.retired') %></span>
+    <% end %>
+  <% end %>
+</li>

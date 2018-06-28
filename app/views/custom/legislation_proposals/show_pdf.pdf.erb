@@ -22,6 +22,7 @@
 </h2>
 <% provide :title do %><%= @proposal.title %><% end %>
 <% content_for :meta_description do %><%= @proposal.summary %><% end %>
+
 <% cache [locale_and_user_status(@proposal), @proposal, @proposal.author, Flag.flagged?(current_user, @proposal), @proposal_votes] do %>
   <div class="proposal-show">
     <div id="<%= dom_id(@proposal) %>" class="row">
@@ -68,6 +69,15 @@
         <br><br>
         <strong>Texto desarrollado:</strong><br>
         <%= safe_html_with_links @proposal.description %>
+
+        <% if @proposal.documents.count > 0 %>
+          <br>
+          <strong><%= t("documents.tab") %>
+              (<%= @proposal.documents.count %>)</strong>
+          <%= render 'documents/documents_pdf.html.erb',
+                      documents: @proposal.documents,
+                      max_documents_allowed: Proposal.max_documents_allowed %><br>
+        <% end %>
 
         <% if feature?(:map) && map_location_available?(@proposal.map_location) %>
           <div class="margin">
@@ -118,9 +128,4 @@
     <%= render "proposals/comments_pdf.html.erb" %>
   </div>
 
-  <div class="tabs-panel" id="tab-documents">
-    <%= render 'documents/documents_pdf.html.erb',
-                documents: @proposal.documents,
-                max_documents_allowed: Proposal.max_documents_allowed %>
-  </div>
 </div>

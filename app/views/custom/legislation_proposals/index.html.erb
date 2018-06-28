@@ -20,7 +20,7 @@
         <%= render "shared/banner" %>
       <% end %>
 
-      <%= render 'shared/order_links', i18n_namespace: "proposals.index" %>
+      <%= render 'shared/order_links', i18n_namespace: "legislation_proposals.index" %>
 
       <% if @proposals.any? %>
         <div class="show-for-small-only">
@@ -60,22 +60,26 @@
           <%= render 'categories' %>
           <%= render 'geozones' %>
           <div id="section_help" class="margin" data-magellan-target="section_help">
-            <h2 class="sidebar-title"><%= t("proposals.index.section_footer.title") %></h2>
-            <p>Cualquier persona puede crear propuestas, ya sea en carácter individual o en representación de organismos públicos, sociedad civil organizada, academia o sector privado.<br><br>
-            Para crear una propuesta, <strong>Regístrate en <%= link_to 'ID Uruguay', 'https://mi.iduruguay.gub.uy/registro', target: :_blank %> e inicia sesión y luego hacer clic en el botón "Crea una propuesta". </strong>  y completa los datos que aparecen en el formulario.<br><br>
-            Ingresar el título de la propuesta, incorporar un resumen de los aspectos más importantes y
-            una descripción más detallada. Puede adjuntar materiales relacionados, como imágenes,
-            videos, documentos y enlaces a páginas de internet que complemente, enriquezca o justifique su propuesta.<br><br> Una vez creada, la propuesta aparecerá en el listado de propuestas para que cualquier
-            persona pueda comentarla.<br><br>
-            <strong>Plazo para ingresar y comentar propuestas hasta el 30 de junio de 2018.</strong><br><br>
-            Se denominan <strong>"propuestas de Gobierno Abierto"</strong> a iniciativas que aporten a los pilares de
-            gobierno abierto: transparencia y acceso a la información pública, rendición de cuentas
-            públicas, participación ciudadana, colaboración e innovación pública y ciudadana las cuales buscan contribuir al interés general sobre una temática determinada.<br>
+            <h2 class="sidebar-title"><%= t("legislation_proposals.index.section_footer.title") %></h2>
+            <p>Cualquier persona puede realizar comentarios a los compromisos, ya sea a título individual o en
+            representación de organismos públicos, sociedad civil organizada, academia o sector privado.<br><br>
+            Para realizar comentarios a los compromisos, debes previamente registrarte en
+            <%= link_to 'ID Uruguay', 'https://mi.iduruguay.gub.uy/registro', target: :_blank %> e iniciar sesión en la
+            plataforma.<br><br>
+            Ingresando a <%= link_to 'Consulta Pública', legislation_proposals_path %>, podés seleccionar un
+            compromiso y realizar tus comentarios.<br><br>
+            Tus comentarios nos sirven para mejorar los compromisos del 4° Plan de Acción Nacional de Gobierno Abierto.<br><br>
+            Al ingresar al compromiso seleccionado, se visualizará un número identificatorio, un título, un resumen y un
+            texto explicativo; si querés conocer la totalidad del compromiso, descargá la ficha adjunta.<br><br>
+            <strong>El plazo para realizar comentarios vence el 15 de julio de 2018.</strong><br><br>
+            Se denominan <strong>"compromisos de Gobierno Abierto"</strong> a aquellas iniciativas que aporten a 
+            los pilares de gobierno abierto (transparencia y acceso a la información pública, rendición de cuentas
+            públicas, participación ciudadana, colaboración e innovación pública y ciudadana), las cuales buscan
+            contribuir al interés general sobre una temática determinada y deberán ser ejecutadas en un plazo de 2 años.<br>
             </p>
           </div>
         <% end %>
       </aside>
     </div>
-
   </div>
 </main>

@@ -6,7 +6,6 @@
                   method: :delete, remote: true,
                   title: unfollow_text(follow.followable),
                   class: 'button expanded' %>
-
     <% else %>
       <%= link_to follow_text(follow.followable),
                   follows_path(followable_id: follow.followable.id,
