@@ -22,6 +22,7 @@ class CommentsController < ApplicationController
 
   def show
     @comment = Comment.find(params[:id])
+    load_settings
     set_comment_flags(@comment.subtree)
   end
 
@@ -106,6 +107,16 @@ class CommentsController < ApplicationController
 
       if @commentable.respond_to?(:comments_closed?) && @commentable.comments_closed?
         redirect_to @commentable, alert: t('comments.comments_closed')
+      end
+    end
+
+    def load_settings
+      if @comment.commentable.is_proposal
+        @proposal_date_from = Setting.exists?(key: "proposals_start_date") ? Setting.find_by(key: "proposals_start_date").value : nil
+        @proposal_date_to = Setting.exists?(key: "proposals_end_date") ? Setting.find_by(key: "proposals_end_date").value : nil
+      else
+        @proposal_date_from = Setting.exists?(key: "legislation_proposals_start_date") ? Setting.find_by(key: "legislation_proposals_start_date").value : nil
+        @proposal_date_to = Setting.exists?(key: "legislation_proposals_end_date") ? Setting.find_by(key: "legislation_proposals_end_date").value : nil
       end
     end
 

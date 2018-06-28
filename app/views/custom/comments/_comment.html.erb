@@ -19,7 +19,7 @@
           <% elsif comment.user.organization? %>
             <%= image_tag("avatar_collective.png", size: 32, class: "avatar float-left") %>
           <% else %>
-           <span class="avatar-mini header-bg" > <%=  comment.user.name[0].try(:upcase) %></span>
+            <span class="avatar-mini header-bg" > <%=  comment.user.name[0].try(:upcase) %></span>
           <% end %>
         <% end %>
 
@@ -92,9 +92,8 @@
           <% else %>
             <%= t("comments.comment.responses", count: 0) %>
           <% end %>
-
           <% if user_signed_in? && !comments_closed_for_commentable?(comment.commentable) && !require_verified_resident_for_commentable?(comment.commentable, current_user) %>
-            <% if !local_assigns[:inactive] %>
+            <% if (!local_assigns[:inactive] && ((comment.commentable.is_proposal && Proposal.in_active_period?) || (!comment.commentable.is_proposal && Proposal.legislation_in_active_period?))) %>
               <span class="divider">&nbsp;|&nbsp;</span>
                 <%= link_to(comment_link_text(comment), "",
                             class: "js-add-comment-link", data: {'id': dom_id(comment)}) %>
@@ -108,15 +107,15 @@
       <% end %>
     </li>
     <% unless child_comments_of(comment).empty? %>
-    <li>
-      <ul id="<%= dom_id(comment) %>_children" class="no-bullet comment-children">
-        <% child_comments_of(comment).each do |child| %>
-          <li>
-            <%= render 'comments/comment', comment: child, inactive: local_assigns[:inactive] %>
-          </li>
-        <% end %>
-      </ul>
-    </li>
+      <li>
+        <ul id="<%= dom_id(comment) %>_children" class="no-bullet comment-children">
+          <% child_comments_of(comment).each do |child| %>
+            <li>
+              <%= render 'comments/comment', comment: child, inactive: local_assigns[:inactive] %>
+            </li>
+          <% end %>
+        </ul>
+      </li>
     <% end %>
   </ul>
 <% end %>

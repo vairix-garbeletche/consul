@@ -95,9 +95,9 @@ es:
     inactive: "El periodo de la consulta pública es entre %{date_from} y %{date_to}"
     index:
       section_header:
-        help: Ayuda para participar en la consulta Pública
+        help: Ayuda para participar en la Consulta Pública
       section_footer:
-        title: Ayuda para participar en la consulta Pública
+        title: Ayuda para participar en la Consulta Pública
       search_form:
         button: Buscar
         placeholder: Buscar consultas públicas...

@@ -33,6 +33,19 @@
       <% end %>
       <%= comment.total_dislikes %>
     </span>
+    <% if comment.commentable.is_proposal && !Proposal.in_active_period? %>
+      <div class="participation-not-allowed" style='display:none' aria-hidden="false">
+        <%= t("proposals.inactive",
+              date_from: @proposal_date_from,
+              date_to: @proposal_date_to).html_safe %>
+      </div>
+    <% elsif !comment.commentable.is_proposal && !Proposal.legislation_in_active_period? %>
+      <div class="participation-not-allowed" style='display:none' aria-hidden="false">
+        <%= t("legislation_proposals.inactive",
+              date_from: @proposal_date_from,
+              date_to: @proposal_date_to).html_safe %>
+      </div>
+    <% end %>
 
   <% elsif !user_signed_in? %>
 
