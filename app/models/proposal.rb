@@ -242,8 +242,12 @@ class Proposal < ActiveRecord::Base
     (voters + followers).uniq
   end
 
-  def self.proposals_orders(user)
-    orders = %w{hot_score created_at relevance}
+  def self.proposals_orders(user, is_proposal=true)
+    if !is_proposal
+      orders = %w{hot_score relevance}
+    else
+      orders = %w{hot_score created_at relevance}
+    end
     orders
   end
 

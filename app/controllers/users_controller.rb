@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  has_filters %w{proposals debates budget_investments comments follows legislation_proposals}, only: :show
+  has_filters %w{proposals legislation_proposals debates budget_investments comments follows}, only: :show
 
   load_and_authorize_resource
   helper_method :author?

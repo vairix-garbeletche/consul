@@ -10,25 +10,23 @@
         <%= render 'comments/form', {commentable: @proposal, parent_id: nil, toggeable: false} %>
       <% elsif !user_signed_in? %>
         <br>
-
-        <div data-alert class="callout primary">
-          <%= t("proposals.show.login_to_comment",
-              signin: link_to(t("votes.signin"), new_user_session_path),
-              signup: link_to(t("votes.signup"), new_user_registration_path)).html_safe %>
-          </div>
-        <% else %>
-          <br>
-
           <div data-alert class="callout primary">
-            <%= t("legislation_proposals.inactive",
-                  date_from: @proposal_date_from,
-                  date_to: @proposal_date_to).html_safe %>
+            <%= t("proposals.show.login_to_comment",
+                signin: link_to(t("votes.signin"), new_user_session_path),
+                signup: link_to(t("votes.signup"), new_user_registration_path)).html_safe %>
           </div>
-        <% end %>
+      <% else %>
+        <br>
+        <div data-alert class="callout primary">
+          <%= t("legislation_proposals.inactive",
+                date_from: @proposal_date_from,
+                date_to: @proposal_date_to).html_safe %>
+        </div>
+      <% end %>
       <% @comment_tree.root_comments.each do |comment| %>
         <%= render 'comments/comment', {comment: comment, inactive: !Proposal.legislation_in_active_period?} %>
       <% end %>
       <%= paginate @comment_tree.root_comments %>
     </div>
-  </div>
+  </div> 
 <% end %>

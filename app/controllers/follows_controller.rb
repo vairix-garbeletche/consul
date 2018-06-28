@@ -22,7 +22,11 @@ class FollowsController < ApplicationController
   end
 
   def followable_translation_key(followable)
-    followable.class.name.parameterize("_")
+    if followable.class.name.underscore == 'proposal' && !followable.is_proposal
+      'legislation_proposal'
+    else
+      followable.class.name.parameterize("_")
+    end
   end
 
 end

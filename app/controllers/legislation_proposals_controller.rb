@@ -15,7 +15,7 @@ class LegislationProposalsController < ApplicationController
 
   invisible_captcha only: [:create, :update], honeypot: :subtitle
 
-  has_orders ->(c) { Proposal.is_legislation_proposal.proposals_orders(c.current_user) }, only: :index
+  has_orders ->(c) { Proposal.is_legislation_proposal.proposals_orders(c.current_user, false) }, only: :index
   has_orders %w{newest oldest}, only: [:show, :show_pdf]
 
   before_action :find_proposal, only: [:show, :show_pdf]

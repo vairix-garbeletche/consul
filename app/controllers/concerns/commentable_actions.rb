@@ -83,7 +83,11 @@ module CommentableActions
 
   def update
     if resource.update(strong_params)
-      redirect_to resource, notice: t("flash.actions.update.#{resource_name.underscore}")
+      if resource_name == 'proposal' && !resource.is_proposal
+        redirect_to legislation_proposal_path(resource), notice: t("flash.actions.update.legislation_proposal")
+      else
+        redirect_to resource, notice: t("flash.actions.update.#{resource_name.underscore}")
+      end
     else
       load_categories
       load_geozones

@@ -1,0 +1,15 @@
+<div class="row following margin-top" data-equalizer data-equalize-on="medium" >
+  <div class="small-12 medium-8 column" data-equalizer-watch>
+    <% @follows.each do |followable_type, follows| %>
+      <ul class="follow-list">
+        <% follows.each do |follow| %>
+          <%= render_follow(follow) %>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+
+  <div class="small-12 medium-4 column interests" data-equalizer-watch>
+    <%= render 'interests', user: @user if valid_interests_access? %>
+  </div>
+</div>

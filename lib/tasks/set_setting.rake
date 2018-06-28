@@ -40,7 +40,6 @@ namespace :set_setting do
     Setting["description_home"] = "Proponé ideas o iniciativas que fortalezcan la transparencia, el acceso a la información pública, la rendición de cuentas, la participación y la colaboración ciudadana."
     Setting["title_link_home"] = "Ver propuestas"
     Setting["url_link_home"] = "http://localhost:3000/proposals"
-    Setting['feature.legislation_proposals'] = true
   end
 
   desc "set data legislation proposal"
