@@ -14,7 +14,7 @@
   <% elsif author?(proposal) %>
 
     <td>
-      <% if proposal.permit_delete_or_edit? %>
+      <% if proposal.permit_delete_or_edit? && Proposal.in_active_period? %>
         <% if proposal.retired? %>
           <span class="label color-blue">Propuesta eliminada</span>
         <% else %>
