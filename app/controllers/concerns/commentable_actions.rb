@@ -9,7 +9,8 @@ module CommentableActions
     elsif !params[:is_proposal].blank? && params[:is_proposal] == 'false'
       @resources = resource_model.is_legislation_proposal
     else
-      @resources = resource_model.all
+      params[:is_proposal] = 'true'
+      @resources = resource_model.is_proposal
     end
 
     @resources = @current_order == "recommendations" && current_user.present? ? @resources.recommendations(current_user) : @resources.for_render
